@@ -5,16 +5,16 @@ import { useRef } from "react";
 
 const comparisons = [
   {
-    title: "No physical click needed",
-    desc: "The Magic Mouse requires pressing down the entire body to click. MagicTouch converts light surface taps into full clicks \u2014 less force, less fatigue, same result.",
+    title: "Stop pressing, start tapping",
+    desc: "Pressing the entire Magic Mouse body hundreds of times a day causes fatigue. A light surface tap does the same thing with a fraction of the effort.",
   },
   {
-    title: "Smarter right-clicks",
-    desc: "macOS right-click on Magic Mouse is awkward: two-finger tap or hold Control. MagicTouch gives you zone-based or pressure-based right-click that feels natural and instant.",
+    title: "Right-click that actually works",
+    desc: "Forget the awkward two-finger dance or holding Control. Choose zone-based splits or pressure-based detection \u2014 right-click finally feels intuitive.",
   },
   {
-    title: "Trackpad behavior, mouse form",
-    desc: "macOS supports tap-to-click on trackpads but not Magic Mouse. MagicTouch fills that gap \u2014 same gesture you already know, on the device you prefer.",
+    title: "The feature Apple should have shipped",
+    desc: "Every MacBook trackpad has tap-to-click. The Magic Mouse doesn\u2019t. MagicTouch gives you the same gesture on the device you actually chose to use.",
   },
 ];
 

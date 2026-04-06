@@ -18,15 +18,15 @@ export default function Download() {
         >
           <Image src="/app-icon-large.png" alt="MagicTouch" width={96} height={96} className="mx-auto mb-6 rounded-2xl shadow-lg shadow-accent/10" priority />
           <h2 className="text-4xl lg:text-5xl font-bold tracking-tight leading-tight mb-4">
-            Tap to click on your Magic Mouse.
+            Ready to stop pressing?
           </h2>
           <p className="text-muted text-lg leading-relaxed mt-4">
-            MagicTouch gives your Magic Mouse the tap-to-click it always deserved \u2014 lightweight, native, and fully customizable.
+            Join thousands of Magic Mouse users who switched from pressing to tapping. Free to start, one-time upgrade to unlock everything.
           </p>
 
           <div className="flex flex-col sm:flex-row justify-center gap-3 mt-8">
-            <a href="#how-it-works" className="gradient-bg text-white px-6 py-3 rounded-xl font-semibold shadow-lg shadow-accent/25 hover:shadow-accent/40 transition-shadow">
-              Get Started
+            <a href="#pricing" className="gradient-bg text-white px-6 py-3 rounded-xl font-semibold shadow-lg shadow-accent/25 hover:shadow-accent/40 transition-shadow">
+              Get MagicTouch
             </a>
             <a href="mailto:support@magictouch.app" className="px-6 py-3 rounded-xl font-semibold border border-border-light bg-card hover:bg-card-hover transition-colors">
               Contact Support

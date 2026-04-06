@@ -33,6 +33,14 @@ const faqs = [
     a: "Zero. No analytics, no crash reporter, no accounts, no network requests. All touch processing happens locally.",
   },
   {
+    q: "Is it a subscription?",
+    a: "No. MagicTouch Free is free forever. Pro is a one-time purchase \u2014 no recurring charge, no account required. Pay once, unlock everything including future updates.",
+  },
+  {
+    q: "What\u2019s included in the free version?",
+    a: "Core tap-to-click, zone-based right-click, configurable tap sensitivity, battery monitoring, menu bar integration, and start on login. Everything you need for basic tap-to-click.",
+  },
+  {
     q: "Can I disable it quickly without quitting?",
     a: "Yes. The menu bar has an enable/disable toggle. Disabling skips tap processing without disconnecting the device, so re-enabling is instant.",
   },

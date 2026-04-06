@@ -32,7 +32,7 @@ function MoonIcon() {
 const navLinks = [
   { href: "/#how-it-works", label: "How It Works" },
   { href: "/#features", label: "Features" },
-  { href: "/#use-cases", label: "Use Cases" },
+  { href: "/#pricing", label: "Pricing" },
   { href: "/#faq", label: "FAQ" },
 ];
 
@@ -66,10 +66,10 @@ export default function Nav() {
             {theme === "dark" ? <SunIcon /> : <MoonIcon />}
           </button>
           <a
-            href="/#how-it-works"
+            href="/#pricing"
             className="hidden sm:inline-block gradient-bg text-white px-4 py-2 rounded-full text-sm font-semibold hover:opacity-90 transition-opacity"
           >
-            See How
+            Get Pro
           </a>
           <button
             onClick={() => setMenuOpen((v) => !v)}
@@ -116,11 +116,11 @@ export default function Nav() {
                 </a>
               ))}
               <a
-                href="/#how-it-works"
+                href="/#pricing"
                 onClick={() => setMenuOpen(false)}
                 className="mt-2 text-center gradient-bg text-white px-4 py-2.5 rounded-full text-sm font-semibold hover:opacity-90 transition-opacity"
               >
-                See How
+                Get Pro
               </a>
             </div>
           </motion.div>

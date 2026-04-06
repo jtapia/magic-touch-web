@@ -3,9 +3,9 @@
 import { motion } from "framer-motion";
 
 const proofItems = [
-  { label: "Cost", value: "Free & open source" },
-  { label: "Privacy", value: "No data collected" },
-  { label: "Weight", value: "Menu bar only" },
+  { label: "Price", value: "Free to start" },
+  { label: "Privacy", value: "Zero data collected" },
+  { label: "Footprint", value: "~5 MB, menu bar" },
 ];
 
 export default function Hero() {
@@ -24,31 +24,31 @@ export default function Hero() {
             transition={{ delay: 0.3 }}
             className="inline-block text-xs font-semibold text-accent-light bg-accent/10 border border-accent/20 px-3.5 py-1.5 rounded-full mb-6"
           >
-            Built for Magic Mouse
+            The upgrade Apple forgot
           </motion.div>
 
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.08] mb-5">
-            Tap to click.
+            Your Magic Mouse
             <br />
-            <span className="gradient-text">On your Magic Mouse.</span>
+            <span className="gradient-text">finally taps to click.</span>
           </h1>
 
           <p className="text-lg text-muted leading-relaxed mb-8 max-w-xl mx-auto lg:mx-0">
-            MagicTouch brings tap-to-click to the Apple Magic Mouse — with pressure-sensitive right-clicks, configurable zones, haptic feedback, and a native macOS experience.
+            macOS gives trackpads tap-to-click but ignores the Magic Mouse. MagicTouch fixes that — with pressure-sensitive right-clicks, smart zones, and haptic feedback that makes pressing feel prehistoric.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center lg:items-start gap-3 mb-8 w-full">
             <a
-              href="#how-it-works"
+              href="#pricing"
               className="gradient-bg text-white w-full sm:flex-1 px-4 sm:px-7 py-3 sm:py-3.5 rounded-xl font-semibold text-sm sm:text-base flex items-center justify-center gap-2 shadow-lg shadow-accent/25 hover:shadow-accent/40 hover:-translate-y-0.5 transition-all"
             >
-              See How It Works
+              Get MagicTouch
             </a>
             <a
-              href="#features"
+              href="#how-it-works"
               className="w-full sm:flex-1 px-4 sm:px-7 py-3 sm:py-3.5 rounded-xl font-semibold text-sm sm:text-base border border-border-light bg-card hover:bg-card-hover transition-colors text-center"
             >
-              View Features
+              See How It Works
             </a>
           </div>
 
