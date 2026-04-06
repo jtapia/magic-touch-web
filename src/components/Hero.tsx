@@ -77,6 +77,8 @@ export default function Hero() {
   );
 }
 
+const MOUSE_BODY_PATH = "M100 14 C140 14, 170 40, 172 80 L174 250 C174 300, 146 326, 100 326 C54 326, 26 300, 26 250 L28 80 C30 40, 60 14, 100 14Z";
+
 function HeroMouse() {
   return (
     <div className="relative flex items-center justify-center w-[260px] h-[320px] sm:w-[320px] sm:h-[380px] lg:w-[360px] lg:h-[420px]">
@@ -127,30 +129,9 @@ function HeroMouse() {
             <ellipse cx="100" cy="330" rx="72" ry="8" className="fill-black/[0.08] dark:fill-black/30" />
 
             {/* Mouse body — Magic Mouse 2: wide rounded capsule, slightly narrower at front (top) */}
-            <path
-              d="M100 14
-               C140 14, 170 40, 172 80
-               L174 250
-               C174 300, 146 326, 100 326
-               C54 326, 26 300, 26 250
-               L28 80
-               C30 40, 60 14, 100 14Z"
-              fill="url(#mm2Body)"
-              filter="url(#mm2Shadow)"
-            />
+            <path d={MOUSE_BODY_PATH} fill="url(#mm2Body)" filter="url(#mm2Shadow)" />
             {/* Body border */}
-            <path
-              d="M100 14
-               C140 14, 170 40, 172 80
-               L174 250
-               C174 300, 146 326, 100 326
-               C54 326, 26 300, 26 250
-               L28 80
-               C30 40, 60 14, 100 14Z"
-              fill="none"
-              className="stroke-black/[0.07] dark:stroke-white/[0.08]"
-              strokeWidth="1.2"
-            />
+            <path d={MOUSE_BODY_PATH} fill="none" className="stroke-black/[0.07] dark:stroke-white/[0.08]" strokeWidth="1.2" />
 
             {/* Touch surface (top 70%) */}
             <path
@@ -184,7 +165,7 @@ function HeroMouse() {
 
             {/* Blue ripple rings — matching app icon aesthetic */}
             <circle cx="72" cy="100" r="50" fill="url(#mm2Ripple1)" className="animate-[pulse-ring_3s_ease-in-out_infinite]" />
-            <circle cx="72" cy="100" r="30" fill="url(#mm2Ripple2)" className="animate-[pulse-ring_3s_ease-in-out_0.4s_infinite]" style={{ animationDelay: "0.4s" }} />
+            <circle cx="72" cy="100" r="30" fill="url(#mm2Ripple2)" className="animate-[pulse-ring_3s_ease-in-out_0.4s_infinite]" />
             <circle cx="72" cy="100" r="12" fill="url(#mm2Ripple3)" />
             {/* Center tap dot */}
             <circle cx="72" cy="100" r="4" fill="#3b82f6" fillOpacity="0.9" />
