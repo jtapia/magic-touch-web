@@ -21,7 +21,7 @@ export default function Download() {
             Ready to stop pressing?
           </h2>
           <p className="text-muted text-lg leading-relaxed mt-4">
-            Join thousands of Magic Mouse users who switched from pressing to tapping. Free to start, one-time upgrade to unlock everything.
+            Join thousands of Magic Mouse users who switched from pressing to tapping. One-time purchase, every feature included.
           </p>
 
           <div className="flex flex-col sm:flex-row justify-center gap-3 mt-8">

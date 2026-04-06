@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 
 const proofItems = [
-  { label: "Price", value: "Free to start" },
+  { label: "Price", value: "One-time $2.99" },
   { label: "Privacy", value: "Zero data collected" },
   { label: "Footprint", value: "~5 MB, menu bar" },
 ];
@@ -34,7 +34,7 @@ export default function Hero() {
           </h1>
 
           <p className="text-lg text-muted leading-relaxed mb-8 max-w-xl mx-auto lg:mx-0">
-            macOS gives trackpads tap-to-click but ignores the Magic Mouse. MagicTouch fixes that — with pressure-sensitive right-clicks, smart zones, and haptic feedback that makes pressing feel prehistoric.
+            macOS gives trackpads tap-to-click but ignores the Magic Mouse. MagicTouch fixes that with pressure-sensitive right-clicks, smart zones, and haptic feedback that makes pressing feel prehistoric.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center lg:items-start gap-3 mb-8 w-full">

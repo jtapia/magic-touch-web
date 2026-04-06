@@ -10,11 +10,11 @@ const comparisons = [
   },
   {
     title: "Right-click that actually works",
-    desc: "Forget the awkward two-finger dance or holding Control. Choose zone-based splits or pressure-based detection \u2014 right-click finally feels intuitive.",
+    desc: "Forget the awkward two-finger dance or holding Control. Choose zone-based splits or pressure-based detection, and right-click finally feels intuitive.",
   },
   {
     title: "The feature Apple should have shipped",
-    desc: "Every MacBook trackpad has tap-to-click. The Magic Mouse doesn\u2019t. MagicTouch gives you the same gesture on the device you actually chose to use.",
+    desc: "Every MacBook trackpad has tap-to-click. The Magic Mouse doesn't. MagicTouch gives you the same gesture on the device you actually chose to use.",
   },
 ];
 
@@ -44,9 +44,9 @@ export default function Comparison() {
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.45, delay: 0.12 + index * 0.08 }}
-              className="rounded-2xl border border-border bg-card p-7 text-left"
+              className="rounded-2xl border border-border bg-card p-7 text-center md:text-left"
             >
-              <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-accent/10 text-accent-light text-sm font-bold">
+              <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-accent/10 text-accent-light text-sm font-bold mx-auto md:mx-0">
                 0{index + 1}
               </span>
               <h3 className="mt-4 text-lg font-semibold">{item.title}</h3>

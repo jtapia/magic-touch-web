@@ -6,7 +6,7 @@ import { useRef } from "react";
 const features = [
   {
     title: "Tap-to-click",
-    desc: "Convert light surface taps into real mouse clicks. Configurable tap duration (0.05\u20130.5s) and movement precision thresholds.",
+    desc: "Convert light surface taps into real mouse clicks. Configurable tap duration (0.05 to 0.5s) and movement precision thresholds.",
     icon: (
       <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <path d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5" />
@@ -33,7 +33,7 @@ const features = [
   },
   {
     title: "Pressure-based right-click",
-    desc: "Firm taps trigger right-clicks using the finger\u2019s contact area as a pressure proxy. Three-tier classification with configurable thresholds.",
+    desc: "Firm taps trigger right-clicks using the finger's contact area as a pressure proxy. Three-tier classification with configurable thresholds.",
     icon: (
       <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <path d="M12 2v20" /><path d="M2 12h20" /><circle cx="12" cy="12" r="4" />
@@ -87,7 +87,7 @@ const features = [
   },
   {
     title: "Scroll customization",
-    desc: "Independent scroll sensitivity multiplier (0.25\u20134\u00d7) and direction inversion without touching system settings.",
+    desc: "Independent scroll sensitivity multiplier (0.25 to 4x) and direction inversion without touching system settings.",
     icon: (
       <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <polyline points="17 1 21 5 17 9" /><path d="M3 11V9a4 4 0 014-4h14" /><polyline points="7 23 3 19 7 15" /><path d="M21 13v2a4 4 0 01-4 4H3" />

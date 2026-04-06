@@ -6,7 +6,7 @@ import { useRef, useState } from "react";
 const faqs = [
   {
     q: "Does it work with both Magic Mouse 1 and 2?",
-    a: "Both generations use the same capacitive multitouch surface, so tap detection works on both. Battery monitoring requires Magic Mouse 2 (Lightning/USB-C) \u2014 Magic Mouse 1 does not expose battery over IOKit.",
+    a: "Both generations use the same capacitive multitouch surface, so tap detection works on both. Battery monitoring requires Magic Mouse 2 (Lightning/USB-C) since Magic Mouse 1 does not expose battery over IOKit.",
   },
   {
     q: "Does it need Accessibility permissions?",
@@ -14,7 +14,7 @@ const faqs = [
   },
   {
     q: "Can I customize tap sensitivity?",
-    a: "Fully. Tap duration threshold (0.05\u20130.5s), movement precision (0.01\u20130.20), pressure boundaries, zone split point, and double-tap window are all adjustable in Preferences.",
+    a: "Fully. Tap duration threshold (0.05 to 0.5s), movement precision (0.01 to 0.20), pressure boundaries, zone split point, and double-tap window are all adjustable in Preferences.",
   },
   {
     q: "Will it conflict with Bartender, Ice, or Hidden Bar?",
@@ -26,7 +26,7 @@ const faqs = [
   },
   {
     q: "How does pressure-based right-click work?",
-    a: "The Magic Mouse\u2019s capacitive surface reports finger contact area. Larger area means more pressure. MagicTouch classifies contacts into light, medium, and firm \u2014 firm taps trigger right-click. Thresholds are fully configurable.",
+    a: "The Magic Mouse's capacitive surface reports finger contact area. Larger area means more pressure. MagicTouch classifies contacts into light, medium, and firm. Firm taps trigger right-click. Thresholds are fully configurable.",
   },
   {
     q: "Does it collect any data?",
@@ -34,11 +34,11 @@ const faqs = [
   },
   {
     q: "Is it a subscription?",
-    a: "No. MagicTouch Free is free forever. Pro is a one-time purchase \u2014 no recurring charge, no account required. Pay once, unlock everything including future updates.",
+    a: "No. MagicTouch is a one-time purchase with no recurring charge and no account required. Pay once, unlock everything including all future updates.",
   },
   {
-    q: "What\u2019s included in the free version?",
-    a: "Core tap-to-click, zone-based right-click, configurable tap sensitivity, battery monitoring, menu bar integration, and start on login. Everything you need for basic tap-to-click.",
+    q: "What's included?",
+    a: "Everything. Tap-to-click, zone-based and pressure-based right-click, middle-click, per-app rules, haptic and sound feedback, visual overlay, scroll customization, palm rejection, battery monitoring, and start on login. No feature gates.",
   },
   {
     q: "Can I disable it quickly without quitting?",

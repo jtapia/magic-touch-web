@@ -6,7 +6,7 @@ import { useRef } from "react";
 const useCases = [
   {
     title: "Daily Workflow",
-    desc: "Click without pressing. Reduce the repetitive physical effort of pressing the Magic Mouse\u2019s entire body hundreds of times a day.",
+    desc: "Click without pressing. Reduce the repetitive physical effort of pressing the Magic Mouse's entire body hundreds of times a day.",
     icon: (
       <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <circle cx="12" cy="12" r="10" /><path d="M12 6v6l4 2" />
@@ -51,7 +51,7 @@ const useCases = [
   },
   {
     title: "Multi-App Power Users",
-    desc: "Block right-click in specific apps that don\u2019t need it. Adjust scroll sensitivity and direction independently from system settings.",
+    desc: "Block right-click in specific apps that don't need it. Adjust scroll sensitivity and direction independently from system settings.",
     icon: (
       <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <rect x="2" y="3" width="20" height="14" rx="2" /><line x1="8" y1="21" x2="16" y2="21" /><line x1="12" y1="17" x2="12" y2="21" />
@@ -78,7 +78,7 @@ export default function UseCases() {
             <span className="block md:inline"> Not just power users.</span>
           </h2>
           <p className="text-lg text-muted max-w-2xl mx-auto">
-            Whether you want comfort, precision, or customization \u2014 there\u2019s a reason to tap instead of press.
+            Whether you want comfort, precision, or customization, there's a reason to tap instead of press.
           </p>
         </motion.div>
 
