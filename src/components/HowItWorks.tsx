@@ -1,0 +1,81 @@
+"use client";
+
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
+
+const steps = [
+  {
+    number: "01",
+    title: "Tap the surface",
+    desc: "Lightly touch your Magic Mouse\u2019s capacitive surface \u2014 no physical press needed. MagicTouch reads the raw multitouch data at 60\u2013120Hz and recognizes taps by duration and movement.",
+    icon: (
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M12 11V3" /><path d="M18.5 8a6.5 6.5 0 11-13 0" /><circle cx="12" cy="16" r="5" /><path d="M12 14v4" />
+      </svg>
+    ),
+  },
+  {
+    number: "02",
+    title: "Smart click routing",
+    desc: "Each tap is classified by position and pressure. Zone-based mode splits left/right by finger position. Pressure-based mode uses contact area for right-clicks. You choose which feels natural.",
+    icon: (
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <circle cx="12" cy="12" r="10" /><path d="M12 2v20" /><path d="M2 12h20" />
+      </svg>
+    ),
+  },
+  {
+    number: "03",
+    title: "Instant feedback",
+    desc: "A synthetic click is injected at the HID level \u2014 indistinguishable from a real press. Optional haptic vibration, audio cue, and visual overlay confirm every tap instantly.",
+    icon: (
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M22 11.08V12a10 10 0 11-5.93-9.14" /><polyline points="22 4 12 14.01 9 11.01" />
+      </svg>
+    ),
+  },
+];
+
+export default function HowItWorks() {
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, margin: "-100px" });
+
+  return (
+    <section ref={ref} id="how-it-works" className="py-16 md:py-32 text-center">
+      <div className="max-w-[1120px] mx-auto px-6">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6 }}
+        >
+          <p className="text-xs font-semibold uppercase tracking-widest text-accent-light mb-3">How It Works</p>
+          <h2 className="text-3xl lg:text-4xl font-bold tracking-tight mb-4">
+            Three steps. Zero buttons pressed.
+          </h2>
+          <p className="text-lg text-muted max-w-2xl mx-auto">
+            MagicTouch reads the capacitive surface your Magic Mouse already has \u2014 then turns taps into real clicks.
+          </p>
+        </motion.div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mt-12">
+          {steps.map((step, index) => (
+            <motion.div
+              key={step.title}
+              initial={{ opacity: 0, y: 20 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.45, delay: 0.12 + index * 0.08 }}
+              className="rounded-2xl border border-border bg-card p-7 text-left"
+            >
+              <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-accent/10 text-accent-light text-sm font-bold">
+                {step.number}
+              </span>
+              <div className="mt-4 text-accent-light mb-3">{step.icon}</div>
+              <h3 className="text-lg font-semibold">{step.title}</h3>
+              <p className="mt-3 text-sm text-muted leading-relaxed">{step.desc}</p>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
