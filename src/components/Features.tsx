@@ -50,6 +50,42 @@ const features = [
     ),
   },
   {
+    title: "Multi-finger tap actions",
+    desc: "Map two- and three-finger taps to any click type. Assign right-click to two fingers, middle-click to three, or mix and match to fit your workflow.",
+    icon: (
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M9 11V6a2 2 0 014 0v5" /><path d="M13 11V4a2 2 0 014 0v9" /><path d="M17 11a2 2 0 014 0v6a6 6 0 01-6 6H11a6 6 0 01-6-6v-3a2 2 0 014 0" />
+      </svg>
+    ),
+  },
+  {
+    title: "Tap-to-drag",
+    desc: "Double-tap and hold to pick up a window, selection, or slider. No need to clamp down on the mouse body mid-drag.",
+    icon: (
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M13 13l6 6" /><path d="M13 13V5l6 6-6 2z" /><circle cx="6" cy="12" r="2" /><circle cx="12" cy="6" r="2" />
+      </svg>
+    ),
+  },
+  {
+    title: "Per-edge dead zones",
+    desc: "Block taps along any edge with an interactive drag editor. Prevents grip-induced clicks along the top, bottom, or sides of the surface.",
+    icon: (
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <rect x="3" y="3" width="18" height="18" rx="2" strokeDasharray="2 2" /><rect x="7" y="7" width="10" height="10" rx="1" />
+      </svg>
+    ),
+  },
+  {
+    title: "Global disable shortcut",
+    desc: "Toggle MagicTouch on or off from anywhere with a rebindable hotkey (default ⌃⌥⌘T). Works with Voice Control for hands-free switching.",
+    icon: (
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <rect x="2" y="6" width="20" height="12" rx="2" /><path d="M7 10h.01M11 10h.01M15 10h.01M7 14h10" />
+      </svg>
+    ),
+  },
+  {
     title: "Haptic & sound feedback",
     desc: "Optional Force Touch trackpad vibration and audio cue on every recognized tap. Builds confidence in the feature.",
     icon: (

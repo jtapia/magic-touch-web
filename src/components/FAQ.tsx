@@ -42,7 +42,7 @@ const faqs = [
   },
   {
     q: "Can I disable it quickly without quitting?",
-    a: "Yes. The menu bar has an enable/disable toggle. Disabling skips tap processing without disconnecting the device, so re-enabling is instant.",
+    a: "Three ways: the menu bar toggle, a global keyboard shortcut (default ⌃⌥⌘T, rebindable in Preferences), or by voice via macOS Voice Control — bind a spoken command like \"tap off\" to the shortcut in System Settings → Accessibility → Voice Control.",
   },
   {
     q: "Does it support left-handed use?",
