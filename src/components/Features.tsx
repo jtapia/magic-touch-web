@@ -96,7 +96,7 @@ const features = [
   },
   {
     title: "Battery monitoring",
-    desc: "Magic Mouse battery level displayed in the menu bar with color-coded badge: green, yellow, or red based on charge.",
+    desc: "Magic Mouse 2 battery level displayed in the menu bar with color-coded badge: green, yellow, or red based on charge.",
     icon: (
       <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <rect x="1" y="6" width="18" height="12" rx="2" /><line x1="23" y1="13" x2="23" y2="11" /><line x1="6" y1="10" x2="6" y2="14" /><line x1="10" y1="10" x2="10" y2="14" />

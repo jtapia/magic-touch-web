@@ -75,7 +75,7 @@ export default function RootLayout({
               applicationCategory: "UtilitiesApplication",
               offers: {
                 "@type": "Offer",
-                price: "0",
+                price: "2.99",
                 priceCurrency: "USD",
               },
               description:

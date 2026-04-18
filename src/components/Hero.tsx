@@ -2,6 +2,8 @@
 
 import { motion } from "framer-motion";
 
+const DOWNLOAD_URL = process.env.NEXT_PUBLIC_DOWNLOAD_URL || null;
+
 const proofItems = [
   { label: "Price", value: "One-time $2.99" },
   { label: "Privacy", value: "Zero data collected" },
@@ -38,12 +40,21 @@ export default function Hero() {
           </p>
 
           <div className="flex flex-col sm:flex-row items-center lg:items-start gap-3 mb-8 w-full">
-            <a
-              href="#pricing"
-              className="gradient-bg text-white w-full sm:flex-1 px-4 sm:px-7 py-3 sm:py-3.5 rounded-xl font-semibold text-sm sm:text-base flex items-center justify-center gap-2 shadow-lg shadow-accent/25 hover:shadow-accent/40 hover:-translate-y-0.5 transition-all"
-            >
-              Get MagicTouch
-            </a>
+            {DOWNLOAD_URL ? (
+              <a
+                href={DOWNLOAD_URL}
+                className="gradient-bg text-white w-full sm:flex-1 px-4 sm:px-7 py-3 sm:py-3.5 rounded-xl font-semibold text-sm sm:text-base flex items-center justify-center gap-2 shadow-lg shadow-accent/25 hover:shadow-accent/40 hover:-translate-y-0.5 transition-all"
+              >
+                Download Free Trial
+              </a>
+            ) : (
+              <a
+                href="#pricing"
+                className="gradient-bg text-white w-full sm:flex-1 px-4 sm:px-7 py-3 sm:py-3.5 rounded-xl font-semibold text-sm sm:text-base flex items-center justify-center gap-2 shadow-lg shadow-accent/25 hover:shadow-accent/40 hover:-translate-y-0.5 transition-all"
+              >
+                Get MagicTouch
+              </a>
+            )}
             <a
               href="#how-it-works"
               className="w-full sm:flex-1 px-4 sm:px-7 py-3 sm:py-3.5 rounded-xl font-semibold text-sm sm:text-base border border-border-light bg-card hover:bg-card-hover transition-colors text-center"

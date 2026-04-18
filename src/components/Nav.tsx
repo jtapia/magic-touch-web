@@ -69,7 +69,7 @@ export default function Nav() {
             href="/#pricing"
             className="hidden sm:inline-block gradient-bg text-white px-4 py-2 rounded-full text-sm font-semibold hover:opacity-90 transition-opacity"
           >
-            Get Pro
+            Get MagicTouch
           </a>
           <button
             onClick={() => setMenuOpen((v) => !v)}
@@ -120,7 +120,7 @@ export default function Nav() {
                 onClick={() => setMenuOpen(false)}
                 className="mt-2 text-center gradient-bg text-white px-4 py-2.5 rounded-full text-sm font-semibold hover:opacity-90 transition-opacity"
               >
-                Get Pro
+                Get MagicTouch
               </a>
             </div>
           </motion.div>

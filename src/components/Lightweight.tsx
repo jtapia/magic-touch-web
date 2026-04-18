@@ -49,7 +49,7 @@ const stats = [
 const compat = [
   { name: "Bartender", desc: "Works alongside menu bar managers" },
   { name: "Ice / Hidden Bar", desc: "No conflicts with icon hiding" },
-  { name: "Magic Mouse 2", desc: "Full support including battery" },
+  { name: "Magic Mouse 1 + 2", desc: "Tap detection on both; battery monitor is MM2 only" },
   { name: "macOS 12+", desc: "Monterey and later supported" },
 ];
 
