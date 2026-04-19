@@ -5,15 +5,15 @@ import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "Press Kit | MagicTouch",
-  description: "Assets, copy, and fact sheet for writing about MagicTouch.",
+  title: "Press Kit | Tappit",
+  description: "Assets, copy, and fact sheet for writing about Tappit.",
   alternates: {
     canonical: "/press",
   },
 };
 
 const facts: { label: string; value: string }[] = [
-  { label: "Product", value: "MagicTouch" },
+  { label: "Product", value: "Tappit" },
   { label: "Category", value: "macOS utility · input / accessibility" },
   { label: "Platform", value: "macOS 12.0 or later (Apple Silicon + Intel)" },
   { label: "Hardware", value: "Apple Magic Mouse (1st and 2nd generation)" },
@@ -24,24 +24,24 @@ const facts: { label: string; value: string }[] = [
   { label: "Tech", value: "Native Swift + SwiftUI + AppKit · Sparkle auto-update" },
   { label: "Distribution", value: "Direct download (Developer ID signed + notarized)" },
   { label: "Launched", value: "2026" },
-  { label: "Website", value: "magictouch.app" },
-  { label: "Support", value: "support@magictouch.app" },
+  { label: "Website", value: "gettappit.com" },
+  { label: "Support", value: "support@gettappit.com" },
 ];
 
 const boilerplates: { length: "One-liner" | "Short" | "Long"; body: string }[] = [
   {
     length: "One-liner",
-    body: "MagicTouch brings tap-to-click to the Apple Magic Mouse: the feature macOS gives trackpads but not mice.",
+    body: "Tappit brings tap-to-click to the Apple Magic Mouse: the feature macOS gives trackpads but not mice.",
   },
   {
     length: "Short",
     body:
-      "MagicTouch is a lightweight macOS menu-bar app that turns light surface taps on the Apple Magic Mouse into real clicks. It adds zone- and pressure-based right-click, middle-click, tap-to-drag, multi-finger taps, haptic and sound feedback, and per-app rules: the polish macOS has always given trackpads. One-time purchase, 14-day free trial, zero network requests.",
+      "Tappit is a lightweight macOS menu-bar app that turns light surface taps on the Apple Magic Mouse into real clicks. It adds zone- and pressure-based right-click, middle-click, tap-to-drag, multi-finger taps, haptic and sound feedback, and per-app rules: the polish macOS has always given trackpads. One-time purchase, 14-day free trial, zero network requests.",
   },
   {
     length: "Long",
     body:
-      "Every MacBook trackpad has tap-to-click. The Apple Magic Mouse doesn't, and pressing the mouse body hundreds of times a day is tiring and loud. MagicTouch fixes that by reading raw multitouch data from the Magic Mouse at 60–120 Hz and injecting synthetic clicks at the HID level, indistinguishable from a real press. Beyond tap-to-click, MagicTouch delivers zone-based and pressure-based right-click, a configurable middle-click zone, multi-finger tap actions, tap-to-drag, per-edge dead zones, palm rejection, haptic and sound feedback, per-app right-click rules, custom scroll sensitivity, battery monitoring for Magic Mouse 2, and start-on-login via the native SMAppService API. Built in native Swift, sandbox-free (required for the private multitouch framework) but hardened, ~5 MB in memory, and makes zero network requests: all touch data stays on the device. Distributed direct with a 14-day free trial, one-time US $2.99 introductory price, offline Ed25519-signed license activation, and Sparkle-based auto-updates.",
+      "Every MacBook trackpad has tap-to-click. The Apple Magic Mouse doesn't, and pressing the mouse body hundreds of times a day is tiring and loud. Tappit fixes that by reading raw multitouch data from the Magic Mouse at 60–120 Hz and injecting synthetic clicks at the HID level, indistinguishable from a real press. Beyond tap-to-click, Tappit delivers zone-based and pressure-based right-click, a configurable middle-click zone, multi-finger tap actions, tap-to-drag, per-edge dead zones, palm rejection, haptic and sound feedback, per-app right-click rules, custom scroll sensitivity, battery monitoring for Magic Mouse 2, and start-on-login via the native SMAppService API. Built in native Swift, sandbox-free (required for the private multitouch framework) but hardened, ~5 MB in memory, and makes zero network requests: all touch data stays on the device. Distributed direct with a 14-day free trial, one-time US $2.99 introductory price, offline Ed25519-signed license activation, and Sparkle-based auto-updates.",
   },
 ];
 
@@ -86,12 +86,12 @@ export default function PressKit() {
       <main id="main-content" className="max-w-[900px] mx-auto px-6 pt-32 pb-24">
         <header className="mb-16">
           <p className="text-xs font-semibold uppercase tracking-widest text-accent-light mb-3">Press Kit</p>
-          <h1 className="text-4xl lg:text-5xl font-bold tracking-tight mb-4">Writing about MagicTouch?</h1>
+          <h1 className="text-4xl lg:text-5xl font-bold tracking-tight mb-4">Writing about Tappit?</h1>
           <p className="text-lg text-muted leading-relaxed max-w-2xl">
             Everything you need in one place: boilerplate copy at three lengths, the fact sheet, downloadable logo
             assets, brand colors, and screenshots as they become available. Reach us at{" "}
-            <a className="text-accent-light hover:underline" href="mailto:press@magictouch.app">
-              press@magictouch.app
+            <a className="text-accent-light hover:underline" href="mailto:press@gettappit.com">
+              press@gettappit.com
             </a>{" "}
             for interview requests, review copies, or anything else.
           </p>
@@ -115,8 +115,8 @@ export default function PressKit() {
           <h2 className="text-2xl font-bold tracking-tight mb-6">Boilerplate copy</h2>
           <p className="text-sm text-muted mb-6">
             Copy blocks below are ready to quote. Please link back to{" "}
-            <a className="text-accent-light hover:underline" href="https://magictouch.app">
-              magictouch.app
+            <a className="text-accent-light hover:underline" href="https://gettappit.com">
+              gettappit.com
             </a>{" "}
             when using them.
           </p>
@@ -152,7 +152,7 @@ export default function PressKit() {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
             <div className="rounded-xl border border-border bg-card p-6">
               <div className="flex items-center justify-center h-36 bg-surface rounded-lg mb-4">
-                <Image src="/app-icon.png" alt="MagicTouch app icon" width={64} height={64} className="rounded-xl shadow-md shadow-accent/10" />
+                <Image src="/app-icon.png" alt="Tappit app icon" width={64} height={64} className="rounded-xl shadow-md shadow-accent/10" />
               </div>
               <p className="text-sm font-semibold">App icon · 64×64</p>
               <p className="text-xs text-dim mt-1 mb-4">PNG with transparency</p>
@@ -169,7 +169,7 @@ export default function PressKit() {
             </div>
             <div className="rounded-xl border border-border bg-card p-6">
               <div className="flex items-center justify-center h-36 bg-surface rounded-lg mb-4">
-                <Image src="/app-icon-large.png" alt="MagicTouch app icon (large)" width={96} height={96} className="rounded-2xl shadow-md shadow-accent/10" />
+                <Image src="/app-icon-large.png" alt="Tappit app icon (large)" width={96} height={96} className="rounded-2xl shadow-md shadow-accent/10" />
               </div>
               <p className="text-sm font-semibold">App icon · 512×512</p>
               <p className="text-xs text-dim mt-1 mb-4">PNG with transparency, suitable for print</p>
@@ -207,8 +207,8 @@ export default function PressKit() {
           <h2 className="text-2xl font-bold tracking-tight mb-2">Screenshots</h2>
           <p className="text-sm text-muted mb-6">
             Currently preparing launch screenshots. Email{" "}
-            <a className="text-accent-light hover:underline" href="mailto:press@magictouch.app">
-              press@magictouch.app
+            <a className="text-accent-light hover:underline" href="mailto:press@gettappit.com">
+              press@gettappit.com
             </a>{" "}
             for early access or custom captures.
           </p>
@@ -232,10 +232,10 @@ export default function PressKit() {
           </p>
           <div className="flex flex-col sm:flex-row gap-3">
             <a
-              href="mailto:press@magictouch.app"
+              href="mailto:press@gettappit.com"
               className="inline-flex items-center justify-center gap-2 gradient-bg text-white px-5 py-2.5 rounded-xl text-sm font-semibold shadow-lg shadow-accent/25 hover:shadow-accent/40 hover:-translate-y-0.5 transition-all"
             >
-              press@magictouch.app
+              press@gettappit.com
             </a>
             <Link
               href="/changelog"

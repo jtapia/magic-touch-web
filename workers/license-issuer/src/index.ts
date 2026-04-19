@@ -1,5 +1,5 @@
 /**
- * MagicTouch license issuer.
+ * Tappit license issuer.
  *
  * Receives Stripe `checkout.session.completed` webhooks, signs a license
  * payload with Ed25519, and emails the key to the customer via Resend.
@@ -163,13 +163,13 @@ async function sendLicenseEmail(to: string, licenseKey: string, env: Env): Promi
     body: JSON.stringify({
       from: env.FROM_EMAIL,
       to,
-      subject: "Your MagicTouch license",
+      subject: "Your Tappit license",
       text:
-        `Thanks for buying MagicTouch!\n\n` +
+        `Thanks for buying Tappit!\n\n` +
         `Email:       ${to}\n` +
         `License key: ${licenseKey}\n\n` +
         `To activate:\n` +
-        `  1. Open MagicTouch → Preferences → License\n` +
+        `  1. Open Tappit → Preferences → License\n` +
         `  2. Enter your email and paste the key above\n` +
         `  3. Click Activate\n\n` +
         `Keep this email — it's your proof of purchase.\n` +

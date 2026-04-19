@@ -18,7 +18,7 @@ export default function Download() {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
-          <Image src="/app-icon-large.png" alt="MagicTouch" width={96} height={96} className="mx-auto mb-6 rounded-2xl shadow-lg shadow-accent/10" priority />
+          <Image src="/app-icon-large.png" alt="Tappit" width={96} height={96} className="mx-auto mb-6 rounded-2xl shadow-lg shadow-accent/10" priority />
           <h2 className="text-4xl lg:text-5xl font-bold tracking-tight leading-tight mb-4">
             Ready to stop pressing?
           </h2>
@@ -79,7 +79,7 @@ export default function Download() {
               </svg>
               View changelog
             </Link>
-            <a href="mailto:support@magictouch.app" className="inline-flex items-center gap-1.5 hover:text-foreground transition-colors">
+            <a href="mailto:support@gettappit.com" className="inline-flex items-center gap-1.5 hover:text-foreground transition-colors">
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                 <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
                 <polyline points="22,6 12,13 2,6" />

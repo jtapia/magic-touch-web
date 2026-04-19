@@ -80,7 +80,7 @@ const features = [
   },
   {
     title: "One-key on/off",
-    desc: "Pause MagicTouch instantly with ⌃⌥⌘T (fully rebindable). Perfect for games, remote sessions, or anyone borrowing your Mac.",
+    desc: "Pause Tappit instantly with ⌃⌥⌘T (fully rebindable). Perfect for games, remote sessions, or anyone borrowing your Mac.",
     icon: (
       <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <rect x="2" y="6" width="20" height="12" rx="2" /><path d="M7 10h.01M11 10h.01M15 10h.01M7 14h10" />

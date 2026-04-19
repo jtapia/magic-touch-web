@@ -70,7 +70,7 @@ stripe listen --forward-to localhost:8787/stripe-webhook
 1. Sign up at [resend.com](https://resend.com)
 2. Dashboard → API Keys → Create API Key
 3. Starts with `re_`
-4. Verify your sending domain (e.g. `magictouch.app`) under Domains —
+4. Verify your sending domain (e.g. `gettappit.com`) under Domains —
    required before emails deliver to real inboxes
 
 ### Deploy
@@ -95,8 +95,8 @@ Create `.dev.vars` (gitignored) with dummy values:
 LICENSE_SIGNING_PRIVATE_KEY=<base64 private key>
 STRIPE_WEBHOOK_SECRET=<whsec_... from stripe listen>
 RESEND_API_KEY=<re_...>
-FROM_EMAIL=MagicTouch <licenses@magictouch.app>
-SUPPORT_EMAIL=support@magictouch.app
+FROM_EMAIL=Tappit <licenses@gettappit.com>
+SUPPORT_EMAIL=support@gettappit.com
 ```
 
 ```bash
@@ -132,7 +132,7 @@ Persistent named tunnel (same URL every time — needed for production):
 ```bash
 cloudflared login
 cloudflared tunnel create license-issuer
-cloudflared tunnel route dns license-issuer licenses.magictouch.app
+cloudflared tunnel route dns license-issuer licenses.gettappit.com
 cloudflared tunnel run license-issuer
 ```
 
@@ -158,9 +158,9 @@ const transporter = nodemailer.createTransport({
 });
 
 await transporter.sendMail({
-  from: '"MagicTouch" <you@gmail.com>',
+  from: '"Tappit" <you@gmail.com>',
   to: customerEmail,
-  subject: "Your MagicTouch license",
+  subject: "Your Tappit license",
   text: `License key: ${licenseKey}`,
 });
 ```

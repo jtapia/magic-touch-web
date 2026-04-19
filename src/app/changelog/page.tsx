@@ -3,8 +3,8 @@ import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "Changelog | MagicTouch",
-  description: "Release notes and version history for MagicTouch.",
+  title: "Changelog | Tappit",
+  description: "Release notes and version history for Tappit.",
   alternates: {
     canonical: "/changelog",
   },
@@ -59,7 +59,7 @@ export default function Changelog() {
       <main id="main-content" className="max-w-[760px] mx-auto px-6 pt-32 pb-24">
         <h1 className="text-4xl font-bold tracking-tight mb-2">Changelog</h1>
         <p className="text-sm text-dim mb-12">
-          Release notes for MagicTouch. Format follows{" "}
+          Release notes for Tappit. Format follows{" "}
           <a className="text-accent-light hover:underline" href="https://keepachangelog.com/en/1.1.0/" target="_blank" rel="noopener noreferrer">
             Keep a Changelog
           </a>
@@ -109,8 +109,8 @@ export default function Changelog() {
 
         <p className="mt-16 text-sm text-dim">
           Questions about a specific release? Email{" "}
-          <a className="text-accent-light hover:underline" href="mailto:support@magictouch.app">
-            support@magictouch.app
+          <a className="text-accent-light hover:underline" href="mailto:support@gettappit.com">
+            support@gettappit.com
           </a>
           .
         </p>
