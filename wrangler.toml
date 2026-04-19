@@ -13,6 +13,6 @@ binding = "ASSETS"
 # redeployed with `wrangler deploy` — the dashboard doesn't allow editing
 # vars on a Worker that only has static assets.
 [vars]
-CTA_MODE = "purchase"
+CTA_MODE = "waitlist"
 WAITLIST_URL = "https://www.producthunt.com/upcoming/tappit"
 PURCHASE_URL = "#pricing"
