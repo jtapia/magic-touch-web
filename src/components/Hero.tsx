@@ -1,7 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { DOWNLOAD_URL } from "@/lib/site";
+import { DOWNLOAD_URL, launchMode } from "@/lib/site";
+import Waitlist from "@/components/Waitlist";
+import ProductHuntBadge from "@/components/ProductHuntBadge";
 
 const proofItems = [
   { label: "Try it free", value: "14 days, full app" },
@@ -42,28 +44,39 @@ export default function Hero() {
             Your MacBook trackpad has tap-to-click. Your Magic Mouse should too. MagicTouch adds a lighter, kinder way to click, plus smart right-click, haptics, and feedback that feels like it shipped from Apple.
           </p>
 
-          <div className="flex flex-col sm:flex-row items-stretch lg:items-start gap-3 mb-6 w-full">
-            <a
-              href={DOWNLOAD_URL ?? "#pricing"}
-              className="gradient-bg text-white w-full sm:flex-1 px-4 sm:px-7 py-3 sm:py-3.5 rounded-xl font-semibold text-sm sm:text-base flex items-center justify-center gap-2 shadow-lg shadow-accent/25 hover:shadow-accent/40 hover:-translate-y-0.5 transition-all"
-            >
-              {DOWNLOAD_URL ? "Try free for 14 days" : "Start free trial"}
-            </a>
-            <a
-              href="#how-it-works"
-              className="w-full sm:flex-1 px-4 sm:px-7 py-3 sm:py-3.5 rounded-xl font-semibold text-sm sm:text-base border border-border-light bg-card hover:bg-card-hover transition-colors text-center flex items-center justify-center gap-2"
-            >
-              See how it works
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                <line x1="5" y1="12" x2="19" y2="12" />
-                <polyline points="12 5 19 12 12 19" />
-              </svg>
-            </a>
-          </div>
+          {launchMode === "waitlist" ? (
+            <div className="mb-6 w-full max-w-xl mx-auto lg:mx-0">
+              <Waitlist />
+            </div>
+          ) : (
+            <div className="flex flex-col sm:flex-row items-stretch lg:items-start gap-3 mb-6 w-full">
+              <a
+                href={DOWNLOAD_URL ?? "#pricing"}
+                className="gradient-bg text-white w-full sm:flex-1 px-4 sm:px-7 py-3 sm:py-3.5 rounded-xl font-semibold text-sm sm:text-base flex items-center justify-center gap-2 shadow-lg shadow-accent/25 hover:shadow-accent/40 hover:-translate-y-0.5 transition-all"
+              >
+                {DOWNLOAD_URL ? "Try free for 14 days" : "Start free trial"}
+              </a>
+              <a
+                href="#how-it-works"
+                className="w-full sm:flex-1 px-4 sm:px-7 py-3 sm:py-3.5 rounded-xl font-semibold text-sm sm:text-base border border-border-light bg-card hover:bg-card-hover transition-colors text-center flex items-center justify-center gap-2"
+              >
+                See how it works
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <line x1="5" y1="12" x2="19" y2="12" />
+                  <polyline points="12 5 19 12 12 19" />
+                </svg>
+              </a>
+            </div>
+          )}
 
-          <p className="text-xs text-dim mb-8 text-center lg:text-left">
-            No credit card · Works on macOS 12 and later · Apple Silicon &amp; Intel
-          </p>
+          <div className="mb-8 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 text-xs text-dim text-center lg:text-left">
+            <span>
+              {launchMode === "waitlist"
+                ? "Launching soon · macOS 12 and later · Apple Silicon & Intel"
+                : "No credit card · Works on macOS 12 and later · Apple Silicon & Intel"}
+            </span>
+            <ProductHuntBadge />
+          </div>
 
           <div className="grid grid-cols-1 min-[420px]:grid-cols-3 gap-3 text-left">
             {proofItems.map((item) => (
