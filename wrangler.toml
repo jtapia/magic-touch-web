@@ -1,14 +1,17 @@
 name = "tappit-web"
+main = "./worker/index.ts"
 compatibility_date = "2026-04-06"
-pages_build_output_dir = "out"
 
 [assets]
 directory = "./out"
+binding = "ASSETS"
 
-# Runtime variables read by Pages Functions (e.g. functions/api/cta.ts).
+# Runtime variables read by the Worker entry (worker/index.ts).
 # Flip CTA_MODE between "purchase" and "waitlist" to toggle the site CTA
-# without rebuilding — either via the Cloudflare dashboard (Pages → Settings →
-# Variables and Secrets) or by editing here and redeploying.
+# without rebuilding. Because this is a Worker with static assets, values
+# must be edited here (or via `wrangler secret` for sensitive values) and
+# redeployed with `wrangler deploy` — the dashboard doesn't allow editing
+# vars on a Worker that only has static assets.
 [vars]
 CTA_MODE = "purchase"
 WAITLIST_URL = "https://www.producthunt.com/upcoming/tappit"
