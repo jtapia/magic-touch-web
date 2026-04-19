@@ -71,17 +71,22 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "SoftwareApplication",
               name: "MagicTouch",
-              operatingSystem: "macOS",
+              operatingSystem: "macOS 12.0 or later",
               applicationCategory: "UtilitiesApplication",
+              softwareVersion: "1.0.0",
+              fileSize: "5 MB",
+              processorRequirements: "Apple Silicon or Intel",
               offers: {
                 "@type": "Offer",
                 price: "2.99",
                 priceCurrency: "USD",
+                availability: "https://schema.org/InStock",
               },
               description:
                 "Bring tap-to-click to your Apple Magic Mouse with pressure-sensitive right-clicks, visual feedback, and full customization.",
               url: siteUrl,
               image: `${siteUrl}/app-icon-large.png`,
+              releaseNotes: `${siteUrl}/changelog`,
             }),
           }}
         />

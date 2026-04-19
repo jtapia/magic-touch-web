@@ -23,6 +23,8 @@ export default function Footer() {
             <div className="flex flex-col gap-2">
               <h4 className="text-sm font-semibold mb-1">Support</h4>
               <a href="/#faq" className="text-sm text-dim hover:text-foreground transition-colors">FAQ</a>
+              <a href="/changelog" className="text-sm text-dim hover:text-foreground transition-colors">Changelog</a>
+              <a href="/press" className="text-sm text-dim hover:text-foreground transition-colors">Press Kit</a>
               <a href="mailto:support@magictouch.app" className="text-sm text-dim hover:text-foreground transition-colors">Contact</a>
             </div>
             <div className="flex flex-col gap-2">
