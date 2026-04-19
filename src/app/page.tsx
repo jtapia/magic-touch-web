@@ -18,17 +18,19 @@ export default function Home() {
   return (
     <>
       <Nav />
-      <Hero />
-      <HowItWorks />
-      <Comparison />
-      <Signature />
-      <UseCases />
-      <Features />
-      <Lightweight />
-      <Privacy />
-      <Pricing />
-      <FAQ />
-      <Download />
+      <main id="main-content">
+        <Hero />
+        <HowItWorks />
+        <Comparison />
+        <Signature />
+        <UseCases />
+        <Features />
+        <Lightweight />
+        <Privacy />
+        <Pricing />
+        <FAQ />
+        <Download />
+      </main>
       <Footer />
     </>
   );
