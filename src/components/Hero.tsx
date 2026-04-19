@@ -62,21 +62,12 @@ export default function Hero() {
           </p>
 
           <div className="flex flex-col sm:flex-row items-stretch lg:items-start gap-3 mb-6 w-full">
-            {DOWNLOAD_URL ? (
-              <a
-                href={DOWNLOAD_URL}
-                className="gradient-bg text-white w-full sm:flex-1 px-4 sm:px-7 py-3 sm:py-3.5 rounded-xl font-semibold text-sm sm:text-base flex items-center justify-center gap-2 shadow-lg shadow-accent/25 hover:shadow-accent/40 hover:-translate-y-0.5 transition-all"
-              >
-                Try free for 14 days
-              </a>
-            ) : (
-              <a
-                href="#pricing"
-                className="gradient-bg text-white w-full sm:flex-1 px-4 sm:px-7 py-3 sm:py-3.5 rounded-xl font-semibold text-sm sm:text-base flex items-center justify-center gap-2 shadow-lg shadow-accent/25 hover:shadow-accent/40 hover:-translate-y-0.5 transition-all"
-              >
-                Start free trial
-              </a>
-            )}
+            <a
+              href={DOWNLOAD_URL ?? "#pricing"}
+              className="gradient-bg text-white w-full sm:flex-1 px-4 sm:px-7 py-3 sm:py-3.5 rounded-xl font-semibold text-sm sm:text-base flex items-center justify-center gap-2 shadow-lg shadow-accent/25 hover:shadow-accent/40 hover:-translate-y-0.5 transition-all"
+            >
+              {DOWNLOAD_URL ? "Try free for 14 days" : "Start free trial"}
+            </a>
             <a
               href="#how-it-works"
               className="w-full sm:flex-1 px-4 sm:px-7 py-3 sm:py-3.5 rounded-xl font-semibold text-sm sm:text-base border border-border-light bg-card hover:bg-card-hover transition-colors text-center flex items-center justify-center gap-2"
@@ -93,13 +84,13 @@ export default function Hero() {
             No credit card · Works on macOS 12 and later · Apple Silicon &amp; Intel
           </p>
 
-          <div className="grid grid-cols-3 gap-3 text-left">
+          <div className="grid grid-cols-1 min-[420px]:grid-cols-3 gap-3 text-left">
             {proofItems.map((item) => (
               <div key={item.label} className="rounded-2xl border border-border bg-card/80 px-4 py-3 backdrop-blur-sm">
-                <span className="block text-[10px] sm:text-[11px] uppercase tracking-[0.14em] sm:tracking-[0.18em] text-dim leading-none mb-2">
+                <span className="block text-[10px] sm:text-[11px] uppercase tracking-[0.12em] sm:tracking-[0.18em] text-dim leading-none mb-2">
                   {item.label}
                 </span>
-                <span className="block mt-1 font-semibold text-[11px] md:text-[14px]">{item.value}</span>
+                <span className="block mt-1 font-semibold text-[12px] md:text-[14px]">{item.value}</span>
               </div>
             ))}
           </div>
@@ -153,7 +144,7 @@ const MOUSE_BODY_PATH = "M100 14 C140 14, 170 40, 172 80 L174 250 C174 300, 146 
 
 function HeroMouse() {
   return (
-    <div className="relative flex items-center justify-center w-[260px] h-[320px] sm:w-[320px] sm:h-[380px] lg:w-[360px] lg:h-[420px]">
+    <div className="relative flex items-center justify-center w-full max-w-[260px] h-[320px] sm:max-w-[320px] sm:h-[380px] lg:max-w-[360px] lg:h-[420px] mx-auto">
       <div className="animate-[float_5s_ease-in-out_infinite]">
         {/* Magic Mouse 2 — realistic top-down view with blue ripple */}
         <div className="relative w-[150px] h-[255px] sm:w-[180px] sm:h-[306px] lg:w-[200px] lg:h-[340px]">
@@ -258,7 +249,7 @@ function HeroMouse() {
         initial={{ opacity: 0, x: 20, y: 10 }}
         animate={{ opacity: 1, x: 0, y: 0 }}
         transition={{ duration: 0.5, delay: 0.8 }}
-        className="absolute -right-2 sm:right-0 top-[28%] sm:top-[30%] w-[155px] sm:w-[180px] rounded-2xl border border-black/[0.08] dark:border-white/[0.08] bg-white/90 dark:bg-black/40 text-black/80 dark:text-white/80 p-3 sm:p-4 shadow-xl shadow-black/10 dark:shadow-black/30 backdrop-blur-md"
+        className="absolute right-0 top-[28%] sm:top-[30%] w-[145px] sm:w-[180px] max-w-[calc(100%-8px)] rounded-2xl border border-black/[0.08] dark:border-white/[0.08] bg-white/90 dark:bg-black/40 text-black/80 dark:text-white/80 p-3 sm:p-4 shadow-xl shadow-black/10 dark:shadow-black/30 backdrop-blur-md"
       >
         <div className="flex items-center gap-1.5 mb-2">
           <span className="inline-block w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />

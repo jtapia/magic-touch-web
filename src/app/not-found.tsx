@@ -11,7 +11,7 @@ export default function NotFound() {
   return (
     <>
       <Nav />
-      <main className="min-h-screen pt-[60px] flex items-center">
+      <main id="main-content" className="min-h-screen pt-[60px] flex items-center">
         <div className="max-w-[480px] mx-auto px-6 py-20 text-center">
           <p className="text-[6rem] md:text-[8rem] font-extrabold gradient-text leading-none mb-4">
             404
@@ -20,7 +20,7 @@ export default function NotFound() {
             Page not found
           </h1>
           <p className="text-muted leading-relaxed mb-8">
-            The page you're looking for doesn't exist or has been moved.
+            The page you&apos;re looking for doesn&apos;t exist or has been moved.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <Link

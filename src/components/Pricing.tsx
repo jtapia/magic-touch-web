@@ -173,21 +173,12 @@ export default function Pricing() {
 
           <div className="mt-8 flex flex-col gap-3">
             {/* Primary: free trial */}
-            {DOWNLOAD_URL ? (
-              <a
-                href={DOWNLOAD_URL}
-                className="block text-center gradient-bg text-white px-6 py-3.5 rounded-xl font-semibold shadow-lg shadow-accent/25 hover:shadow-accent/40 hover:-translate-y-0.5 transition-all"
-              >
-                Try free for 14 days
-              </a>
-            ) : (
-              <a
-                href="#"
-                className="block text-center gradient-bg text-white px-6 py-3.5 rounded-xl font-semibold shadow-lg shadow-accent/25 hover:shadow-accent/40 hover:-translate-y-0.5 transition-all"
-              >
-                Try free for 14 days
-              </a>
-            )}
+            <a
+              href={DOWNLOAD_URL ?? "#"}
+              className="block text-center gradient-bg text-white px-6 py-3.5 rounded-xl font-semibold shadow-lg shadow-accent/25 hover:shadow-accent/40 hover:-translate-y-0.5 transition-all"
+            >
+              Try free for 14 days
+            </a>
             <p className="text-center text-xs text-dim">No credit card · Full app unlocked · No auto-charge</p>
 
             {/* Secondary: buy now */}

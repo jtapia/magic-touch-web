@@ -12,7 +12,7 @@ export default function Footer() {
             </div>
             <p className="text-sm text-dim mt-2 max-w-xs">Tap to click, right where you already work. A small, quiet, beautifully native Mac app.</p>
           </div>
-          <div className="flex gap-10 sm:gap-16">
+          <div className="grid grid-cols-3 gap-6 sm:gap-12 md:gap-16">
             <div className="flex flex-col gap-2">
               <h4 className="text-sm font-semibold mb-1">Product</h4>
               <a href="/#how-it-works" className="text-sm text-dim hover:text-foreground transition-colors">How It Works</a>

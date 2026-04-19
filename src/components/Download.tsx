@@ -10,7 +10,6 @@ const DOWNLOAD_URL = process.env.NEXT_PUBLIC_DOWNLOAD_URL || null;
 export default function Download() {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-100px" });
-  const hasDownload = Boolean(DOWNLOAD_URL);
 
   return (
     <section ref={ref} id="download" className="py-16 md:py-32 text-center">
@@ -29,26 +28,19 @@ export default function Download() {
           </p>
 
           <div className="flex flex-col sm:flex-row justify-center gap-3 mt-8">
-            {hasDownload ? (
-              <a
-                href={DOWNLOAD_URL!}
-                className="gradient-bg text-white px-6 py-3 rounded-xl font-semibold shadow-lg shadow-accent/25 hover:shadow-accent/40 hover:-translate-y-0.5 transition-all flex items-center justify-center gap-2"
-              >
+            <a
+              href={DOWNLOAD_URL ?? "#pricing"}
+              className="gradient-bg text-white px-6 py-3 rounded-xl font-semibold shadow-lg shadow-accent/25 hover:shadow-accent/40 hover:-translate-y-0.5 transition-all flex items-center justify-center gap-2"
+            >
+              {DOWNLOAD_URL && (
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                   <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4" />
                   <polyline points="7 10 12 15 17 10" />
                   <line x1="12" y1="15" x2="12" y2="3" />
                 </svg>
-                Download free trial
-              </a>
-            ) : (
-              <a
-                href="#pricing"
-                className="gradient-bg text-white px-6 py-3 rounded-xl font-semibold shadow-lg shadow-accent/25 hover:shadow-accent/40 hover:-translate-y-0.5 transition-all"
-              >
-                Start free trial
-              </a>
-            )}
+              )}
+              {DOWNLOAD_URL ? "Download free trial" : "Start free trial"}
+            </a>
             <a
               href={STRIPE_LINK}
               target={STRIPE_LINK !== "#pricing" ? "_blank" : undefined}

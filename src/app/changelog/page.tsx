@@ -56,7 +56,7 @@ export default function Changelog() {
   return (
     <>
       <Nav />
-      <main className="max-w-[760px] mx-auto px-6 pt-32 pb-24">
+      <main id="main-content" className="max-w-[760px] mx-auto px-6 pt-32 pb-24">
         <h1 className="text-4xl font-bold tracking-tight mb-2">Changelog</h1>
         <p className="text-sm text-dim mb-12">
           Release notes for MagicTouch. Format follows{" "}

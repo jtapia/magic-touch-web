@@ -82,7 +82,7 @@ export default function PressKit() {
   return (
     <>
       <Nav />
-      <main className="max-w-[900px] mx-auto px-6 pt-32 pb-24">
+      <main id="main-content" className="max-w-[900px] mx-auto px-6 pt-32 pb-24">
         <header className="mb-16">
           <p className="text-xs font-semibold uppercase tracking-widest text-accent-light mb-3">Press Kit</p>
           <h1 className="text-4xl lg:text-5xl font-bold tracking-tight mb-4">Writing about MagicTouch?</h1>
