@@ -1,0 +1,13 @@
+name = "license-issuer"
+main = "src/index.ts"
+compatibility_date = "2025-01-01"
+
+# Secrets (set via `wrangler secret put NAME`):
+#   LICENSE_SIGNING_PRIVATE_KEY — base64 of 32-byte Ed25519 seed
+#   STRIPE_WEBHOOK_SECRET        — from Stripe dashboard (whsec_...)
+#   RESEND_API_KEY               — from resend.com
+#
+# Non-secret vars below can be overridden per-environment if needed.
+[vars]
+FROM_EMAIL = "MagicTouch <licenses@magictouch.app>"
+SUPPORT_EMAIL = "support@magictouch.app"

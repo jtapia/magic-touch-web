@@ -1,7 +1,9 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { motion, useInView, AnimatePresence } from "framer-motion";
+import { useRef, useState } from "react";
+
+const VISIBLE_BY_DEFAULT = 9;
 
 const features = [
   {
@@ -153,6 +155,10 @@ const features = [
 export default function Features() {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-100px" });
+  const [expanded, setExpanded] = useState(false);
+
+  const visibleFeatures = expanded ? features : features.slice(0, VISIBLE_BY_DEFAULT);
+  const hiddenCount = features.length - VISIBLE_BY_DEFAULT;
 
   return (
     <section ref={ref} id="features" className="py-16 md:py-32 text-center bg-gradient-to-b from-background via-surface to-background">
@@ -173,12 +179,12 @@ export default function Features() {
         </motion.div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-12">
-          {features.map((feature, index) => (
+          {visibleFeatures.map((feature, index) => (
             <motion.div
               key={feature.title}
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.4, delay: 0.1 + index * 0.05 }}
+              transition={{ duration: 0.4, delay: 0.1 + Math.min(index, VISIBLE_BY_DEFAULT - 1) * 0.05 }}
               className="relative bg-card border border-border rounded-xl p-6 text-left hover:border-border-light hover:-translate-y-0.5 transition-all duration-300"
             >
               <div className="flex items-center gap-3 mb-4">
@@ -191,6 +197,36 @@ export default function Features() {
             </motion.div>
           ))}
         </div>
+
+        {/* Expand / collapse toggle */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={inView ? { opacity: 1 } : {}}
+          transition={{ delay: 0.6 }}
+          className="mt-8 flex flex-col items-center gap-2"
+        >
+          {!expanded && (
+            <p className="text-sm text-dim">
+              +{hiddenCount} more features included
+            </p>
+          )}
+          <button
+            onClick={() => setExpanded(!expanded)}
+            className="inline-flex items-center gap-2 text-sm font-semibold text-accent-light border border-accent/30 bg-accent/5 hover:bg-accent/10 px-5 py-2.5 rounded-xl transition-all"
+          >
+            {expanded ? (
+              <>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="18 15 12 9 6 15" /></svg>
+                Show fewer features
+              </>
+            ) : (
+              <>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="6 9 12 15 18 9" /></svg>
+                See all {features.length} features
+              </>
+            )}
+          </button>
+        </motion.div>
       </div>
     </section>
   );

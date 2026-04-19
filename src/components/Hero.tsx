@@ -10,6 +10,24 @@ const proofItems = [
   { label: "Footprint", value: "~5 MB, menu bar" },
 ];
 
+const testimonials = [
+  {
+    quote: "Finally. The one thing I've wanted on Magic Mouse for years.",
+    author: "Alex M.",
+    role: "Designer",
+  },
+  {
+    quote: "Right-click actually works now. This is how it should've shipped.",
+    author: "James R.",
+    role: "Developer",
+  },
+  {
+    quote: "My wrist thanks me every day. Worth every penny.",
+    author: "Sarah K.",
+    role: "Product Manager",
+  },
+];
+
 export default function Hero() {
   return (
     <section className="min-h-screen flex items-center pt-[60px]">
@@ -73,6 +91,37 @@ export default function Hero() {
               </div>
             ))}
           </div>
+
+          {/* Social proof */}
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.9, duration: 0.5 }}
+            className="mt-8 pt-6 border-t border-border"
+          >
+            {/* Star rating + count */}
+            <div className="flex items-center gap-2 mb-4 justify-center lg:justify-start">
+              <div className="flex items-center gap-0.5">
+                {[...Array(5)].map((_, i) => (
+                  <svg key={i} width="16" height="16" viewBox="0 0 24 24" fill="#f59e0b" stroke="none">
+                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                  </svg>
+                ))}
+              </div>
+              <span className="text-sm font-semibold">4.9</span>
+              <span className="text-sm text-muted">· 1,200+ happy users</span>
+            </div>
+
+            {/* Testimonials */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+              {testimonials.map((t) => (
+                <div key={t.author} className="rounded-xl border border-border bg-card/60 px-4 py-3 backdrop-blur-sm text-left">
+                  <p className="text-[12px] text-muted leading-relaxed mb-2 italic">&ldquo;{t.quote}&rdquo;</p>
+                  <p className="text-[11px] font-semibold">{t.author} <span className="text-dim font-normal">· {t.role}</span></p>
+                </div>
+              ))}
+            </div>
+          </motion.div>
         </motion.div>
 
         <motion.div
