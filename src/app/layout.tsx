@@ -17,7 +17,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "MagicTouch — Tap-to-click for your Magic Mouse",
+  title: "MagicTouch: Tap-to-click for your Magic Mouse",
   description:
     "Add trackpad-style tap-to-click to your Apple Magic Mouse. Light, kinder-on-your-hands clicks, smart right-click, and subtle haptics. One-time $2.99 · 14-day free trial · Zero data collected.",
   metadataBase: new URL(siteUrl),
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     type: "website",
     url: siteUrl,
     siteName: "MagicTouch",
-    title: "MagicTouch — Tap-to-click for your Magic Mouse",
+    title: "MagicTouch: Tap-to-click for your Magic Mouse",
     description:
       "Tap instead of press on your Magic Mouse. Smart right-click, subtle haptics, and every thoughtful detail. $2.99 · 14-day free trial.",
     images: [
@@ -50,7 +50,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary",
-    title: "MagicTouch — Tap-to-click for your Magic Mouse",
+    title: "MagicTouch: Tap-to-click for your Magic Mouse",
     description:
       "Tap instead of press on your Magic Mouse. Smart right-click, subtle haptics, and every thoughtful detail. $2.99 · 14-day free trial.",
     images: ["/app-icon-large.png"],
@@ -99,7 +99,7 @@ export default function RootLayout({
                 availability: "https://schema.org/InStock",
               },
               description:
-                "Tap-to-click for your Apple Magic Mouse. Kinder clicks, smart right-click, subtle haptics, and thoughtful details — the way it should ship.",
+                "Tap-to-click for your Apple Magic Mouse. Kinder clicks, smart right-click, subtle haptics, and thoughtful details. The way it should ship.",
               url: siteUrl,
               image: `${siteUrl}/app-icon-large.png`,
               releaseNotes: `${siteUrl}/changelog`,

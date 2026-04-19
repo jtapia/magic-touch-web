@@ -15,7 +15,7 @@ const useCases = [
   },
   {
     title: "Designers & creatives",
-    desc: "Right-click menus come up instantly in Photoshop, Figma, and Final Cut — without breaking your flow or rattling your wrist.",
+    desc: "Right-click menus come up instantly in Photoshop, Figma, and Final Cut, without breaking your flow or rattling your wrist.",
     icon: (
       <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <path d="M12 19l7-7 3 3-7 7-3-3z" /><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z" /><path d="M2 2l7.586 7.586" /><circle cx="11" cy="11" r="2" />
@@ -51,7 +51,7 @@ const useCases = [
   },
   {
     title: "Multi-app power users",
-    desc: "Fine-tune scroll speed, flip scroll direction, and set per-app rules — without touching System Settings or installing anything else.",
+    desc: "Fine-tune scroll speed, flip scroll direction, and set per-app rules, without touching System Settings or installing anything else.",
     icon: (
       <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <rect x="2" y="3" width="20" height="14" rx="2" /><line x1="8" y1="21" x2="16" y2="21" /><line x1="12" y1="17" x2="12" y2="21" />
@@ -78,7 +78,7 @@ export default function UseCases() {
             <span className="block md:inline gradient-text"> this is for you.</span>
           </h2>
           <p className="text-lg text-muted max-w-2xl mx-auto">
-            Whether it&apos;s comfort, speed, or just preferring the feel of a trackpad — there&apos;s a reason to tap instead of press.
+            Whether it&apos;s comfort, speed, or just preferring the feel of a trackpad, there&apos;s a reason to tap instead of press.
           </p>
         </motion.div>
 

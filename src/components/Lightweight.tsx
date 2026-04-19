@@ -42,13 +42,13 @@ const stats = [
     ),
     value: "Built native",
     label: "Made for Mac",
-    desc: "Pure Swift — no Electron, no web tricks. Signed by Apple and ready for Apple Silicon.",
+    desc: "Pure Swift. No Electron, no web tricks. Signed by Apple and ready for Apple Silicon.",
   },
 ];
 
 const compat = [
   { name: "macOS 12+", desc: "Monterey and newer" },
-  { name: "Apple Silicon & Intel", desc: "Universal binary — one download for every Mac" },
+  { name: "Apple Silicon & Intel", desc: "Universal binary, one download for every Mac" },
   { name: "Magic Mouse 1 & 2", desc: "Works on both (battery badge is MM2 only)" },
   { name: "Bartender & Ice", desc: "Plays nice with menu bar managers" },
 ];
@@ -71,7 +71,7 @@ export default function Lightweight() {
             Tiny in size. Big on polish.
           </h2>
           <p className="text-lg text-muted max-w-2xl mx-auto">
-            A real Mac app — small, quiet, and respectful of your machine. It works the way macOS was meant to.
+            A real Mac app: small, quiet, and respectful of your machine. It works the way macOS was meant to.
           </p>
         </motion.div>
 

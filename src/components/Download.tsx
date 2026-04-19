@@ -23,7 +23,7 @@ export default function Download() {
             Ready to stop pressing?
           </h2>
           <p className="text-muted text-lg leading-relaxed mt-4">
-            Try the full app free for 14 days. If you love it — and we think you will — keep it forever for $2.99.
+            Try the full app free for 14 days. If you love it (and we think you will), keep it forever for $2.99.
           </p>
 
           <div className="flex flex-col sm:flex-row justify-center gap-3 mt-8">

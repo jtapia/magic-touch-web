@@ -20,7 +20,7 @@ export default function Signature() {
             Two ways to right-click.<br className="hidden md:block" /> <span className="gradient-text">Pick what feels right.</span>
           </h2>
           <p className="text-lg text-muted max-w-2xl mx-auto leading-relaxed">
-            Tap on the right side of the mouse — or press a little firmer, anywhere. Whichever matches how your hand already moves. Switch modes anytime.
+            Tap on the right side of the mouse, or press a little firmer, anywhere. Whichever matches how your hand already moves. Switch modes anytime.
           </p>
         </motion.div>
 
@@ -42,7 +42,7 @@ export default function Signature() {
               <h3 className="text-lg font-semibold">Tap by zone</h3>
             </div>
             <p className="text-sm text-muted leading-relaxed mb-4">
-              Left side gets a left click. Right side gets a right click. Drag the split line to your taste — left-handed users can mirror it in one tap.
+              Left side gets a left click. Right side gets a right click. Drag the split line to your taste. Left-handed users can mirror it in one tap.
             </p>
             <div className="h-16 rounded-xl border border-border-light bg-surface overflow-hidden flex">
               <div className="flex-[55] bg-accent/8 flex items-center justify-center text-xs font-semibold text-accent-light border-r border-border-light">
@@ -65,7 +65,7 @@ export default function Signature() {
               <h3 className="text-lg font-semibold">Tap by pressure</h3>
             </div>
             <p className="text-sm text-muted leading-relaxed mb-4">
-              Press a little firmer to right-click — anywhere on the surface. Three sensitivity levels so it fits the way you naturally touch.
+              Press a little firmer to right-click, anywhere on the surface. Three sensitivity levels so it fits the way you naturally touch.
             </p>
             <div className="flex gap-2">
               {[
@@ -90,7 +90,7 @@ export default function Signature() {
         >
           {[
             { value: "Drag to split", label: "Set left/right wherever feels natural" },
-            { value: "3 pressures", label: "Light, medium, and firm — tuned to your touch" },
+            { value: "3 pressures", label: "Light, medium, and firm, tuned to your touch" },
             { value: "Middle click", label: "Optional center strip for paste & new tab" },
           ].map((stat) => (
             <div key={stat.label} className="text-center rounded-2xl border border-border bg-card px-6 py-7">

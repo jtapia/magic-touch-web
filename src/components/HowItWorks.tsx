@@ -7,7 +7,7 @@ const steps = [
   {
     number: "01",
     title: "Touch the surface",
-    desc: "Rest your finger on the top of your Magic Mouse — no press, no force. A light tap is all it takes, just like your MacBook trackpad.",
+    desc: "Rest your finger on the top of your Magic Mouse. No press, no force. A light tap is all it takes, just like your MacBook trackpad.",
     icon: (
       <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <path d="M12 11V3" /><path d="M18.5 8a6.5 6.5 0 11-13 0" /><circle cx="12" cy="16" r="5" /><path d="M12 14v4" />
@@ -17,7 +17,7 @@ const steps = [
   {
     number: "02",
     title: "MagicTouch reads the tap",
-    desc: "It figures out whether you meant left, right, or middle click from where you tapped and how firmly. Pick the style that feels best — it's up to you.",
+    desc: "It figures out whether you meant left, right, or middle click from where you tapped and how firmly. Pick the style that feels best. It's up to you.",
     icon: (
       <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <circle cx="12" cy="12" r="10" /><path d="M12 2v20" /><path d="M2 12h20" />
@@ -27,7 +27,7 @@ const steps = [
   {
     number: "03",
     title: "You feel an instant click",
-    desc: "macOS gets a real click — same as a button press. A subtle haptic buzz, soft sound, or on-screen dot confirms it landed. Zero lag.",
+    desc: "macOS gets a real click, same as a button press. A subtle haptic buzz, soft sound, or on-screen dot confirms it landed. Zero lag.",
     icon: (
       <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <path d="M22 11.08V12a10 10 0 11-5.93-9.14" /><polyline points="22 4 12 14.01 9 11.01" />

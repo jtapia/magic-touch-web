@@ -29,7 +29,7 @@ export default function PrivacyPolicy() {
           <h1 className="text-4xl lg:text-5xl font-bold tracking-tight mb-3">Privacy Policy</h1>
           <p className="text-sm text-dim mb-6">Last updated April 18, 2026</p>
           <p className="prose-lead">
-            MagicTouch is designed with privacy as a core principle. This policy explains what data we collect — and, more importantly, what we don&apos;t.
+            MagicTouch is designed with privacy as a core principle. This policy explains what data we collect, and more importantly, what we don&apos;t.
           </p>
         </header>
 

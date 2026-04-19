@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 
 const facts: { label: string; value: string }[] = [
   { label: "Product", value: "MagicTouch" },
-  { label: "Category", value: "macOS utility — input / accessibility" },
+  { label: "Category", value: "macOS utility · input / accessibility" },
   { label: "Platform", value: "macOS 12.0 or later (Apple Silicon + Intel)" },
   { label: "Hardware", value: "Apple Magic Mouse (1st and 2nd generation)" },
   { label: "Price", value: "US $2.99 introductory · $3.99 regular · one-time" },
@@ -31,17 +31,17 @@ const facts: { label: string; value: string }[] = [
 const boilerplates: { length: "One-liner" | "Short" | "Long"; body: string }[] = [
   {
     length: "One-liner",
-    body: "MagicTouch brings tap-to-click to the Apple Magic Mouse — the feature macOS gives trackpads but not mice.",
+    body: "MagicTouch brings tap-to-click to the Apple Magic Mouse: the feature macOS gives trackpads but not mice.",
   },
   {
     length: "Short",
     body:
-      "MagicTouch is a lightweight macOS menu-bar app that turns light surface taps on the Apple Magic Mouse into real clicks. It adds zone- and pressure-based right-click, middle-click, tap-to-drag, multi-finger taps, haptic and sound feedback, and per-app rules — the polish macOS has always given trackpads. One-time purchase, 14-day free trial, zero network requests.",
+      "MagicTouch is a lightweight macOS menu-bar app that turns light surface taps on the Apple Magic Mouse into real clicks. It adds zone- and pressure-based right-click, middle-click, tap-to-drag, multi-finger taps, haptic and sound feedback, and per-app rules: the polish macOS has always given trackpads. One-time purchase, 14-day free trial, zero network requests.",
   },
   {
     length: "Long",
     body:
-      "Every MacBook trackpad has tap-to-click. The Apple Magic Mouse doesn't — pressing the mouse body hundreds of times a day is tiring and loud. MagicTouch fixes that by reading raw multitouch data from the Magic Mouse at 60–120 Hz and injecting synthetic clicks at the HID level, indistinguishable from a real press. Beyond tap-to-click, MagicTouch delivers zone-based and pressure-based right-click, a configurable middle-click zone, multi-finger tap actions, tap-to-drag, per-edge dead zones, palm rejection, haptic and sound feedback, per-app right-click rules, custom scroll sensitivity, battery monitoring for Magic Mouse 2, and start-on-login via the native SMAppService API. Built in native Swift, sandbox-free (required for the private multitouch framework) but hardened, ~5 MB in memory, and makes zero network requests — all touch data stays on the device. Distributed direct with a 14-day free trial, one-time US $2.99 introductory price, offline Ed25519-signed license activation, and Sparkle-based auto-updates.",
+      "Every MacBook trackpad has tap-to-click. The Apple Magic Mouse doesn't, and pressing the mouse body hundreds of times a day is tiring and loud. MagicTouch fixes that by reading raw multitouch data from the Magic Mouse at 60–120 Hz and injecting synthetic clicks at the HID level, indistinguishable from a real press. Beyond tap-to-click, MagicTouch delivers zone-based and pressure-based right-click, a configurable middle-click zone, multi-finger tap actions, tap-to-drag, per-edge dead zones, palm rejection, haptic and sound feedback, per-app right-click rules, custom scroll sensitivity, battery monitoring for Magic Mouse 2, and start-on-login via the native SMAppService API. Built in native Swift, sandbox-free (required for the private multitouch framework) but hardened, ~5 MB in memory, and makes zero network requests: all touch data stays on the device. Distributed direct with a 14-day free trial, one-time US $2.99 introductory price, offline Ed25519-signed license activation, and Sparkle-based auto-updates.",
   },
 ];
 
@@ -154,7 +154,7 @@ export default function PressKit() {
               <div className="flex items-center justify-center h-36 bg-surface rounded-lg mb-4">
                 <Image src="/app-icon.png" alt="MagicTouch app icon" width={64} height={64} className="rounded-xl shadow-md shadow-accent/10" />
               </div>
-              <p className="text-sm font-semibold">App icon — 64×64</p>
+              <p className="text-sm font-semibold">App icon · 64×64</p>
               <p className="text-xs text-dim mt-1 mb-4">PNG with transparency</p>
               <a
                 href="/app-icon.png"
@@ -171,7 +171,7 @@ export default function PressKit() {
               <div className="flex items-center justify-center h-36 bg-surface rounded-lg mb-4">
                 <Image src="/app-icon-large.png" alt="MagicTouch app icon (large)" width={96} height={96} className="rounded-2xl shadow-md shadow-accent/10" />
               </div>
-              <p className="text-sm font-semibold">App icon — 512×512</p>
+              <p className="text-sm font-semibold">App icon · 512×512</p>
               <p className="text-xs text-dim mt-1 mb-4">PNG with transparency, suitable for print</p>
               <a
                 href="/app-icon-large.png"
@@ -228,7 +228,7 @@ export default function PressKit() {
         <section className="rounded-2xl border border-accent/20 bg-accent/[0.04] p-6 sm:p-8">
           <h2 className="text-xl font-bold tracking-tight mb-2">Press contact</h2>
           <p className="text-sm text-muted mb-4">
-            Review copies, interviews, custom screenshots, or anything we missed — we usually reply within one business day.
+            Review copies, interviews, custom screenshots, or anything we missed. We usually reply within one business day.
           </p>
           <div className="flex flex-col sm:flex-row gap-3">
             <a

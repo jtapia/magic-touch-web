@@ -6,19 +6,19 @@ import { useRef, useState } from "react";
 const faqs = [
   {
     q: "Does it work with my Magic Mouse?",
-    a: "Yes — both Magic Mouse 1 and Magic Mouse 2 work for tap detection. Battery status in the menu bar requires Magic Mouse 2, since the original model doesn't report battery level.",
+    a: "Yes, both Magic Mouse 1 and Magic Mouse 2 work for tap detection. Battery status in the menu bar requires Magic Mouse 2, since the original model doesn't report battery level.",
   },
   {
     q: "What does the free trial include?",
-    a: "The full app, every feature, for 14 days. No credit card, no account. When the trial ends, clicks stop being injected but your settings and the app itself stay — you can unlock it anytime for $2.99.",
+    a: "The full app, every feature, for 14 days. No credit card, no account. When the trial ends, clicks stop being injected but your settings and the app itself stay, and you can unlock it anytime for $2.99.",
   },
   {
     q: "Is this a subscription?",
-    a: "Nope. One-time purchase. Pay $2.99 once and MagicTouch is yours — including all future updates. No recurring charge, no account.",
+    a: "Nope. One-time purchase. Pay $2.99 once and MagicTouch is yours, including all future updates. No recurring charge, no account.",
   },
   {
     q: "Will I need to give any permissions?",
-    a: "Just one: Accessibility. macOS requires it for any app that creates mouse clicks. MagicTouch walks you through enabling it on first launch — it takes about 10 seconds.",
+    a: "Just one: Accessibility. macOS requires it for any app that creates mouse clicks. MagicTouch walks you through enabling it on first launch. It takes about 10 seconds.",
   },
   {
     q: "Does it change my regular mouse settings?",
@@ -26,14 +26,14 @@ const faqs = [
   },
   {
     q: "Can I tune how sensitive a tap needs to be?",
-    a: "Yes — everything is adjustable. Tap speed, pressure levels, the zone split, double-tap timing. Start with the defaults (most people love them) and tweak only if you feel like it.",
+    a: "Yes, everything is adjustable. Tap speed, pressure levels, the zone split, double-tap timing. Start with the defaults (most people love them) and tweak only if you feel like it.",
   },
   {
     q: "Does it collect any data about me?",
     a: "Zero. No analytics, no crash reports, no accounts. Your taps and settings never leave your Mac. The only network traffic is the built-in macOS update check, which you can turn off in Preferences.",
   },
   {
-    q: "I'm left-handed — can I flip the zones?",
+    q: "I'm left-handed. Can I flip the zones?",
     a: "Absolutely. In Preferences, set your dominant hand to Left. Right-click moves to the left side, left-click to the right. One setting, done.",
   },
   {
@@ -42,7 +42,7 @@ const faqs = [
   },
   {
     q: "How do I quickly turn it off?",
-    a: "Three ways. Click the menu bar icon to toggle. Use the keyboard shortcut (⌃⌥⌘T by default, but you can change it). Or say a spoken command through macOS Voice Control — perfect for handing your Mac to someone else.",
+    a: "Three ways. Click the menu bar icon to toggle. Use the keyboard shortcut (⌃⌥⌘T by default, but you can change it). Or say a spoken command through macOS Voice Control, perfect for handing your Mac to someone else.",
   },
   {
     q: "What if I change my mind?",
@@ -111,7 +111,7 @@ export default function FAQ() {
             Everything you might ask.
           </h2>
           <p className="text-lg text-muted max-w-xl mx-auto">
-            The stuff people actually want to know — about compatibility, permissions, privacy, and the free trial.
+            The stuff people actually want to know: compatibility, permissions, privacy, and the free trial.
           </p>
         </motion.div>
 

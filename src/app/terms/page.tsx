@@ -29,7 +29,7 @@ export default function TermsOfUse() {
           <h1 className="text-4xl lg:text-5xl font-bold tracking-tight mb-3">Terms of Use</h1>
           <p className="text-sm text-dim mb-6">Last updated April 18, 2026</p>
           <p className="prose-lead">
-            By purchasing or using MagicTouch, you agree to the following terms. We&apos;ve kept them short and plain — no surprise clauses.
+            By purchasing or using MagicTouch, you agree to the following terms. We&apos;ve kept them short and plain, with no surprise clauses.
           </p>
         </header>
 

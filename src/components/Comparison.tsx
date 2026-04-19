@@ -6,15 +6,15 @@ import { useRef } from "react";
 const comparisons = [
   {
     title: "Kinder on your hands",
-    desc: "You click hundreds of times a day. A featherweight tap takes a fraction of the effort of pressing the whole mouse — your wrist will thank you by 5 PM.",
+    desc: "You click hundreds of times a day. A featherweight tap takes a fraction of the effort of pressing the whole mouse. Your wrist will thank you by 5 PM.",
   },
   {
     title: "Right-click that just works",
-    desc: "No more two-finger juggling or holding Control. Tap on the right side, or press a little firmer — whichever feels natural to you. Either way, context menus come up the first time, every time.",
+    desc: "No more two-finger juggling or holding Control. Tap on the right side, or press a little firmer, whichever feels natural to you. Either way, context menus come up the first time, every time.",
   },
   {
     title: "Trackpad feel, mouse precision",
-    desc: "Get the effortless tap-to-click you love on MacBooks — without giving up the precision of a mouse. It's the best of both worlds, right where you already work.",
+    desc: "Get the effortless tap-to-click you love on MacBooks, without giving up the precision of a mouse. It's the best of both worlds, right where you already work.",
   },
 ];
 
@@ -33,7 +33,7 @@ export default function Comparison() {
           <p className="text-xs font-semibold uppercase tracking-widest text-accent-light mb-3">Why you&apos;ll love it</p>
           <h2 className="text-3xl lg:text-4xl font-bold tracking-tight mb-4">A better way to click.</h2>
           <p className="text-lg text-muted max-w-2xl mx-auto">
-            Magic Mouse is beautiful — but clicking it gets tiring. MagicTouch turns those dozens of daily presses into gentle taps.
+            Magic Mouse is beautiful, but clicking it gets tiring. MagicTouch turns those dozens of daily presses into gentle taps.
           </p>
         </motion.div>
 

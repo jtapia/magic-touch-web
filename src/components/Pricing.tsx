@@ -107,7 +107,7 @@ export default function Pricing() {
             One price. Everything unlocked.
           </h2>
           <p className="text-lg text-muted max-w-2xl mx-auto">
-            No tiers. No subscriptions. No hidden &ldquo;Pro&rdquo; plan. Pay once, enjoy every feature — and every future update — for as long as you want.
+            No tiers. No subscriptions. No hidden &ldquo;Pro&rdquo; plan. Pay once, enjoy every feature (and every future update) for as long as you want.
           </p>
         </motion.div>
 

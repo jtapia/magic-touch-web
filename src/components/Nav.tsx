@@ -161,7 +161,7 @@ export default function Nav() {
             href={primaryHref}
             className="block text-center gradient-bg text-white px-6 py-3 rounded-xl text-sm font-semibold shadow-lg shadow-accent/30"
           >
-            {DOWNLOAD_URL ? "Try MagicTouch free for 14 days" : "Get MagicTouch — $2.99"}
+            {DOWNLOAD_URL ? "Try MagicTouch free for 14 days" : "Get MagicTouch · $2.99"}
           </a>
         </motion.div>
       )}
