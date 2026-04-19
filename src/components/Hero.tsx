@@ -6,7 +6,7 @@ import { DOWNLOAD_URL } from "@/lib/site";
 const proofItems = [
   { label: "Try it free", value: "14 days, full app" },
   { label: "One-time price", value: "Just $2.99" },
-  { label: "Privacy", value: "Nothing leaves your Mac" },
+  { label: "Privacy", value: "No data tracking" },
 ];
 
 export default function Hero() {
@@ -68,10 +68,10 @@ export default function Hero() {
           <div className="grid grid-cols-1 min-[420px]:grid-cols-3 gap-3 text-left">
             {proofItems.map((item) => (
               <div key={item.label} className="rounded-2xl border border-border bg-card/80 px-4 py-3 backdrop-blur-sm">
-                <span className="block text-[10px] sm:text-[11px] uppercase tracking-[0.12em] sm:tracking-[0.18em] text-dim leading-none mb-2">
+                <span className="block text-2xl md:text-base text-center font-extrabold gradient-text">
                   {item.label}
                 </span>
-                <span className="block mt-1 font-semibold text-[12px] md:text-[14px]">{item.value}</span>
+                <span className="mt-2 block text-md md:text-sm text-dim text-center font-semibold md:font-medium">{item.value}</span>
               </div>
             ))}
           </div>
