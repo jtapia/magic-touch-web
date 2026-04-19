@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useTheme } from "@/context/ThemeContext";
-import { DOWNLOAD_URL } from "@/lib/site";
+import { DOWNLOAD_URL, launchMode } from "@/lib/site";
 
 function SunIcon() {
   return (
@@ -50,8 +50,18 @@ export default function Nav() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const primaryHref = DOWNLOAD_URL ?? "/#pricing";
-  const primaryLabel = DOWNLOAD_URL ? "Try free" : "Get MagicTouch";
+  const primaryHref =
+    launchMode === "launched"
+      ? DOWNLOAD_URL!
+      : launchMode === "waitlist"
+      ? "/#pricing"
+      : "/#pricing";
+  const primaryLabel =
+    launchMode === "launched"
+      ? "Try free"
+      : launchMode === "waitlist"
+      ? "Join waitlist"
+      : "Get MagicTouch";
 
   return (
     <>
@@ -161,7 +171,11 @@ export default function Nav() {
             href={primaryHref}
             className="block text-center gradient-bg text-white px-6 py-3 rounded-xl text-sm font-semibold shadow-lg shadow-accent/30"
           >
-            {DOWNLOAD_URL ? "Try MagicTouch free for 14 days" : "Get MagicTouch · $2.99"}
+            {launchMode === "launched"
+              ? "Try MagicTouch free for 14 days"
+              : launchMode === "waitlist"
+              ? "Join the MagicTouch waitlist"
+              : "Get MagicTouch · $2.99"}
           </a>
         </motion.div>
       )}

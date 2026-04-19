@@ -2,7 +2,8 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
-import { DOWNLOAD_URL, STRIPE_LINK, isExternalStripeLink } from "@/lib/site";
+import { DOWNLOAD_URL, STRIPE_LINK, isExternalStripeLink, launchMode } from "@/lib/site";
+import Waitlist from "@/components/Waitlist";
 
 /*
  * Sale end date. If you change pricing or want to extend/shorten the sale,
@@ -117,10 +118,16 @@ export default function Pricing() {
           transition={{ duration: 0.45, delay: 0.2 }}
           className="relative rounded-3xl border-2 border-accent/30 bg-card p-6 sm:p-9 text-left mt-12 shadow-xl shadow-accent/5"
         >
-          {onSale && (
+          {launchMode === "waitlist" ? (
             <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 gradient-bg text-white text-[0.7rem] font-bold px-3 py-1 rounded-full tracking-wide shadow-lg shadow-accent/20 whitespace-nowrap">
-              ✨ LAUNCH PRICE
+              COMING SOON
             </span>
+          ) : (
+            onSale && (
+              <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 gradient-bg text-white text-[0.7rem] font-bold px-3 py-1 rounded-full tracking-wide shadow-lg shadow-accent/20 whitespace-nowrap">
+                ✨ LAUNCH PRICE
+              </span>
+            )
           )}
 
           <div className="text-center mt-2">
@@ -130,8 +137,8 @@ export default function Pricing() {
             </div>
             <p className="text-sm text-muted mt-2">One-time payment. Yours forever.</p>
 
-            {/* Countdown timer — only shows when sale is live and client has mounted */}
-            {onSale && countdown.ready && (
+            {/* Countdown timer — only shows when sale is live, launched, and client has mounted */}
+            {launchMode === "launched" && onSale && countdown.ready && (
               <div className="mt-5 flex flex-wrap items-center justify-center gap-2">
                 <span className="text-xs text-dim">Launch price ends in:</span>
                 <div className="flex items-center gap-1">
@@ -166,24 +173,35 @@ export default function Pricing() {
           </div>
 
           <div className="mt-8 flex flex-col gap-3">
-            {/* Primary: free trial */}
-            <a
-              href={DOWNLOAD_URL ?? "#"}
-              className="block text-center gradient-bg text-white px-6 py-3.5 rounded-xl font-semibold shadow-lg shadow-accent/25 hover:shadow-accent/40 hover:-translate-y-0.5 transition-all"
-            >
-              Try free for 14 days
-            </a>
-            <p className="text-center text-xs text-dim">No credit card · Full app unlocked · No auto-charge</p>
+            {launchMode === "waitlist" ? (
+              <>
+                <Waitlist />
+                <p className="text-center text-xs text-dim mt-1">
+                  Waitlist subscribers get the $2.99 launch price, guaranteed.
+                </p>
+              </>
+            ) : (
+              <>
+                {/* Primary: free trial */}
+                <a
+                  href={DOWNLOAD_URL ?? "#"}
+                  className="block text-center gradient-bg text-white px-6 py-3.5 rounded-xl font-semibold shadow-lg shadow-accent/25 hover:shadow-accent/40 hover:-translate-y-0.5 transition-all"
+                >
+                  Try free for 14 days
+                </a>
+                <p className="text-center text-xs text-dim">No credit card · Full app unlocked · No auto-charge</p>
 
-            {/* Secondary: buy now */}
-            <a
-              href={STRIPE_LINK}
-              target={isExternalStripeLink ? "_blank" : undefined}
-              rel={isExternalStripeLink ? "noopener noreferrer" : undefined}
-              className="block text-center border border-border-light bg-card hover:bg-card-hover px-6 py-3 rounded-xl font-semibold text-sm transition-all"
-            >
-              Buy now for $2.99 →
-            </a>
+                {/* Secondary: buy now */}
+                <a
+                  href={STRIPE_LINK}
+                  target={isExternalStripeLink ? "_blank" : undefined}
+                  rel={isExternalStripeLink ? "noopener noreferrer" : undefined}
+                  className="block text-center border border-border-light bg-card hover:bg-card-hover px-6 py-3 rounded-xl font-semibold text-sm transition-all"
+                >
+                  Buy now for $2.99 →
+                </a>
+              </>
+            )}
           </div>
         </motion.div>
 
@@ -193,7 +211,9 @@ export default function Pricing() {
           transition={{ delay: 0.6 }}
           className="text-sm text-dim mt-6"
         >
-          {onSale
+          {launchMode === "waitlist"
+            ? "No credit card. No spam. One email when MagicTouch is ready."
+            : onSale
             ? "Launch price for a limited time. Regular price $3.99."
             : "One-time purchase · Instant download · Free updates"}
         </motion.p>
