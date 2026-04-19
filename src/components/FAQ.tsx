@@ -30,7 +30,7 @@ const faqs = [
   },
   {
     q: "Does it collect any data about me?",
-    a: "Zero. Nothing. No analytics, no crash reports, no accounts, no network requests. Every tap stays on your Mac.",
+    a: "Zero. No analytics, no crash reports, no accounts. Your taps and settings never leave your Mac. The only network traffic is the built-in macOS update check, which you can turn off in Preferences.",
   },
   {
     q: "I'm left-handed — can I flip the zones?",
