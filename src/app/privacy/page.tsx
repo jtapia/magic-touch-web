@@ -11,21 +11,34 @@ export default function PrivacyPolicy() {
   return (
     <>
       <Nav />
-      <main className="max-w-[720px] mx-auto px-6 pt-32 pb-24">
-        <h1 className="text-4xl font-bold tracking-tight mb-2">Privacy Policy</h1>
-        <p className="text-sm text-dim mb-12">Last updated: April 6, 2026</p>
+      <main id="main-content" className="max-w-[720px] mx-auto px-6 pt-32 pb-24">
+        <a
+          href="/"
+          className="inline-flex items-center gap-1.5 text-sm text-dim hover:text-foreground transition-colors mb-10"
+        >
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+            <line x1="19" y1="12" x2="5" y2="12" />
+            <polyline points="12 19 5 12 12 5" />
+          </svg>
+          Back to home
+        </a>
 
-        <section className="prose-section">
-          <p className="text-muted leading-relaxed mb-8">
-            MagicTouch is designed with privacy as a core principle. This policy explains what data we collect, and more importantly, what we don&apos;t.
+        <header className="mb-12 pb-10 border-b border-border">
+          <p className="text-xs font-semibold uppercase tracking-widest text-accent-light mb-3">Legal</p>
+          <h1 className="text-4xl lg:text-5xl font-bold tracking-tight mb-3">Privacy Policy</h1>
+          <p className="text-sm text-dim mb-6">Last updated April 6, 2026</p>
+          <p className="prose-lead">
+            MagicTouch is designed with privacy as a core principle. This policy explains what data we collect — and, more importantly, what we don&apos;t.
           </p>
+        </header>
 
-          <h2>No Data Collection</h2>
+        <article className="prose-section">
+          <h2>No data collection</h2>
           <p>
             MagicTouch does not collect, store, transmit, or share any personal information. The app makes <strong>zero network requests</strong> of any kind. There are no analytics, no crash reporters, no telemetry, and no third-party SDKs.
           </p>
 
-          <h2>What Stays on Your Device</h2>
+          <h2>What stays on your device</h2>
           <p>The following data is stored locally on your Mac only and never leaves your device:</p>
           <ul>
             <li>Your tap sensitivity preferences (duration, precision thresholds)</li>
@@ -39,41 +52,41 @@ export default function PrivacyPolicy() {
             All preferences are stored in macOS UserDefaults, a standard local storage mechanism. No cloud sync, no accounts, no external servers.
           </p>
 
-          <h2>Touch Data</h2>
+          <h2>Touch data</h2>
           <p>
             MagicTouch reads raw multitouch data from your Magic Mouse&apos;s capacitive surface to detect taps. This data (finger position, contact area, duration) is processed entirely in memory and in real time. It is never recorded, stored to disk, or transmitted anywhere.
           </p>
 
-          <h2>Accessibility Permission</h2>
+          <h2>Accessibility permission</h2>
           <p>
             MagicTouch requires macOS Accessibility permission to inject synthetic mouse click events. This permission is used exclusively for click injection and is never used to read screen content, monitor keystrokes, or access any other application data.
           </p>
 
-          <h2>Third-Party Services</h2>
+          <h2>Third-party services</h2>
           <p>
             MagicTouch includes no third-party analytics, advertising, or tracking frameworks. The app is fully self-contained.
           </p>
 
-          <h2>Purchase Data</h2>
+          <h2>Purchase data</h2>
           <p>
             Purchases are processed by Stripe. MagicTouch does not receive or store your payment information. Please refer to <a href="https://stripe.com/privacy" target="_blank" rel="noopener noreferrer">Stripe&apos;s Privacy Policy</a> for details on how they handle payment data.
           </p>
 
-          <h2>Children&apos;s Privacy</h2>
+          <h2>Children&apos;s privacy</h2>
           <p>
             MagicTouch does not knowingly collect any information from anyone, including children under 13.
           </p>
 
-          <h2>Changes to This Policy</h2>
+          <h2>Changes to this policy</h2>
           <p>
-            If we update this policy, we will post the revised version on this page with a new &quot;Last updated&quot; date. Since MagicTouch makes no network requests, we cannot notify you in-app.
+            If we update this policy, we&apos;ll post the revised version on this page with a new &ldquo;Last updated&rdquo; date. Since MagicTouch makes no network requests, we can&apos;t notify you in-app.
           </p>
 
           <h2>Contact</h2>
           <p>
-            If you have questions about this privacy policy, contact us at <a href="mailto:support@magictouch.app">support@magictouch.app</a>.
+            If you have questions about this privacy policy, email <a href="mailto:support@magictouch.app">support@magictouch.app</a>.
           </p>
-        </section>
+        </article>
       </main>
       <Footer />
     </>
