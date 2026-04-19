@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 
@@ -12,7 +13,7 @@ export default function PrivacyPolicy() {
     <>
       <Nav />
       <main id="main-content" className="max-w-[720px] mx-auto px-6 pt-32 pb-24">
-        <a
+        <Link
           href="/"
           className="inline-flex items-center gap-1.5 text-sm text-dim hover:text-foreground transition-colors mb-10"
         >
@@ -21,7 +22,7 @@ export default function PrivacyPolicy() {
             <polyline points="12 19 5 12 12 5" />
           </svg>
           Back to home
-        </a>
+        </Link>
 
         <header className="mb-12 pb-10 border-b border-border">
           <p className="text-xs font-semibold uppercase tracking-widest text-accent-light mb-3">Legal</p>

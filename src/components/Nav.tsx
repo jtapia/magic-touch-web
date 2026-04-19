@@ -2,8 +2,10 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useTheme } from "@/context/ThemeContext";
+import { DOWNLOAD_URL } from "@/lib/site";
 
 function SunIcon() {
   return (
@@ -36,8 +38,6 @@ const navLinks = [
   { href: "/#faq", label: "FAQ" },
 ];
 
-const DOWNLOAD_URL = process.env.NEXT_PUBLIC_DOWNLOAD_URL || null;
-
 export default function Nav() {
   const { theme, toggle } = useTheme();
   const [menuOpen, setMenuOpen] = useState(false);
@@ -66,10 +66,10 @@ export default function Nav() {
         }`}
       >
         <div className="max-w-[1120px] mx-auto px-6 h-[60px] flex items-center justify-between">
-          <a href="/" className="flex items-center gap-2.5 -m-1 p-1 rounded-lg">
+          <Link href="/" className="flex items-center gap-2.5 -m-1 p-1 rounded-lg">
             <Image src="/app-icon.png" alt="" width={28} height={28} className="rounded-md" aria-hidden="true" />
             <span className="text-lg font-bold tracking-tight">MagicTouch</span>
-          </a>
+          </Link>
           <div className="flex items-center gap-5 sm:gap-6 text-sm text-muted">
             {navLinks.map((link) => (
               <a key={link.href} href={link.href} className="hidden sm:block hover:text-foreground transition-colors">
@@ -93,6 +93,7 @@ export default function Nav() {
               onClick={() => setMenuOpen((v) => !v)}
               aria-label={menuOpen ? "Close menu" : "Open menu"}
               aria-expanded={menuOpen}
+              aria-controls="mobile-nav-panel"
               className="sm:hidden p-2 rounded-lg text-muted hover:text-foreground hover:bg-foreground/[0.06] transition-colors"
             >
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -116,6 +117,7 @@ export default function Nav() {
         <AnimatePresence>
           {menuOpen && (
             <motion.div
+              id="mobile-nav-panel"
               initial={{ height: 0, opacity: 0 }}
               animate={{ height: "auto", opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}

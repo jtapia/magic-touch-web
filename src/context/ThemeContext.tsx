@@ -12,10 +12,15 @@ interface ThemeCtx {
 const ThemeContext = createContext<ThemeCtx>({ theme: "light", toggle: () => {} });
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [theme, setTheme] = useState<Theme>("light");
+  // Read the theme the anti-flash script already applied to <html>, so the
+  // Nav toggle renders the right icon on first paint. Falls back to "light"
+  // during SSR where document is undefined.
+  const [theme, setTheme] = useState<Theme>(() => {
+    if (typeof document === "undefined") return "light";
+    return document.documentElement.classList.contains("dark") ? "dark" : "light";
+  });
 
   useEffect(() => {
-    // First check localStorage, then fall back to system preference
     const stored = localStorage.getItem("theme") as Theme | null;
     const preferred = stored ?? (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
     setTheme(preferred);

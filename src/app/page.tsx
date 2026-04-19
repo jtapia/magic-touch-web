@@ -1,18 +1,16 @@
-import dynamic from "next/dynamic";
 import Nav from "@/components/Nav";
 import Hero from "@/components/Hero";
-
-const HowItWorks = dynamic(() => import("@/components/HowItWorks"));
-const Comparison = dynamic(() => import("@/components/Comparison"));
-const Signature = dynamic(() => import("@/components/Signature"));
-const UseCases = dynamic(() => import("@/components/UseCases"));
-const Features = dynamic(() => import("@/components/Features"));
-const Lightweight = dynamic(() => import("@/components/Lightweight"));
-const Privacy = dynamic(() => import("@/components/Privacy"));
-const Pricing = dynamic(() => import("@/components/Pricing"));
-const FAQ = dynamic(() => import("@/components/FAQ"));
-const Download = dynamic(() => import("@/components/Download"));
-const Footer = dynamic(() => import("@/components/Footer"));
+import HowItWorks from "@/components/HowItWorks";
+import Comparison from "@/components/Comparison";
+import Signature from "@/components/Signature";
+import UseCases from "@/components/UseCases";
+import Features from "@/components/Features";
+import Lightweight from "@/components/Lightweight";
+import Privacy from "@/components/Privacy";
+import Pricing from "@/components/Pricing";
+import FAQ from "@/components/FAQ";
+import Download from "@/components/Download";
+import Footer from "@/components/Footer";
 
 export default function Home() {
   return (

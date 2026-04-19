@@ -2,10 +2,9 @@
 
 import { motion, useInView } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 import { useRef } from "react";
-
-const STRIPE_LINK = process.env.NEXT_PUBLIC_STRIPE_PAYMENT_LINK || "#pricing";
-const DOWNLOAD_URL = process.env.NEXT_PUBLIC_DOWNLOAD_URL || null;
+import { DOWNLOAD_URL, STRIPE_LINK, isExternalStripeLink } from "@/lib/site";
 
 export default function Download() {
   const ref = useRef(null);
@@ -43,8 +42,8 @@ export default function Download() {
             </a>
             <a
               href={STRIPE_LINK}
-              target={STRIPE_LINK !== "#pricing" ? "_blank" : undefined}
-              rel={STRIPE_LINK !== "#pricing" ? "noopener noreferrer" : undefined}
+              target={isExternalStripeLink ? "_blank" : undefined}
+              rel={isExternalStripeLink ? "noopener noreferrer" : undefined}
               className="px-6 py-3 rounded-xl font-semibold border border-border-light bg-card hover:bg-card-hover transition-colors"
             >
               Buy for $2.99
@@ -74,12 +73,12 @@ export default function Download() {
               </svg>
               Auto-updates included
             </span>
-            <a href="/changelog" className="inline-flex items-center gap-1.5 hover:text-foreground transition-colors">
+            <Link href="/changelog" className="inline-flex items-center gap-1.5 hover:text-foreground transition-colors">
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                 <path d="M12 8v4l3 3" /><circle cx="12" cy="12" r="10" />
               </svg>
               View changelog
-            </a>
+            </Link>
             <a href="mailto:support@magictouch.app" className="inline-flex items-center gap-1.5 hover:text-foreground transition-colors">
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                 <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />

@@ -1,8 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-
-const DOWNLOAD_URL = process.env.NEXT_PUBLIC_DOWNLOAD_URL || null;
+import { DOWNLOAD_URL } from "@/lib/site";
 
 const proofItems = [
   { label: "Try it free", value: "14 days, full app" },

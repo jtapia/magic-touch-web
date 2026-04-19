@@ -2,6 +2,7 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
+import { DOWNLOAD_URL, STRIPE_LINK, isExternalStripeLink } from "@/lib/site";
 
 /*
  * Sale end date. If you change pricing or want to extend/shorten the sale,
@@ -51,12 +52,6 @@ function useCountdown(targetDate: Date): Countdown {
   return timeLeft;
 }
 
-/*
- * Stripe Payment Link: create one at https://dashboard.stripe.com/payment-links
- * then set the NEXT_PUBLIC_STRIPE_PAYMENT_LINK env var, or replace the fallback below.
- */
-const STRIPE_LINK = process.env.NEXT_PUBLIC_STRIPE_PAYMENT_LINK || "#";
-
 const featureGroups = [
   {
     heading: "The essentials",
@@ -97,7 +92,6 @@ export default function Pricing() {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-100px" });
   const countdown = useCountdown(SALE_END_DATE);
-  const DOWNLOAD_URL = process.env.NEXT_PUBLIC_DOWNLOAD_URL || null;
   const onSale = !countdown.expired;
 
   return (
@@ -184,8 +178,8 @@ export default function Pricing() {
             {/* Secondary: buy now */}
             <a
               href={STRIPE_LINK}
-              target={STRIPE_LINK !== "#" ? "_blank" : undefined}
-              rel={STRIPE_LINK !== "#" ? "noopener noreferrer" : undefined}
+              target={isExternalStripeLink ? "_blank" : undefined}
+              rel={isExternalStripeLink ? "noopener noreferrer" : undefined}
               className="block text-center border border-border-light bg-card hover:bg-card-hover px-6 py-3 rounded-xl font-semibold text-sm transition-all"
             >
               Buy now for $2.99 →

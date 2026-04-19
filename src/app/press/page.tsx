@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 
@@ -236,12 +237,12 @@ export default function PressKit() {
             >
               press@magictouch.app
             </a>
-            <a
+            <Link
               href="/changelog"
               className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold border border-border-light bg-card hover:bg-card-hover transition-colors"
             >
               View changelog
-            </a>
+            </Link>
           </div>
         </section>
       </main>

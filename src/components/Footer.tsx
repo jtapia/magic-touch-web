@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Footer() {
   return (
@@ -23,19 +24,19 @@ export default function Footer() {
             <div className="flex flex-col gap-2">
               <h4 className="text-sm font-semibold mb-1">Support</h4>
               <a href="/#faq" className="text-sm text-dim hover:text-foreground transition-colors">FAQ</a>
-              <a href="/changelog" className="text-sm text-dim hover:text-foreground transition-colors">Changelog</a>
-              <a href="/press" className="text-sm text-dim hover:text-foreground transition-colors">Press Kit</a>
+              <Link href="/changelog" className="text-sm text-dim hover:text-foreground transition-colors">Changelog</Link>
+              <Link href="/press" className="text-sm text-dim hover:text-foreground transition-colors">Press Kit</Link>
               <a href="mailto:support@magictouch.app" className="text-sm text-dim hover:text-foreground transition-colors">Contact</a>
             </div>
             <div className="flex flex-col gap-2">
               <h4 className="text-sm font-semibold mb-1">Legal</h4>
-              <a href="/privacy" className="text-sm text-dim hover:text-foreground transition-colors">Privacy Policy</a>
-              <a href="/terms" className="text-sm text-dim hover:text-foreground transition-colors">Terms of Use</a>
+              <Link href="/privacy" className="text-sm text-dim hover:text-foreground transition-colors">Privacy Policy</Link>
+              <Link href="/terms" className="text-sm text-dim hover:text-foreground transition-colors">Terms of Use</Link>
             </div>
           </div>
         </div>
         <div className="mt-10 pt-5 border-t border-border">
-          <p className="text-xs text-dim text-center">&copy; 2026 MagicTouch. All rights reserved.</p>
+          <p className="text-xs text-dim text-center">&copy; {new Date().getFullYear()} MagicTouch. All rights reserved.</p>
         </div>
       </div>
     </footer>
