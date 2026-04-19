@@ -11,9 +11,9 @@ const inter = Inter({
 const siteUrl = "https://magictouch.app";
 
 export const metadata: Metadata = {
-  title: "MagicTouch: Tap-to-Click for Magic Mouse",
+  title: "MagicTouch — Tap-to-click for your Magic Mouse",
   description:
-    "Bring tap-to-click to your Apple Magic Mouse. Pressure-sensitive right-clicks, visual feedback, and full customization. Lightweight macOS menu bar app.",
+    "Add trackpad-style tap-to-click to your Apple Magic Mouse. Light, kinder-on-your-hands clicks, smart right-click, and subtle haptics. One-time $2.99 · 14-day free trial · Zero data collected.",
   metadataBase: new URL(siteUrl),
   alternates: {
     canonical: "/",
@@ -35,9 +35,9 @@ export const metadata: Metadata = {
     type: "website",
     url: siteUrl,
     siteName: "MagicTouch",
-    title: "MagicTouch: Tap-to-Click for Magic Mouse",
+    title: "MagicTouch — Tap-to-click for your Magic Mouse",
     description:
-      "Bring tap-to-click to your Apple Magic Mouse. Pressure-sensitive right-clicks, visual feedback, and full customization.",
+      "Tap instead of press on your Magic Mouse. Smart right-click, subtle haptics, and every thoughtful detail. $2.99 · 14-day free trial.",
     images: [
       {
         url: "/app-icon-large.png",
@@ -49,9 +49,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary",
-    title: "MagicTouch: Tap-to-Click for Magic Mouse",
+    title: "MagicTouch — Tap-to-click for your Magic Mouse",
     description:
-      "Bring tap-to-click to your Apple Magic Mouse. Pressure-sensitive right-clicks, visual feedback, and full customization.",
+      "Tap instead of press on your Magic Mouse. Smart right-click, subtle haptics, and every thoughtful detail. $2.99 · 14-day free trial.",
     images: ["/app-icon-large.png"],
   },
 };
@@ -98,7 +98,7 @@ export default function RootLayout({
                 availability: "https://schema.org/InStock",
               },
               description:
-                "Bring tap-to-click to your Apple Magic Mouse with pressure-sensitive right-clicks, visual feedback, and full customization.",
+                "Tap-to-click for your Apple Magic Mouse. Kinder clicks, smart right-click, subtle haptics, and thoughtful details — the way it should ship.",
               url: siteUrl,
               image: `${siteUrl}/app-icon-large.png`,
               releaseNotes: `${siteUrl}/changelog`,

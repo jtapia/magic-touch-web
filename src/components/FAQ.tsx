@@ -5,48 +5,48 @@ import { useRef, useState } from "react";
 
 const faqs = [
   {
-    q: "Does it work with both Magic Mouse 1 and 2?",
-    a: "Both generations use the same capacitive multitouch surface, so tap detection works on both. Battery monitoring requires Magic Mouse 2 (Lightning/USB-C) since Magic Mouse 1 does not expose battery over IOKit.",
+    q: "Does it work with my Magic Mouse?",
+    a: "Yes — both Magic Mouse 1 and Magic Mouse 2 work for tap detection. Battery status in the menu bar requires Magic Mouse 2, since the original model doesn't report battery level.",
   },
   {
-    q: "Does it need Accessibility permissions?",
-    a: "Yes. MagicTouch injects synthetic mouse events via CGEvent, which requires Accessibility access. The app prompts on first launch and shows a warning in the menu if permission is missing.",
+    q: "What does the free trial include?",
+    a: "The full app, every feature, for 14 days. No credit card, no account. When the trial ends, clicks stop being injected but your settings and the app itself stay — you can unlock it anytime for $2.99.",
   },
   {
-    q: "Can I customize tap sensitivity?",
-    a: "Fully. Tap duration threshold (0.05 to 0.5s), movement precision (0.01 to 0.20), pressure boundaries, zone split point, and double-tap window are all adjustable in Preferences.",
+    q: "Is this a subscription?",
+    a: "Nope. One-time purchase. Pay $2.99 once and MagicTouch is yours — including all future updates. No recurring charge, no account.",
+  },
+  {
+    q: "Will I need to give any permissions?",
+    a: "Just one: Accessibility. macOS requires it for any app that creates mouse clicks. MagicTouch walks you through enabling it on first launch — it takes about 10 seconds.",
+  },
+  {
+    q: "Does it change my regular mouse settings?",
+    a: "No. MagicTouch works alongside System Settings without touching them. Your scroll speed, tracking speed, and Magic Mouse gestures all stay exactly as they were.",
+  },
+  {
+    q: "Can I tune how sensitive a tap needs to be?",
+    a: "Yes — everything is adjustable. Tap speed, pressure levels, the zone split, double-tap timing. Start with the defaults (most people love them) and tweak only if you feel like it.",
+  },
+  {
+    q: "Does it collect any data about me?",
+    a: "Zero. Nothing. No analytics, no crash reports, no accounts, no network requests. Every tap stays on your Mac.",
+  },
+  {
+    q: "I'm left-handed — can I flip the zones?",
+    a: "Absolutely. In Preferences, set your dominant hand to Left. Right-click moves to the left side, left-click to the right. One setting, done.",
   },
   {
     q: "Will it conflict with Bartender, Ice, or Hidden Bar?",
-    a: "No. MagicTouch is a standard menu bar app with autosaveName persistence. It works alongside all popular menu bar managers without conflicts.",
+    a: "No. MagicTouch is a well-behaved menu bar app and works alongside every popular menu bar manager.",
   },
   {
-    q: "Does it change system mouse settings?",
-    a: "No. MagicTouch operates independently. It reads raw multitouch data from the private MultitouchSupport framework and injects synthetic clicks at the HID level. Your System Preferences stay untouched.",
+    q: "How do I quickly turn it off?",
+    a: "Three ways. Click the menu bar icon to toggle. Use the keyboard shortcut (⌃⌥⌘T by default, but you can change it). Or say a spoken command through macOS Voice Control — perfect for handing your Mac to someone else.",
   },
   {
-    q: "How does pressure-based right-click work?",
-    a: "The Magic Mouse's capacitive surface reports finger contact area. Larger area means more pressure. MagicTouch classifies contacts into light, medium, and firm. Firm taps trigger right-click. Thresholds are fully configurable.",
-  },
-  {
-    q: "Does it collect any data?",
-    a: "Zero. No analytics, no crash reporter, no accounts, no network requests. All touch processing happens locally.",
-  },
-  {
-    q: "Is it a subscription?",
-    a: "No. MagicTouch is a one-time purchase with no recurring charge and no account required. Pay once, unlock everything including all future updates.",
-  },
-  {
-    q: "What's included?",
-    a: "Everything. Tap-to-click, zone-based and pressure-based right-click, middle-click, per-app rules, haptic and sound feedback, visual overlay, scroll customization, palm rejection, battery monitoring, and start on login. No feature gates.",
-  },
-  {
-    q: "Can I disable it quickly without quitting?",
-    a: "Three ways: the menu bar toggle, a global keyboard shortcut (default ⌃⌥⌘T, rebindable in Preferences), or by voice via macOS Voice Control — bind a spoken command like \"tap off\" to the shortcut in System Settings → Accessibility → Voice Control.",
-  },
-  {
-    q: "Does it support left-handed use?",
-    a: "Yes. Set your dominant hand to Left in Preferences and all tap zones mirror automatically.",
+    q: "What if I change my mind?",
+    a: "Email support@magictouch.app within 30 days and we'll refund you, no questions asked. We'd rather you be happy than keep $2.99.",
   },
 ];
 
@@ -69,12 +69,12 @@ function FAQItem({ faq, index, inView }: { faq: typeof faqs[number]; index: numb
           aria-controls={panelId}
           className="w-full text-left py-5 flex items-start justify-between gap-4 group"
         >
-          <span className="text-[0.95rem] font-medium group-hover:text-foreground transition-colors">
+          <span className={`text-[0.95rem] font-medium transition-colors ${open ? "text-foreground" : "group-hover:text-foreground"}`}>
             {faq.q}
           </span>
           <span
             aria-hidden="true"
-            className="text-dim shrink-0 text-lg leading-none mt-0.5 transition-[transform,color] duration-200 group-hover:text-foreground"
+            className={`shrink-0 text-lg leading-none mt-0.5 transition-[transform,color] duration-200 ${open ? "text-accent-light" : "text-dim group-hover:text-foreground"}`}
             style={{ transform: open ? "rotate(45deg)" : "rotate(0deg)" }}
           >
             +
@@ -85,10 +85,10 @@ function FAQItem({ faq, index, inView }: { faq: typeof faqs[number]; index: numb
         id={panelId}
         role="region"
         aria-labelledby={buttonId}
-        className="overflow-hidden transition-all duration-300 ease-in-out"
-        style={{ maxHeight: open ? "220px" : "0px", opacity: open ? 1 : 0 }}
+        className="grid transition-all duration-300 ease-in-out"
+        style={{ gridTemplateRows: open ? "1fr" : "0fr", opacity: open ? 1 : 0 }}
       >
-        <p className="text-sm text-muted leading-relaxed pb-5">{faq.a}</p>
+        <p className="text-sm text-muted leading-relaxed pb-5 overflow-hidden min-h-0">{faq.a}</p>
       </div>
     </motion.div>
   );
@@ -106,12 +106,12 @@ export default function FAQ() {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
-          <p className="text-xs font-semibold uppercase tracking-widest text-accent-light mb-3">FAQ</p>
+          <p className="text-xs font-semibold uppercase tracking-widest text-accent-light mb-3">Good questions</p>
           <h2 className="text-3xl lg:text-4xl font-bold tracking-tight mb-4">
-            Questions? Answered.
+            Everything you might ask.
           </h2>
           <p className="text-lg text-muted max-w-xl mx-auto">
-            Common questions about compatibility, permissions, customization, and privacy.
+            The stuff people actually want to know — about compatibility, permissions, privacy, and the free trial.
           </p>
         </motion.div>
 

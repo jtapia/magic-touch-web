@@ -10,7 +10,7 @@ export default function Footer() {
               <Image src="/app-icon.png" alt="MagicTouch" width={24} height={24} className="rounded-md" />
               <span className="text-lg font-bold">MagicTouch</span>
             </div>
-            <p className="text-sm text-dim mt-2 max-w-xs">Unlock a faster, more natural way to use your Magic Mouse. Lightweight, native, and fully private.</p>
+            <p className="text-sm text-dim mt-2 max-w-xs">Tap to click, right where you already work. A small, quiet, beautifully native Mac app.</p>
           </div>
           <div className="flex gap-10 sm:gap-16">
             <div className="flex flex-col gap-2">

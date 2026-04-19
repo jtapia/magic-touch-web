@@ -11,8 +11,8 @@ const stats = [
       </svg>
     ),
     value: "~5 MB",
-    label: "Memory usage",
-    desc: "Lighter than a browser tab. Stays running all day without impact.",
+    label: "Barely there",
+    desc: "Uses less memory than a single browser tab. Runs all day without you noticing.",
   },
   {
     icon: (
@@ -20,9 +20,9 @@ const stats = [
         <rect x="3" y="11" width="18" height="11" rx="2" /><path d="M7 11V7a5 5 0 0110 0v4" />
       </svg>
     ),
-    value: "0",
-    label: "Network requests",
-    desc: "No analytics, no telemetry, and no phoning home. Ever.",
+    value: "Offline",
+    label: "No internet needed",
+    desc: "Zero analytics, zero telemetry, zero &ldquo;phone home&rdquo;. Everything happens on your Mac.",
   },
   {
     icon: (
@@ -30,9 +30,9 @@ const stats = [
         <rect x="2" y="7" width="20" height="14" rx="2" /><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16" />
       </svg>
     ),
-    value: "No Dock Icon",
-    label: "Menu bar only",
-    desc: "Pure utility. No Dock clutter, no Cmd+Tab noise.",
+    value: "Menu bar",
+    label: "Stays out of your way",
+    desc: "Tucked into your menu bar. No Dock icon, no Cmd-Tab noise, no clutter.",
   },
   {
     icon: (
@@ -40,17 +40,17 @@ const stats = [
         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /><path d="M9 12l2 2 4-4" />
       </svg>
     ),
-    value: "Native Swift",
-    label: "No Electron, no web views",
-    desc: "Built with SwiftUI and AppKit. Hardened runtime for security.",
+    value: "Built native",
+    label: "Made for Mac",
+    desc: "Pure Swift — no Electron, no web tricks. Signed by Apple and ready for Apple Silicon.",
   },
 ];
 
 const compat = [
-  { name: "Bartender", desc: "Works alongside menu bar managers" },
-  { name: "Ice / Hidden Bar", desc: "No conflicts with icon hiding" },
-  { name: "Magic Mouse 1 + 2", desc: "Tap detection on both; battery monitor is MM2 only" },
-  { name: "macOS 12+", desc: "Monterey and later supported" },
+  { name: "macOS 12+", desc: "Monterey and newer" },
+  { name: "Apple Silicon & Intel", desc: "Universal binary — one download for every Mac" },
+  { name: "Magic Mouse 1 & 2", desc: "Works on both (battery badge is MM2 only)" },
+  { name: "Bartender & Ice", desc: "Plays nice with menu bar managers" },
 ];
 
 export default function Lightweight() {
@@ -66,12 +66,12 @@ export default function Lightweight() {
           transition={{ duration: 0.6 }}
           className="text-center"
         >
-          <p className="text-xs font-semibold uppercase tracking-widest text-accent-light mb-3">Proof</p>
+          <p className="text-xs font-semibold uppercase tracking-widest text-accent-light mb-3">Built right</p>
           <h2 className="text-3xl lg:text-4xl font-bold tracking-tight mb-4">
-            Small footprint. Deep integration.
+            Tiny in size. Big on polish.
           </h2>
           <p className="text-lg text-muted max-w-2xl mx-auto">
-            Native Swift, no runtime overhead, no network activity. Built to stay invisible until you need it.
+            A real Mac app — small, quiet, and respectful of your machine. It works the way macOS was meant to.
           </p>
         </motion.div>
 
@@ -98,7 +98,7 @@ export default function Lightweight() {
           transition={{ duration: 0.5, delay: 0.5 }}
           className="mt-10 bg-card border border-border rounded-xl p-6"
         >
-          <h3 className="text-sm font-semibold uppercase tracking-wider text-center text-muted mb-5">Compatibility</h3>
+          <h3 className="text-sm font-semibold uppercase tracking-wider text-center text-muted mb-5">Works with your Mac</h3>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
             {compat.map((item) => (
               <div key={item.name} className="text-center">

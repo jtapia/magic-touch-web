@@ -24,7 +24,7 @@ export default function Privacy() {
             <span className="block">Your taps stay on your Mac.</span>
           </h2>
           <p className="text-base text-muted leading-relaxed">
-            MagicTouch makes zero network requests. No analytics SDK. No crash reporter. No account system. No telemetry. Touch data is processed locally and never leaves your machine.
+            No accounts. No tracking. No analytics. No data leaves your computer — ever. Everything MagicTouch does, it does right here, just for you.
           </p>
         </motion.div>
       </div>

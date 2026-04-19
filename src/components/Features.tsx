@@ -7,8 +7,8 @@ const VISIBLE_BY_DEFAULT = 9;
 
 const features = [
   {
-    title: "Tap-to-click",
-    desc: "Convert light surface taps into real mouse clicks. Configurable tap duration (0.05 to 0.5s) and movement precision thresholds.",
+    title: "Tap to click",
+    desc: "A light finger touch triggers a real click. Dial the sensitivity to match the way you tap — airy and quick or firm and deliberate.",
     icon: (
       <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <path d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5" />
@@ -16,8 +16,8 @@ const features = [
     ),
   },
   {
-    title: "Double-tap detection",
-    desc: "Two taps within the system double-click interval trigger a proper double-click event, with visual ring feedback.",
+    title: "Double-tap",
+    desc: "Two quick taps open files, highlight words, or select rows — with a soft ring that confirms it was heard.",
     icon: (
       <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <circle cx="12" cy="12" r="3" /><circle cx="12" cy="12" r="8" />
@@ -25,8 +25,8 @@ const features = [
     ),
   },
   {
-    title: "Zone-based right-click",
-    desc: "Tap position on the surface determines left or right click. Adjustable split point and dominant-hand flipping.",
+    title: "Zone right-click",
+    desc: "The right side of the mouse acts as the right button. Drag the split to where it feels best — mirror it for left-handed use.",
     icon: (
       <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <rect x="3" y="3" width="18" height="18" rx="2" /><line x1="12" y1="3" x2="12" y2="21" />
@@ -34,8 +34,8 @@ const features = [
     ),
   },
   {
-    title: "Pressure-based right-click",
-    desc: "Firm taps trigger right-clicks using the finger's contact area as a pressure proxy. Three-tier classification with configurable thresholds.",
+    title: "Pressure right-click",
+    desc: "Press just a little firmer for a right-click, anywhere on the mouse. Three levels of firmness so it matches your natural touch.",
     icon: (
       <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <path d="M12 2v20" /><path d="M2 12h20" /><circle cx="12" cy="12" r="4" />
@@ -43,8 +43,8 @@ const features = [
     ),
   },
   {
-    title: "Middle-click center zone",
-    desc: "Enable an optional center strip for middle-click. Configurable width from 10% to 40% of the surface.",
+    title: "Middle-click strip",
+    desc: "Optional center zone for middle-clicks — great for opening links in new tabs or closing them without lifting your hand.",
     icon: (
       <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <rect x="3" y="3" width="18" height="18" rx="2" /><line x1="9" y1="3" x2="9" y2="21" /><line x1="15" y1="3" x2="15" y2="21" />
@@ -52,8 +52,8 @@ const features = [
     ),
   },
   {
-    title: "Multi-finger tap actions",
-    desc: "Map two- and three-finger taps to any click type. Assign right-click to two fingers, middle-click to three, or mix and match to fit your workflow.",
+    title: "Two- and three-finger taps",
+    desc: "Map a two-finger tap to right-click, or three fingers to middle-click. Mix and match to fit the way you already use your Mac.",
     icon: (
       <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <path d="M9 11V6a2 2 0 014 0v5" /><path d="M13 11V4a2 2 0 014 0v9" /><path d="M17 11a2 2 0 014 0v6a6 6 0 01-6 6H11a6 6 0 01-6-6v-3a2 2 0 014 0" />
@@ -61,8 +61,8 @@ const features = [
     ),
   },
   {
-    title: "Tap-to-drag",
-    desc: "Double-tap and hold to pick up a window, selection, or slider. No need to clamp down on the mouse body mid-drag.",
+    title: "Tap to drag",
+    desc: "Double-tap and hold to grab windows, files, or sliders. No need to clamp the mouse down — your fingers do the work.",
     icon: (
       <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <path d="M13 13l6 6" /><path d="M13 13V5l6 6-6 2z" /><circle cx="6" cy="12" r="2" /><circle cx="12" cy="6" r="2" />
@@ -70,8 +70,8 @@ const features = [
     ),
   },
   {
-    title: "Per-edge dead zones",
-    desc: "Block taps along any edge with an interactive drag editor. Prevents grip-induced clicks along the top, bottom, or sides of the surface.",
+    title: "Edge dead zones",
+    desc: "Drag to block taps along any edge. Stops stray clicks where your fingers rest — right where you grip the mouse.",
     icon: (
       <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <rect x="3" y="3" width="18" height="18" rx="2" strokeDasharray="2 2" /><rect x="7" y="7" width="10" height="10" rx="1" />
@@ -79,8 +79,8 @@ const features = [
     ),
   },
   {
-    title: "Global disable shortcut",
-    desc: "Toggle MagicTouch on or off from anywhere with a rebindable hotkey (default ⌃⌥⌘T). Works with Voice Control for hands-free switching.",
+    title: "One-key on/off",
+    desc: "Pause MagicTouch instantly with ⌃⌥⌘T (fully rebindable). Perfect for games, remote sessions, or anyone borrowing your Mac.",
     icon: (
       <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <rect x="2" y="6" width="20" height="12" rx="2" /><path d="M7 10h.01M11 10h.01M15 10h.01M7 14h10" />
@@ -88,8 +88,8 @@ const features = [
     ),
   },
   {
-    title: "Haptic & sound feedback",
-    desc: "Optional Force Touch trackpad vibration and audio cue on every recognized tap. Builds confidence in the feature.",
+    title: "Haptics & sound",
+    desc: "Subtle haptic buzz and a soft tick confirm every tap — so you know it landed without even glancing at the screen.",
     icon: (
       <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" /><path d="M19.07 4.93a10 10 0 010 14.14" /><path d="M15.54 8.46a5 5 0 010 7.07" />
@@ -97,8 +97,8 @@ const features = [
     ),
   },
   {
-    title: "Visual tap overlay",
-    desc: "A colored dot appears at the cursor on each tap. Separate colors for left and right clicks, with ring indicator for double-clicks.",
+    title: "Visual click dot",
+    desc: "A tiny colored dot flashes at your cursor when you click. Helpful for screen recordings and tutorials — or turn it off entirely.",
     icon: (
       <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <circle cx="12" cy="12" r="10" /><circle cx="12" cy="12" r="3" />
@@ -107,7 +107,7 @@ const features = [
   },
   {
     title: "Palm rejection",
-    desc: "Typing pause mode suppresses taps for 500ms after any keypress. Prevents accidental clicks when your hand hovers near the mouse.",
+    desc: "Briefly ignores taps while you&apos;re typing — so your hand hovering over the mouse never turns into a misclick.",
     icon: (
       <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
@@ -115,8 +115,8 @@ const features = [
     ),
   },
   {
-    title: "Per-app right-click rules",
-    desc: "Blocklist apps that should always get left-clicks. Useful for terminals, games, or any app where right-click causes issues.",
+    title: "Per-app rules",
+    desc: "Turn off right-click in specific apps — ideal for games, remote desktops, or anything that prefers pure left-clicks.",
     icon: (
       <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <rect x="2" y="3" width="20" height="14" rx="2" /><line x1="8" y1="21" x2="16" y2="21" /><line x1="12" y1="17" x2="12" y2="21" />
@@ -124,8 +124,8 @@ const features = [
     ),
   },
   {
-    title: "Scroll customization",
-    desc: "Independent scroll sensitivity multiplier (0.25 to 4x) and direction inversion without touching system settings.",
+    title: "Your own scroll feel",
+    desc: "Make scrolling faster, slower, or reversed — separate from the rest of your Mac. No system tweaks required.",
     icon: (
       <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <polyline points="17 1 21 5 17 9" /><path d="M3 11V9a4 4 0 014-4h14" /><polyline points="7 23 3 19 7 15" /><path d="M21 13v2a4 4 0 01-4 4H3" />
@@ -133,8 +133,8 @@ const features = [
     ),
   },
   {
-    title: "Battery monitoring",
-    desc: "Magic Mouse 2 battery level displayed in the menu bar with color-coded badge: green, yellow, or red based on charge.",
+    title: "Battery in the menu bar",
+    desc: "See your Magic Mouse 2 battery at a glance — a small colored dot tells you when it&apos;s time to plug in.",
     icon: (
       <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <rect x="1" y="6" width="18" height="12" rx="2" /><line x1="23" y1="13" x2="23" y2="11" /><line x1="6" y1="10" x2="6" y2="14" /><line x1="10" y1="10" x2="10" y2="14" />
@@ -142,8 +142,8 @@ const features = [
     ),
   },
   {
-    title: "Start on login",
-    desc: "Launch automatically when you log in via native SMAppService on macOS 13+. No Launch Agents, no workarounds.",
+    title: "Launch on login",
+    desc: "Opens quietly in the background when you log in — so tap-to-click is always ready the moment you are.",
     icon: (
       <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <path d="M18.36 6.64a9 9 0 11-12.73 0" /><line x1="12" y1="2" x2="12" y2="12" />
@@ -168,13 +168,13 @@ export default function Features() {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
-          <p className="text-xs font-semibold uppercase tracking-widest text-accent-light mb-3">Capabilities</p>
+          <p className="text-xs font-semibold uppercase tracking-widest text-accent-light mb-3">Everything included</p>
           <h2 className="text-3xl lg:text-4xl font-bold tracking-tight mb-4">
-            <span className="block">Everything your Magic Mouse</span>
-            <span className="block md:inline gradient-text"> should have done from day one.</span>
+            <span className="block">Small app.</span>
+            <span className="block md:inline gradient-text"> Thoughtful details everywhere.</span>
           </h2>
           <p className="text-lg text-muted max-w-2xl mx-auto">
-            Deep customization for tap behavior, right-click modes, feedback, scroll, and per-app rules.
+            Every feature is on for everyone — no upsells, no &ldquo;Pro&rdquo; tier, no strings. Tweak what you like, ignore what you don&apos;t.
           </p>
         </motion.div>
 
@@ -207,7 +207,7 @@ export default function Features() {
         >
           {!expanded && (
             <p className="text-sm text-dim">
-              +{hiddenCount} more features included
+              +{hiddenCount} more thoughtful details included
             </p>
           )}
           <button

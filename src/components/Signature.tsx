@@ -15,12 +15,12 @@ export default function Signature() {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
-          <p className="text-xs font-semibold uppercase tracking-widest text-accent-light mb-3">Signature Feature</p>
+          <p className="text-xs font-semibold uppercase tracking-widest text-accent-light mb-3">Right-click, your way</p>
           <h2 className="text-3xl lg:text-4xl font-bold tracking-tight mb-4">
-            Right-click that<br className="hidden md:block" /> <span className="gradient-text">reads your intent.</span>
+            Two ways to right-click.<br className="hidden md:block" /> <span className="gradient-text">Pick what feels right.</span>
           </h2>
           <p className="text-lg text-muted max-w-2xl mx-auto leading-relaxed">
-            Two right-click modes let you choose how context menus are triggered. Zone-based splits the surface by position. Pressure-based reads how firmly you tap. Switch anytime in Preferences.
+            Tap on the right side of the mouse — or press a little firmer, anywhere. Whichever matches how your hand already moves. Switch modes anytime.
           </p>
         </motion.div>
 
@@ -39,10 +39,10 @@ export default function Signature() {
                   <rect x="3" y="3" width="18" height="18" rx="2" /><line x1="12" y1="3" x2="12" y2="21" />
                 </svg>
               </div>
-              <h3 className="text-lg font-semibold">Zone-Based</h3>
+              <h3 className="text-lg font-semibold">Tap by zone</h3>
             </div>
             <p className="text-sm text-muted leading-relaxed mb-4">
-              Tap position determines click type. Configurable split point with left-hand support.
+              Left side gets a left click. Right side gets a right click. Drag the split line to your taste — left-handed users can mirror it in one tap.
             </p>
             <div className="h-16 rounded-xl border border-border-light bg-surface overflow-hidden flex">
               <div className="flex-[55] bg-accent/8 flex items-center justify-center text-xs font-semibold text-accent-light border-r border-border-light">
@@ -62,10 +62,10 @@ export default function Signature() {
                   <path d="M12 2v20" /><path d="M2 12h20" /><circle cx="12" cy="12" r="4" /><circle cx="12" cy="12" r="8" />
                 </svg>
               </div>
-              <h3 className="text-lg font-semibold">Pressure-Based</h3>
+              <h3 className="text-lg font-semibold">Tap by pressure</h3>
             </div>
             <p className="text-sm text-muted leading-relaxed mb-4">
-              Firmness of tap determines click type. Contact area is mapped to three pressure levels.
+              Press a little firmer to right-click — anywhere on the surface. Three sensitivity levels so it fits the way you naturally touch.
             </p>
             <div className="flex gap-2">
               {[
@@ -89,9 +89,9 @@ export default function Signature() {
           className="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-12"
         >
           {[
-            { value: "55/45", label: "Default zone split (configurable)" },
-            { value: "3 Levels", label: "Pressure: light, medium, firm" },
-            { value: "Center Zone", label: "Optional middle-click strip" },
+            { value: "Drag to split", label: "Set left/right wherever feels natural" },
+            { value: "3 pressures", label: "Light, medium, and firm — tuned to your touch" },
+            { value: "Middle click", label: "Optional center strip for paste & new tab" },
           ].map((stat) => (
             <div key={stat.label} className="text-center rounded-2xl border border-border bg-card px-6 py-7">
               <span className="block text-2xl font-extrabold gradient-text">{stat.value}</span>

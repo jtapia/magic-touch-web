@@ -42,12 +42,28 @@ html.dark {
 
 html {
   scroll-behavior: smooth;
+  /* Ensure anchor links don't hide under the fixed nav */
+  scroll-padding-top: 72px;
 }
 
 body {
   background: var(--color-background);
   color: var(--color-foreground);
   -webkit-font-smoothing: antialiased;
+  /* Give breathing room for sticky mobile CTA */
+  padding-bottom: 0;
+}
+
+@media (max-width: 639px) {
+  body {
+    padding-bottom: 72px;
+  }
+}
+
+/* Subtle selection color */
+::selection {
+  background: color-mix(in srgb, var(--color-accent) 22%, transparent);
+  color: var(--color-foreground);
 }
 
 .gradient-text {
