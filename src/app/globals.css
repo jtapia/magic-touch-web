@@ -101,6 +101,84 @@ body {
   50% { opacity: 0; }
 }
 
+/* Long-form legal / docs prose
+   Used by /privacy and /terms — and any future policy pages.
+   Wrap content sections in <article className="prose-section"> so headings,
+   paragraphs, lists, and links pick up consistent typography. */
+.prose-section {
+  font-size: 0.95rem;
+}
+
+.prose-section h2 {
+  font-size: 1.0625rem;
+  font-weight: 700;
+  letter-spacing: -0.005em;
+  color: var(--color-foreground);
+  margin-top: 2.5rem;
+  margin-bottom: 0.75rem;
+  padding-top: 2.25rem;
+  border-top: 1px solid var(--color-border);
+}
+
+.prose-section > h2:first-child {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: none;
+}
+
+.prose-section h3 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--color-foreground);
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.prose-section p {
+  color: var(--color-muted);
+  line-height: 1.7;
+  margin-bottom: 1rem;
+}
+
+.prose-section ul {
+  list-style: disc;
+  padding-left: 1.4rem;
+  color: var(--color-muted);
+  margin: 0.25rem 0 1rem;
+}
+
+.prose-section li {
+  line-height: 1.65;
+  margin-bottom: 0.375rem;
+}
+
+.prose-section li::marker {
+  color: var(--color-accent);
+}
+
+.prose-section a {
+  color: var(--color-accent);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  transition: color 0.15s;
+}
+
+.prose-section a:hover {
+  color: var(--color-accent-light);
+}
+
+.prose-section strong {
+  color: var(--color-foreground);
+  font-weight: 600;
+}
+
+.prose-lead {
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  color: var(--color-muted);
+}
+
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: rgba(0, 0, 0, 0.15); border-radius: 3px; }
