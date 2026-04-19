@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { DOWNLOAD_URL } from "@/lib/site";
+import { useCta } from "@/hooks/useCta";
 
 const proofItems = [
   { label: "Try it free", value: "14 days, full app" },
@@ -10,6 +11,14 @@ const proofItems = [
 ];
 
 export default function Hero() {
+  const cta = useCta();
+  const primaryHref = cta.mode === "waitlist" ? cta.href : DOWNLOAD_URL ?? "#pricing";
+  const primaryLabel =
+    cta.mode === "waitlist"
+      ? "Join the waitlist"
+      : DOWNLOAD_URL
+        ? "Try free for 14 days"
+        : "Start free trial";
   return (
     <section className="min-h-screen flex items-center pt-[60px]">
       <div className="max-w-[1120px] mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center py-20">
@@ -44,10 +53,10 @@ export default function Hero() {
 
           <div className="flex flex-col sm:flex-row items-stretch lg:items-start gap-3 mb-6 w-full">
             <a
-              href={DOWNLOAD_URL ?? "#pricing"}
+              href={primaryHref}
               className="gradient-bg text-white w-full sm:flex-1 px-4 sm:px-7 py-3 sm:py-3.5 rounded-xl font-semibold text-sm sm:text-base flex items-center justify-center gap-2 shadow-lg shadow-accent/25 hover:shadow-accent/40 hover:-translate-y-0.5 transition-all"
             >
-              {DOWNLOAD_URL ? "Try free for 14 days" : "Start free trial"}
+              {primaryLabel}
             </a>
             <a
               href="#how-it-works"

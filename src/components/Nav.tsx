@@ -6,6 +6,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useTheme } from "@/context/ThemeContext";
 import { DOWNLOAD_URL } from "@/lib/site";
+import { useCta } from "@/hooks/useCta";
 
 function SunIcon() {
   return (
@@ -50,8 +51,10 @@ export default function Nav() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const primaryHref = DOWNLOAD_URL ?? "/#pricing";
-  const primaryLabel = DOWNLOAD_URL ? "Try free" : "Get Tappit";
+  const cta = useCta();
+  const primaryHref = cta.mode === "waitlist" ? cta.href : DOWNLOAD_URL ?? "/#pricing";
+  const primaryLabel =
+    cta.mode === "waitlist" ? "Join waitlist" : DOWNLOAD_URL ? "Try free" : "Get Tappit";
 
   return (
     <>
@@ -161,7 +164,11 @@ export default function Nav() {
             href={primaryHref}
             className="block text-center gradient-bg text-white px-6 py-3 rounded-xl text-sm font-semibold shadow-lg shadow-accent/30"
           >
-            {DOWNLOAD_URL ? "Try Tappit free for 14 days" : "Get Tappit · $2.99"}
+            {cta.mode === "waitlist"
+              ? "Join the Tappit waitlist"
+              : DOWNLOAD_URL
+                ? "Try Tappit free for 14 days"
+                : "Get Tappit · $2.99"}
           </a>
         </motion.div>
       )}

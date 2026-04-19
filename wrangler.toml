@@ -4,3 +4,12 @@ pages_build_output_dir = "out"
 
 [assets]
 directory = "./out"
+
+# Runtime variables read by Pages Functions (e.g. functions/api/cta.ts).
+# Flip CTA_MODE between "purchase" and "waitlist" to toggle the site CTA
+# without rebuilding — either via the Cloudflare dashboard (Pages → Settings →
+# Variables and Secrets) or by editing here and redeploying.
+[vars]
+CTA_MODE = "purchase"
+WAITLIST_URL = "https://www.producthunt.com/upcoming/tappit"
+PURCHASE_URL = "#pricing"
