@@ -26,7 +26,7 @@ export default function TermsOfUse() {
         <header className="mb-12 pb-10 border-b border-border">
           <p className="text-xs font-semibold uppercase tracking-widest text-accent-light mb-3">Legal</p>
           <h1 className="text-4xl lg:text-5xl font-bold tracking-tight mb-3">Terms of Use</h1>
-          <p className="text-sm text-dim mb-6">Last updated April 6, 2026</p>
+          <p className="text-sm text-dim mb-6">Last updated April 18, 2026</p>
           <p className="prose-lead">
             By purchasing or using MagicTouch, you agree to the following terms. We&apos;ve kept them short and plain — no surprise clauses.
           </p>
