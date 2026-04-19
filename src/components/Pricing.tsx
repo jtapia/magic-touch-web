@@ -3,6 +3,7 @@
 import { motion, useInView } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
 import { DOWNLOAD_URL, STRIPE_LINK, isExternalStripeLink } from "@/lib/site";
+import { useCta } from "@/hooks/useCta";
 
 /*
  * Sale end date. If you change pricing or want to extend/shorten the sale,
@@ -92,7 +93,9 @@ export default function Pricing() {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-100px" });
   const countdown = useCountdown(SALE_END_DATE);
-  const onSale = !countdown.expired;
+  const cta = useCta();
+  const isWaitlist = cta.mode === "waitlist";
+  const onSale = !countdown.expired && !isWaitlist;
 
   return (
     <section ref={ref} id="pricing" className="py-16 md:py-32 text-center">
@@ -104,10 +107,12 @@ export default function Pricing() {
         >
           <p className="text-xs font-semibold uppercase tracking-widest text-accent-light mb-3">Pricing</p>
           <h2 className="text-3xl lg:text-4xl font-bold tracking-tight mb-4">
-            One price. Everything unlocked.
+            {isWaitlist ? "One price. Coming soon." : "One price. Everything unlocked."}
           </h2>
           <p className="text-lg text-muted max-w-2xl mx-auto">
-            No tiers. No subscriptions. No hidden &ldquo;Pro&rdquo; plan. Pay once, enjoy every feature (and every future update) for as long as you want.
+            {isWaitlist
+              ? "Tappit isn't on sale yet — we're putting the final polish on it. Here's what you'll get, and what it will cost, the day it ships."
+              : "No tiers. No subscriptions. No hidden \u201cPro\u201d plan. Pay once, enjoy every feature (and every future update) for as long as you want."}
           </p>
         </motion.div>
 
@@ -115,20 +120,32 @@ export default function Pricing() {
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.45, delay: 0.2 }}
-          className="relative rounded-3xl border-2 border-accent/30 bg-card p-6 sm:p-9 text-left mt-12 shadow-xl shadow-accent/5"
+          className={`relative rounded-3xl border-2 p-6 sm:p-9 text-left mt-12 shadow-xl transition-colors ${
+            isWaitlist
+              ? "border-dashed border-border-light bg-card/60 shadow-black/5"
+              : "border-accent/30 bg-card shadow-accent/5"
+          }`}
+          aria-disabled={isWaitlist || undefined}
         >
           {onSale && (
             <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 gradient-bg text-white text-[0.7rem] font-bold px-3 py-1 rounded-full tracking-wide shadow-lg shadow-accent/20 whitespace-nowrap">
               ✨ LAUNCH PRICE
             </span>
           )}
+          {isWaitlist && (
+            <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-surface border border-border text-muted text-[0.7rem] font-bold px-3 py-1 rounded-full tracking-wide whitespace-nowrap">
+              COMING SOON
+            </span>
+          )}
 
           <div className="text-center mt-2">
-            <div className="flex items-baseline justify-center gap-2">
+            <div className={`flex items-baseline justify-center gap-2 ${isWaitlist ? "opacity-70" : ""}`}>
               <span className="text-5xl sm:text-6xl font-extrabold gradient-text">$2.99</span>
               {onSale && <span className="text-lg text-dim line-through">$3.99</span>}
             </div>
-            <p className="text-sm text-muted mt-2">One-time payment. Yours forever.</p>
+            <p className="text-sm text-muted mt-2">
+              {isWaitlist ? "Planned launch price. One-time payment." : "One-time payment. Yours forever."}
+            </p>
 
             {/* Countdown timer — only shows when sale is live and client has mounted */}
             {onSale && countdown.ready && (
@@ -149,7 +166,7 @@ export default function Pricing() {
             )}
           </div>
 
-          <div className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-5 sm:gap-6 text-left">
+          <div className={`mt-8 grid grid-cols-1 sm:grid-cols-3 gap-5 sm:gap-6 text-left ${isWaitlist ? "opacity-80" : ""}`}>
             {featureGroups.map((group) => (
               <div key={group.heading}>
                 <h3 className="text-[11px] font-bold uppercase tracking-widest text-accent-light mb-2.5">{group.heading}</h3>
@@ -166,24 +183,42 @@ export default function Pricing() {
           </div>
 
           <div className="mt-8 flex flex-col gap-3">
-            {/* Primary: free trial */}
-            <a
-              href={DOWNLOAD_URL ?? "#"}
-              className="block text-center gradient-bg text-white px-6 py-3.5 rounded-xl font-semibold shadow-lg shadow-accent/25 hover:shadow-accent/40 hover:-translate-y-0.5 transition-all"
-            >
-              Try free for 14 days
-            </a>
-            <p className="text-center text-xs text-dim">No credit card · Full app unlocked · No auto-charge</p>
+            {isWaitlist ? (
+              <>
+                <a
+                  href={cta.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block text-center gradient-bg text-white px-6 py-3.5 rounded-xl font-semibold shadow-lg shadow-accent/25 hover:shadow-accent/40 hover:-translate-y-0.5 transition-all"
+                >
+                  Join the waitlist
+                </a>
+                <p className="text-center text-xs text-dim">
+                  We&rsquo;ll email you the moment Tappit is available.
+                </p>
+              </>
+            ) : (
+              <>
+                {/* Primary: free trial */}
+                <a
+                  href={DOWNLOAD_URL ?? "#"}
+                  className="block text-center gradient-bg text-white px-6 py-3.5 rounded-xl font-semibold shadow-lg shadow-accent/25 hover:shadow-accent/40 hover:-translate-y-0.5 transition-all"
+                >
+                  Try free for 14 days
+                </a>
+                <p className="text-center text-xs text-dim">No credit card · Full app unlocked · No auto-charge</p>
 
-            {/* Secondary: buy now */}
-            <a
-              href={STRIPE_LINK}
-              target={isExternalStripeLink ? "_blank" : undefined}
-              rel={isExternalStripeLink ? "noopener noreferrer" : undefined}
-              className="block text-center border border-border-light bg-card hover:bg-card-hover px-6 py-3 rounded-xl font-semibold text-sm transition-all"
-            >
-              Buy now for $2.99 →
-            </a>
+                {/* Secondary: buy now */}
+                <a
+                  href={STRIPE_LINK}
+                  target={isExternalStripeLink ? "_blank" : undefined}
+                  rel={isExternalStripeLink ? "noopener noreferrer" : undefined}
+                  className="block text-center border border-border-light bg-card hover:bg-card-hover px-6 py-3 rounded-xl font-semibold text-sm transition-all"
+                >
+                  Buy now for $2.99 &rarr;
+                </a>
+              </>
+            )}
           </div>
         </motion.div>
 
@@ -193,9 +228,11 @@ export default function Pricing() {
           transition={{ delay: 0.6 }}
           className="text-sm text-dim mt-6"
         >
-          {onSale
-            ? "Launch price for a limited time. Regular price $3.99."
-            : "One-time purchase · Instant download · Free updates"}
+          {isWaitlist
+            ? "Launching soon · One-time purchase · No subscriptions"
+            : onSale
+              ? "Launch price for a limited time. Regular price $3.99."
+              : "One-time purchase · Instant download · Free updates"}
         </motion.p>
       </div>
     </section>
