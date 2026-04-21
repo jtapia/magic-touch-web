@@ -4,12 +4,20 @@ import { motion, useInView } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { useRef } from "react";
-import { DOWNLOAD_URL, STRIPE_LINK, isExternalStripeLink, launchMode } from "@/lib/site";
-import Waitlist from "@/components/Waitlist";
+import { DOWNLOAD_URL, STRIPE_LINK, isExternalStripeLink } from "@/lib/site";
+import { useCta } from "@/hooks/useCta";
 
 export default function Download() {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-100px" });
+  const cta = useCta();
+  const isWaitlist = cta.mode === "waitlist";
+  const primaryHref = isWaitlist ? cta.href : DOWNLOAD_URL ?? "#pricing";
+  const primaryLabel = isWaitlist
+    ? "Join the waitlist"
+    : DOWNLOAD_URL
+      ? "Download free trial"
+      : "Start free trial";
 
   return (
     <section ref={ref} id="download" className="py-16 md:py-32 text-center">
@@ -19,45 +27,43 @@ export default function Download() {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
-          <Image src="/app-icon-large.png" alt="MagicTouch" width={96} height={96} className="mx-auto mb-6 rounded-2xl shadow-lg shadow-accent/10" priority />
+          <Image src="/app-icon-large.png" alt="Tappit" width={96} height={96} className="mx-auto mb-6 rounded-2xl shadow-lg shadow-accent/10" priority />
           <h2 className="text-4xl lg:text-5xl font-bold tracking-tight leading-tight mb-4">
             {launchMode === "waitlist" ? "Be the first to try it." : "Ready to stop pressing?"}
           </h2>
           <p className="text-muted text-lg leading-relaxed mt-4">
-            {launchMode === "waitlist"
-              ? "MagicTouch is launching soon. Join the waitlist and we'll email you the moment it's ready."
+            {isWaitlist
+              ? "Tappit is almost here. Join the waitlist and we'll email you on launch day."
               : "Try the full app free for 14 days. If you love it (and we think you will), keep it forever for $2.99."}
           </p>
 
-          {launchMode === "waitlist" ? (
-            <div className="mt-8 max-w-md mx-auto">
-              <Waitlist />
-            </div>
-          ) : (
-            <>
-              <div className="flex flex-col sm:flex-row justify-center gap-3 mt-8">
-                <a
-                  href={DOWNLOAD_URL ?? "#pricing"}
-                  className="gradient-bg text-white px-6 py-3 rounded-xl font-semibold shadow-lg shadow-accent/25 hover:shadow-accent/40 hover:-translate-y-0.5 transition-all flex items-center justify-center gap-2"
-                >
-                  {DOWNLOAD_URL && (
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                      <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4" />
-                      <polyline points="7 10 12 15 17 10" />
-                      <line x1="12" y1="15" x2="12" y2="3" />
-                    </svg>
-                  )}
-                  {DOWNLOAD_URL ? "Download free trial" : "Start free trial"}
-                </a>
-                <a
-                  href={STRIPE_LINK}
-                  target={isExternalStripeLink ? "_blank" : undefined}
-                  rel={isExternalStripeLink ? "noopener noreferrer" : undefined}
-                  className="px-6 py-3 rounded-xl font-semibold border border-border-light bg-card hover:bg-card-hover transition-colors"
-                >
-                  Buy for $2.99
-                </a>
-              </div>
+          <div className="flex flex-col sm:flex-row justify-center gap-3 mt-8">
+            <a
+              href={primaryHref}
+              target={isWaitlist ? "_blank" : undefined}
+              rel={isWaitlist ? "noopener noreferrer" : undefined}
+              className="gradient-bg text-white px-6 py-3 rounded-xl font-semibold shadow-lg shadow-accent/25 hover:shadow-accent/40 hover:-translate-y-0.5 transition-all flex items-center justify-center gap-2"
+            >
+              {!isWaitlist && DOWNLOAD_URL && (
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4" />
+                  <polyline points="7 10 12 15 17 10" />
+                  <line x1="12" y1="15" x2="12" y2="3" />
+                </svg>
+              )}
+              {primaryLabel}
+            </a>
+            {!isWaitlist && (
+              <a
+                href={STRIPE_LINK}
+                target={isExternalStripeLink ? "_blank" : undefined}
+                rel={isExternalStripeLink ? "noopener noreferrer" : undefined}
+                className="px-6 py-3 rounded-xl font-semibold border border-border-light bg-card hover:bg-card-hover transition-colors"
+              >
+                Buy for $2.99
+              </a>
+            )}
+          </div>
 
               <p className="text-xs text-dim mt-4 leading-relaxed">
                 No credit card required · macOS 12 or later · Works on Apple Silicon &amp; Intel
@@ -90,7 +96,7 @@ export default function Download() {
               </svg>
               View changelog
             </Link>
-            <a href="mailto:support@magictouch.app" className="inline-flex items-center gap-1.5 hover:text-foreground transition-colors">
+            <a href="mailto:support@gettappit.com" className="inline-flex items-center gap-1.5 hover:text-foreground transition-colors">
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                 <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
                 <polyline points="22,6 12,13 2,6" />

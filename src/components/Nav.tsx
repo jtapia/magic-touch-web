@@ -5,7 +5,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useTheme } from "@/context/ThemeContext";
-import { DOWNLOAD_URL, launchMode } from "@/lib/site";
+import { DOWNLOAD_URL } from "@/lib/site";
+import { useCta } from "@/hooks/useCta";
 
 function SunIcon() {
   return (
@@ -50,18 +51,10 @@ export default function Nav() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const primaryHref =
-    launchMode === "launched"
-      ? DOWNLOAD_URL!
-      : launchMode === "waitlist"
-      ? "/#pricing"
-      : "/#pricing";
+  const cta = useCta();
+  const primaryHref = cta.mode === "waitlist" ? cta.href : DOWNLOAD_URL ?? "/#pricing";
   const primaryLabel =
-    launchMode === "launched"
-      ? "Try free"
-      : launchMode === "waitlist"
-      ? "Join waitlist"
-      : "Get MagicTouch";
+    cta.mode === "waitlist" ? "Join waitlist" : DOWNLOAD_URL ? "Try free" : "Get Tappit";
 
   return (
     <>
@@ -78,7 +71,7 @@ export default function Nav() {
         <div className="max-w-[1120px] mx-auto px-6 h-[60px] flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2.5 -m-1 p-1 rounded-lg">
             <Image src="/app-icon.png" alt="" width={28} height={28} className="rounded-md" aria-hidden="true" />
-            <span className="text-lg font-bold tracking-tight">MagicTouch</span>
+            <span className="text-lg font-bold tracking-tight">Tappit</span>
           </Link>
           <div className="flex items-center gap-5 sm:gap-6 text-sm text-muted">
             {navLinks.map((link) => (
@@ -171,11 +164,11 @@ export default function Nav() {
             href={primaryHref}
             className="block text-center gradient-bg text-white px-6 py-3 rounded-xl text-sm font-semibold shadow-lg shadow-accent/30"
           >
-            {launchMode === "launched"
-              ? "Try MagicTouch free for 14 days"
-              : launchMode === "waitlist"
-              ? "Join the MagicTouch waitlist"
-              : "Get MagicTouch · $2.99"}
+            {cta.mode === "waitlist"
+              ? "Join the Tappit waitlist"
+              : DOWNLOAD_URL
+                ? "Try Tappit free for 14 days"
+                : "Get Tappit · $2.99"}
           </a>
         </motion.div>
       )}

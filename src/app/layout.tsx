@@ -8,7 +8,7 @@ const inter = Inter({
   variable: "--font-inter",
 });
 
-const siteUrl = "https://magictouch.app";
+const siteUrl = "https://gettappit.com";
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -17,7 +17,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "MagicTouch: Tap-to-click for your Magic Mouse",
+  title: "Tappit: Tap-to-click for your Magic Mouse",
   description:
     "Add trackpad-style tap-to-click to your Apple Magic Mouse. Light, kinder-on-your-hands clicks, smart right-click, and subtle haptics. One-time $2.99 · 14-day free trial · Zero data collected.",
   metadataBase: new URL(siteUrl),
@@ -35,8 +35,8 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     url: siteUrl,
-    siteName: "MagicTouch",
-    title: "MagicTouch: Tap-to-click for your Magic Mouse",
+    siteName: "Tappit",
+    title: "Tappit: Tap-to-click for your Magic Mouse",
     description:
       "Tap instead of press on your Magic Mouse. Smart right-click, subtle haptics, and every thoughtful detail. $2.99 · 14-day free trial.",
     images: [
@@ -53,13 +53,13 @@ export const metadata: Metadata = {
         url: "/app-icon-large.png",
         width: 512,
         height: 512,
-        alt: "MagicTouch app icon",
+        alt: "Tappit app icon",
       },
     ],
   },
   twitter: {
-    card: "summary_large_image",
-    title: "MagicTouch: Tap-to-click for your Magic Mouse",
+    card: "summary",
+    title: "Tappit: Tap-to-click for your Magic Mouse",
     description:
       "Tap instead of press on your Magic Mouse. Smart right-click, subtle haptics, and every thoughtful detail. $2.99 · 14-day free trial.",
     images: ["/og-image.png"],
@@ -95,7 +95,7 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "SoftwareApplication",
-              name: "MagicTouch",
+              name: "Tappit",
               operatingSystem: "macOS 12.0 or later",
               applicationCategory: "UtilitiesApplication",
               softwareVersion: "1.0.0",

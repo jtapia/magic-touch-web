@@ -8,8 +8,8 @@ export default function Footer() {
         <div className="flex flex-col md:flex-row justify-between gap-6 md:gap-10">
           <div>
             <div className="flex items-center gap-2.5">
-              <Image src="/app-icon.png" alt="MagicTouch" width={24} height={24} className="rounded-md" />
-              <span className="text-lg font-bold">MagicTouch</span>
+              <Image src="/app-icon.png" alt="Tappit" width={24} height={24} className="rounded-md" />
+              <span className="text-lg font-bold">Tappit</span>
             </div>
             <p className="text-sm text-dim mt-2 max-w-xs">Tap to click, right where you already work. A small, quiet, beautifully native Mac app.</p>
           </div>
@@ -26,7 +26,7 @@ export default function Footer() {
               <a href="/#faq" className="text-sm text-dim hover:text-foreground transition-colors">FAQ</a>
               <Link href="/changelog" className="text-sm text-dim hover:text-foreground transition-colors">Changelog</Link>
               <Link href="/press" className="text-sm text-dim hover:text-foreground transition-colors">Press Kit</Link>
-              <a href="mailto:support@magictouch.app" className="text-sm text-dim hover:text-foreground transition-colors">Contact</a>
+              <a href="mailto:support@gettappit.com" className="text-sm text-dim hover:text-foreground transition-colors">Contact</a>
             </div>
             <div className="flex flex-col gap-2">
               <h4 className="text-sm font-semibold mb-1">Legal</h4>
@@ -36,7 +36,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="mt-10 pt-5 border-t border-border">
-          <p className="text-xs text-dim text-center">&copy; {new Date().getFullYear()} MagicTouch. All rights reserved.</p>
+          <p className="text-xs text-dim text-center">&copy; {new Date().getFullYear()} Tappit. All rights reserved.</p>
         </div>
       </div>
     </footer>

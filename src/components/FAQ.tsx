@@ -14,15 +14,15 @@ const faqs = [
   },
   {
     q: "Is this a subscription?",
-    a: "Nope. One-time purchase. Pay $2.99 once and MagicTouch is yours, including all future updates. No recurring charge, no account.",
+    a: "Nope. One-time purchase. Pay $2.99 once and Tappit is yours, including all future updates. No recurring charge, no account.",
   },
   {
     q: "Will I need to give any permissions?",
-    a: "Just one: Accessibility. macOS requires it for any app that creates mouse clicks. MagicTouch walks you through enabling it on first launch. It takes about 10 seconds.",
+    a: "Just one: Accessibility. macOS requires it for any app that creates mouse clicks. Tappit walks you through enabling it on first launch. It takes about 10 seconds.",
   },
   {
     q: "Does it change my regular mouse settings?",
-    a: "No. MagicTouch works alongside System Settings without touching them. Your scroll speed, tracking speed, and Magic Mouse gestures all stay exactly as they were.",
+    a: "No. Tappit works alongside System Settings without touching them. Your scroll speed, tracking speed, and Magic Mouse gestures all stay exactly as they were.",
   },
   {
     q: "Can I tune how sensitive a tap needs to be?",
@@ -38,15 +38,19 @@ const faqs = [
   },
   {
     q: "Will it conflict with Bartender, Ice, or Hidden Bar?",
-    a: "No. MagicTouch is a well-behaved menu bar app and works alongside every popular menu bar manager.",
+    a: "No. Tappit is a well-behaved menu bar app and works alongside every popular menu bar manager.",
   },
   {
     q: "How do I quickly turn it off?",
-    a: "Three ways. Click the menu bar icon to toggle. Use the keyboard shortcut (⌃⌥⌘T by default, but you can change it). Or say a spoken command through macOS Voice Control, perfect for handing your Mac to someone else.",
+    a: "Several ways. Click the menu bar icon, use the keyboard shortcut (⌃⌥⌘T by default, rebindable), or ask Siri to \"Toggle Tappit.\" You can also wire it into any Shortcuts workflow or trigger it from Spotlight.",
+  },
+  {
+    q: "Do I need to turn off Smart Zoom?",
+    a: "Yes. macOS Smart Zoom uses double-tap on the mouse surface, which conflicts with Tappit's double-tap. The first-launch guide detects this and walks you through disabling it in System Settings. It takes five seconds.",
   },
   {
     q: "What if I change my mind?",
-    a: "Email support@magictouch.app within 30 days and we'll refund you, no questions asked. We'd rather you be happy than keep $2.99.",
+    a: "Email support@gettappit.com within 30 days and we'll refund you, no questions asked. We'd rather you be happy than keep $2.99.",
   },
 ];
 

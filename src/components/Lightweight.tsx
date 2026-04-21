@@ -49,7 +49,7 @@ const stats = [
 const compat = [
   { name: "macOS 12+", desc: "Monterey and newer" },
   { name: "Apple Silicon & Intel", desc: "Universal binary, one download for every Mac" },
-  { name: "Magic Mouse 1 & 2", desc: "Works on both (battery badge is MM2 only)" },
+  { name: "Magic Mouse 1 & 2", desc: "Works on both, even multiple mice at once" },
   { name: "Bartender & Ice", desc: "Plays nice with menu bar managers" },
 ];
 
