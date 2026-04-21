@@ -70,10 +70,6 @@ export default function Hero() {
             </a>
           </div>
 
-          <p className="text-xs text-dim mb-8 text-center lg:text-left">
-            No credit card · Works on macOS 12 and later · Apple Silicon &amp; Intel
-          </p>
-
           <div className="grid grid-cols-1 min-[420px]:grid-cols-3 gap-3 text-left">
             {proofItems.map((item) => (
               <div key={item.label} className="rounded-2xl border border-border bg-card/80 px-4 py-3 backdrop-blur-sm">

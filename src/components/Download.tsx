@@ -29,7 +29,7 @@ export default function Download() {
         >
           <Image src="/app-icon-large.png" alt="Tappit" width={96} height={96} className="mx-auto mb-6 rounded-2xl shadow-lg shadow-accent/10" priority />
           <h2 className="text-4xl lg:text-5xl font-bold tracking-tight leading-tight mb-4">
-            Ready to stop pressing?
+            {isWaitlist ? "Be the first to try it." : "Ready to stop pressing?"}
           </h2>
           <p className="text-muted text-lg leading-relaxed mt-4">
             {isWaitlist

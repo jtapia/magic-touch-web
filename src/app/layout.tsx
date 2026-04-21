@@ -40,6 +40,15 @@ export const metadata: Metadata = {
     description:
       "Tap instead of press on your Magic Mouse. Smart right-click, subtle haptics, and every thoughtful detail. $2.99 · 14-day free trial.",
     images: [
+      // Primary social card: 1.91:1 for Facebook, LinkedIn, Product Hunt, Slack.
+      // TODO: create public/og-image.png at 1200x630 before the PH launch.
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Tappit: tap-to-click for your Apple Magic Mouse",
+      },
+      // Square fallback for legacy scrapers.
       {
         url: "/app-icon-large.png",
         width: 512,
@@ -53,7 +62,7 @@ export const metadata: Metadata = {
     title: "Tappit: Tap-to-click for your Magic Mouse",
     description:
       "Tap instead of press on your Magic Mouse. Smart right-click, subtle haptics, and every thoughtful detail. $2.99 · 14-day free trial.",
-    images: ["/app-icon-large.png"],
+    images: ["/og-image.png"],
   },
 };
 
