@@ -52,7 +52,7 @@ export default function Waitlist({ compact = false }: { compact?: boolean }) {
     return (
       <div className={`rounded-xl border border-accent/30 bg-accent/5 ${compact ? "px-4 py-3" : "p-5"} text-center`}>
         <p className="text-sm font-semibold text-accent-light">Thanks — you&apos;re on the list.</p>
-        <p className="text-xs text-muted mt-1">We&apos;ll email you the moment MagicTouch is ready.</p>
+        <p className="text-xs text-muted mt-1">We&apos;ll email you the moment Tappit is ready.</p>
       </div>
     );
   }
@@ -83,7 +83,7 @@ export default function Waitlist({ compact = false }: { compact?: boolean }) {
       </div>
       {status === "error" && (
         <p role="alert" className="text-xs text-red-500 mt-2">
-          Couldn&apos;t sign you up. {errorMsg ?? ""} Please try again or email support@magictouch.app.
+          Couldn&apos;t sign you up. {errorMsg ?? ""} Please try again or email support@gettappit.com.
         </p>
       )}
       {status !== "error" && (

@@ -46,7 +46,7 @@ export const metadata: Metadata = {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "MagicTouch: tap-to-click for your Apple Magic Mouse",
+        alt: "Tappit: tap-to-click for your Apple Magic Mouse",
       },
       // Square fallback for legacy scrapers.
       {

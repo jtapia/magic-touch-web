@@ -29,7 +29,7 @@ export default function Download() {
         >
           <Image src="/app-icon-large.png" alt="Tappit" width={96} height={96} className="mx-auto mb-6 rounded-2xl shadow-lg shadow-accent/10" priority />
           <h2 className="text-4xl lg:text-5xl font-bold tracking-tight leading-tight mb-4">
-            {launchMode === "waitlist" ? "Be the first to try it." : "Ready to stop pressing?"}
+            {isWaitlist ? "Be the first to try it." : "Ready to stop pressing?"}
           </h2>
           <p className="text-muted text-lg leading-relaxed mt-4">
             {isWaitlist
@@ -65,11 +65,9 @@ export default function Download() {
             )}
           </div>
 
-              <p className="text-xs text-dim mt-4 leading-relaxed">
-                No credit card required · macOS 12 or later · Works on Apple Silicon &amp; Intel
-              </p>
-            </>
-          )}
+          <p className="text-xs text-dim mt-4 leading-relaxed">
+            No credit card required · macOS 12 or later · Works on Apple Silicon &amp; Intel
+          </p>
 
           <div className="mt-8 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-[11px] text-dim">
             <span className="inline-flex items-center gap-1.5">

@@ -127,8 +127,8 @@ export default function Pricing() {
           }`}
           aria-disabled={isWaitlist || undefined}
         >
-          {launchMode === "waitlist" ? (
-            <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 gradient-bg text-white text-[0.7rem] font-bold px-3 py-1 rounded-full tracking-wide shadow-lg shadow-accent/20 whitespace-nowrap">
+          {isWaitlist ? (
+            <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-surface border border-border text-muted text-[0.7rem] font-bold px-3 py-1 rounded-full tracking-wide whitespace-nowrap">
               COMING SOON
             </span>
           ) : (
@@ -137,11 +137,6 @@ export default function Pricing() {
                 ✨ LAUNCH PRICE
               </span>
             )
-          )}
-          {isWaitlist && (
-            <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-surface border border-border text-muted text-[0.7rem] font-bold px-3 py-1 rounded-full tracking-wide whitespace-nowrap">
-              COMING SOON
-            </span>
           )}
 
           <div className="text-center mt-2">
@@ -153,8 +148,7 @@ export default function Pricing() {
               {isWaitlist ? "Planned launch price. One-time payment." : "One-time payment. Yours forever."}
             </p>
 
-            {/* Countdown timer — only shows when sale is live, launched, and client has mounted */}
-            {launchMode === "launched" && onSale && countdown.ready && (
+            {onSale && countdown.ready && (
               <div className="mt-5 flex flex-wrap items-center justify-center gap-2">
                 <span className="text-xs text-dim">Launch price ends in:</span>
                 <div className="flex items-center gap-1">
@@ -205,7 +199,6 @@ export default function Pricing() {
               </>
             ) : (
               <>
-                {/* Primary: free trial */}
                 <a
                   href={DOWNLOAD_URL ?? "#"}
                   className="block text-center gradient-bg text-white px-6 py-3.5 rounded-xl font-semibold shadow-lg shadow-accent/25 hover:shadow-accent/40 hover:-translate-y-0.5 transition-all"
@@ -214,7 +207,6 @@ export default function Pricing() {
                 </a>
                 <p className="text-center text-xs text-dim">No credit card · Full app unlocked · No auto-charge</p>
 
-                {/* Secondary: buy now */}
                 <a
                   href={STRIPE_LINK}
                   target={isExternalStripeLink ? "_blank" : undefined}
