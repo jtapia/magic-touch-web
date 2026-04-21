@@ -67,17 +67,17 @@ const featureGroups = [
     heading: "Polished details",
     items: [
       "Gentle haptics and soft click sound",
-      "Optional on-screen click dot",
+      "Customizable on-screen click dot",
       "Scroll speed and direction controls",
-      "Per-app rules and dead zones",
+      "Per-app rules and visual dead zones",
     ],
   },
   {
     heading: "Everyday comforts",
     items: [
       "Palm rejection while typing",
-      "Menu bar battery for Magic Mouse 2",
-      "Launches quietly on login",
+      "Battery monitor with low-charge alerts",
+      "Siri, Shortcuts & Spotlight toggle",
       "One-keystroke on/off shortcut",
     ],
   },

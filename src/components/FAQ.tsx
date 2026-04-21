@@ -42,7 +42,11 @@ const faqs = [
   },
   {
     q: "How do I quickly turn it off?",
-    a: "Three ways. Click the menu bar icon to toggle. Use the keyboard shortcut (⌃⌥⌘T by default, but you can change it). Or say a spoken command through macOS Voice Control, perfect for handing your Mac to someone else.",
+    a: "Several ways. Click the menu bar icon, use the keyboard shortcut (⌃⌥⌘T by default, rebindable), or ask Siri to \"Toggle Tappit.\" You can also wire it into any Shortcuts workflow or trigger it from Spotlight.",
+  },
+  {
+    q: "Do I need to turn off Smart Zoom?",
+    a: "Yes. macOS Smart Zoom uses double-tap on the mouse surface, which conflicts with Tappit's double-tap. The first-launch guide detects this and walks you through disabling it in System Settings. It takes five seconds.",
   },
   {
     q: "What if I change my mind?",
