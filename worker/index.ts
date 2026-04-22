@@ -6,7 +6,7 @@ interface Env {
   PURCHASE_URL?: string;
 }
 
-export type CtaMode = "waitlist" | "on-sale" | "placeholder";
+type CtaMode = "waitlist" | "on-sale" | "placeholder";
 
 export default {
   async fetch(request: Request, env: Env): Promise<Response> {

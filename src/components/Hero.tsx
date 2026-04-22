@@ -10,7 +10,7 @@ const proofItems = [
     : { label: "Risk-free", value: "30-day refund" },
   { label: "One-time price", value: "Just $2.99" },
   { label: "Privacy", value: "No data tracking" },
-];
+] as const;
 
 export default function Hero() {
   const cta = useCta();
@@ -20,12 +20,8 @@ export default function Hero() {
     cta.mode === "waitlist"
       ? "Join the waitlist"
       : TRIAL_ENABLED
-        ? DOWNLOAD_URL
-          ? "Try free for 14 days"
-          : "Start free trial"
-        : DOWNLOAD_URL
-          ? "Download Tappit"
-          : "Get Tappit";
+        ? DOWNLOAD_URL ? "Try free for 14 days" : "Start free trial"
+        : DOWNLOAD_URL ? "Download Tappit" : "Get Tappit";
   return (
     <section className="min-h-screen flex items-center pt-[60px]">
       <div className="max-w-[1120px] mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center py-20">

@@ -122,7 +122,7 @@ export default function FAQ() {
         </motion.div>
 
         <div className="mt-8 text-left divide-y divide-border">
-          {faqs.filter((f) => !("trialOnly" in f) || TRIAL_ENABLED).map((faq, index) => (
+          {faqs.filter((f) => !f.trialOnly || TRIAL_ENABLED).map((faq, index) => (
             <FAQItem key={faq.q} faq={faq} index={index} inView={inView} />
           ))}
         </div>

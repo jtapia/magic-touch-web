@@ -12,17 +12,13 @@ export default function Download() {
   const inView = useInView(ref, { once: true, margin: "-100px" });
   const cta = useCta();
   const isWaitlist = cta.mode === "waitlist";
-  const isPlaceholder = cta.mode === "placeholder";
+  const isComingSoon = cta.mode === "waitlist" || cta.mode === "placeholder";
   const primaryHref = isWaitlist ? cta.href : DOWNLOAD_URL ?? "#pricing";
   const primaryLabel = isWaitlist
     ? "Join the waitlist"
     : TRIAL_ENABLED
-      ? DOWNLOAD_URL
-        ? "Download free trial"
-        : "Start free trial"
-      : DOWNLOAD_URL
-        ? "Download Tappit"
-        : "Get Tappit";
+      ? DOWNLOAD_URL ? "Download free trial" : "Start free trial"
+      : DOWNLOAD_URL ? "Download Tappit" : "Get Tappit";
 
   return (
     <section ref={ref} id="download" className="py-16 md:py-32 text-center">
@@ -34,12 +30,12 @@ export default function Download() {
         >
           <Image src="/app-icon-large.png" alt="Tappit" width={96} height={96} className="mx-auto mb-6 rounded-2xl shadow-lg shadow-accent/10" priority />
           <h2 className="text-4xl lg:text-5xl font-bold tracking-tight leading-tight mb-4">
-            {isWaitlist || isPlaceholder ? "Be the first to try it." : "Ready to stop pressing?"}
+            {isComingSoon ? "Be the first to try it." : "Ready to stop pressing?"}
           </h2>
           <p className="text-muted text-lg leading-relaxed mt-4">
             {isWaitlist
               ? "Tappit is almost here. Join the waitlist and we'll email you on launch day."
-              : isPlaceholder
+              : isComingSoon
               ? "Tappit is coming soon. Check back here when it's ready."
               : TRIAL_ENABLED
               ? "Try the full app free for 14 days. If you love it (and we think you will), keep it forever for $2.99."
@@ -47,7 +43,7 @@ export default function Download() {
           </p>
 
           <div className="flex flex-col sm:flex-row justify-center gap-3 mt-8">
-            {isPlaceholder ? (
+            {isComingSoon && !isWaitlist ? (
               <p className="text-sm text-muted py-3">Not available yet — check back soon.</p>
             ) : (
               <>
