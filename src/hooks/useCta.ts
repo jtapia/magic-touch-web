@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { DOWNLOAD_URL, STRIPE_LINK } from "@/lib/site";
+import { DOWNLOAD_URL, STRIPE_LINK, TRIAL_ENABLED } from "@/lib/site";
 
 export type CtaMode = "waitlist" | "on-sale" | "placeholder";
 
@@ -12,7 +12,7 @@ export type CtaConfig = {
 
 const fallback: CtaConfig = {
   mode: "on-sale",
-  href: DOWNLOAD_URL ?? STRIPE_LINK,
+  href: TRIAL_ENABLED ? DOWNLOAD_URL ?? STRIPE_LINK : STRIPE_LINK,
 };
 
 export function useCta(): CtaConfig {

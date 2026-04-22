@@ -22,14 +22,3 @@ export const PH_UPCOMING_URL: string | null =
 // Buttondown, Resend Audiences, a custom Cloudflare Worker, etc).
 export const WAITLIST_ENDPOINT: string | null =
   process.env.NEXT_PUBLIC_WAITLIST_ENDPOINT || null;
-
-// Launch mode derives from the env. Precedence:
-//   download available  -> "launched"  (show Try Free CTA)
-//   waitlist available  -> "waitlist"  (show email capture)
-//   neither             -> "soon"      (show pricing-anchor CTA)
-export type LaunchMode = "launched" | "waitlist" | "soon";
-export const launchMode: LaunchMode = DOWNLOAD_URL
-  ? "launched"
-  : WAITLIST_ENDPOINT
-  ? "waitlist"
-  : "soon";

@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useTheme } from "@/context/ThemeContext";
-import { DOWNLOAD_URL, TRIAL_ENABLED } from "@/lib/site";
+import { DOWNLOAD_URL, STRIPE_LINK, TRIAL_ENABLED } from "@/lib/site";
 import { useCta } from "@/hooks/useCta";
 
 function SunIcon() {
@@ -52,9 +52,14 @@ export default function Nav() {
   }, []);
 
   const cta = useCta();
-  const primaryHref = cta.mode === "waitlist" ? cta.href : DOWNLOAD_URL ?? "/#pricing";
+  const primaryHref =
+    cta.mode === "waitlist" ? cta.href : TRIAL_ENABLED ? DOWNLOAD_URL ?? "/#pricing" : STRIPE_LINK;
   const primaryLabel =
-    cta.mode === "waitlist" ? "Join waitlist" : DOWNLOAD_URL ? "Try free" : "Get Tappit";
+    cta.mode === "waitlist"
+      ? "Join waitlist"
+      : TRIAL_ENABLED
+        ? DOWNLOAD_URL ? "Try free" : "Get Tappit"
+        : "Buy Tappit";
 
   return (
     <>
@@ -164,11 +169,7 @@ export default function Nav() {
             href={primaryHref}
             className="block text-center gradient-bg text-white px-6 py-3 rounded-xl text-sm font-semibold shadow-lg shadow-accent/30"
           >
-            {cta.mode === "waitlist"
-              ? "Join the Tappit waitlist"
-              : DOWNLOAD_URL
-                ? TRIAL_ENABLED ? "Try Tappit free for 14 days" : "Buy Tappit"
-                : "Get Tappit · $2.99"}
+            {cta.mode === "waitlist" ? "Join the Tappit waitlist" : primaryLabel}
           </a>
         </motion.div>
       )}

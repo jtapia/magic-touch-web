@@ -14,9 +14,9 @@ binding = "ASSETS"
 # Because this is a Worker with static assets, values must be edited here (or via
 # `wrangler secret` for sensitive values) and redeployed with `wrangler deploy`.
 [vars]
-CTA_MODE = "waitlist"
-WAITLIST_URL = "https://www.producthunt.com/upcoming/tappit"
-PURCHASE_URL = "#pricing"
+CTA_MODE = "on-sale"
+PURCHASE_URL = "https://buy.stripe.com/your_link_here"  # your Stripe Payment Link
+WAITLIST_URL = "" # https://www.producthunt.com/upcoming/tappit
 
 [observability]
 enabled = true
