@@ -167,7 +167,7 @@ export default function Nav() {
             {cta.mode === "waitlist"
               ? "Join the Tappit waitlist"
               : DOWNLOAD_URL
-                ? TRIAL_ENABLED ? "Try Tappit free for 14 days" : "Download Tappit"
+                ? TRIAL_ENABLED ? "Try Tappit free for 14 days" : "Buy Tappit"
                 : "Get Tappit · $2.99"}
           </a>
         </motion.div>

@@ -207,25 +207,29 @@ export default function Pricing() {
             ) : (
               <>
                 <a
-                  href={DOWNLOAD_URL ?? "#"}
+                  href={TRIAL_ENABLED ? DOWNLOAD_URL ?? "#" : STRIPE_LINK}
+                  target={!TRIAL_ENABLED && isExternalStripeLink ? "_blank" : undefined}
+                  rel={!TRIAL_ENABLED && isExternalStripeLink ? "noopener noreferrer" : undefined}
                   className="block text-center gradient-bg text-white px-6 py-3.5 rounded-xl font-semibold shadow-lg shadow-accent/25 hover:shadow-accent/40 hover:-translate-y-0.5 transition-all"
                 >
-                  {TRIAL_ENABLED ? "Try free for 14 days" : "Download Tappit"}
+                  {TRIAL_ENABLED ? "Try free for 14 days" : "Buy Tappit"}
                 </a>
                 <p className="text-center text-xs text-dim">
                   {TRIAL_ENABLED ? "No credit card · Full app unlocked · No auto-charge" : "30-day refund · No questions asked"}
                 </p>
-                <p className="text-center text-xs text-dim">
-                  Already decided?{" "}
-                  <a
-                    href={STRIPE_LINK}
-                    target={isExternalStripeLink ? "_blank" : undefined}
-                    rel={isExternalStripeLink ? "noopener noreferrer" : undefined}
-                    className="underline underline-offset-2 hover:text-foreground transition-colors"
-                  >
-                    Buy for $2.99 &rarr;
-                  </a>
-                </p>
+                {TRIAL_ENABLED && (
+                  <p className="text-center text-xs text-dim">
+                    Already decided?{" "}
+                    <a
+                      href={STRIPE_LINK}
+                      target={isExternalStripeLink ? "_blank" : undefined}
+                      rel={isExternalStripeLink ? "noopener noreferrer" : undefined}
+                      className="underline underline-offset-2 hover:text-foreground transition-colors"
+                    >
+                      Buy for $2.99 &rarr;
+                    </a>
+                  </p>
+                )}
               </>
             )}
           </div>

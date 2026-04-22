@@ -13,12 +13,12 @@ export default function Download() {
   const cta = useCta();
   const isWaitlist = cta.mode === "waitlist";
   const isComingSoon = cta.mode === "waitlist" || cta.mode === "placeholder";
-  const primaryHref = isWaitlist ? cta.href : DOWNLOAD_URL ?? "#pricing";
+  const primaryHref = isWaitlist ? cta.href : TRIAL_ENABLED ? DOWNLOAD_URL ?? "#pricing" : STRIPE_LINK;
   const primaryLabel = isWaitlist
     ? "Join the waitlist"
     : TRIAL_ENABLED
       ? DOWNLOAD_URL ? "Download free trial" : "Start free trial"
-      : DOWNLOAD_URL ? "Download Tappit" : "Get Tappit";
+      : "Buy Tappit";
 
   return (
     <section ref={ref} id="download" className="py-16 md:py-32 text-center">
@@ -39,7 +39,7 @@ export default function Download() {
               ? "Tappit is coming soon. Check back here when it's ready."
               : TRIAL_ENABLED
               ? "Try the full app free for 14 days. If you love it (and we think you will), keep it forever for $2.99."
-              : "Download Tappit and keep it forever for $2.99. Not happy? 30-day refund, no questions asked."}
+              : "Buy Tappit for $2.99 and keep it forever. Not happy? 30-day refund, no questions asked."}
           </p>
 
           <div className="flex flex-col sm:flex-row justify-center gap-3 mt-8">
@@ -62,7 +62,7 @@ export default function Download() {
                   )}
                   {primaryLabel}
                 </a>
-                {!isWaitlist && (
+                {!isWaitlist && TRIAL_ENABLED && (
                   <a
                     href={STRIPE_LINK}
                     target={isExternalStripeLink ? "_blank" : undefined}

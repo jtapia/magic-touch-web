@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { DOWNLOAD_URL, TRIAL_ENABLED } from "@/lib/site";
+import { DOWNLOAD_URL, STRIPE_LINK, TRIAL_ENABLED } from "@/lib/site";
 import { useCta } from "@/hooks/useCta";
 
 const proofItems = [
@@ -15,13 +15,13 @@ const proofItems = [
 export default function Hero() {
   const cta = useCta();
   const primaryHref =
-    cta.mode === "waitlist" ? cta.href : DOWNLOAD_URL ?? "#pricing";
+    cta.mode === "waitlist" ? cta.href : TRIAL_ENABLED ? DOWNLOAD_URL ?? "#pricing" : STRIPE_LINK;
   const primaryLabel =
     cta.mode === "waitlist"
       ? "Join the waitlist"
       : TRIAL_ENABLED
         ? DOWNLOAD_URL ? "Try free for 14 days" : "Start free trial"
-        : DOWNLOAD_URL ? "Download Tappit" : "Get Tappit";
+        : "Buy Tappit";
   return (
     <section className="min-h-screen flex items-center pt-[60px]">
       <div className="max-w-[1120px] mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center py-20">
