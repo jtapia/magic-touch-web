@@ -215,15 +215,17 @@ export default function Pricing() {
                 <p className="text-center text-xs text-dim">
                   {TRIAL_ENABLED ? "No credit card · Full app unlocked · No auto-charge" : "30-day refund · No questions asked"}
                 </p>
-
-                <a
-                  href={STRIPE_LINK}
-                  target={isExternalStripeLink ? "_blank" : undefined}
-                  rel={isExternalStripeLink ? "noopener noreferrer" : undefined}
-                  className="block text-center border border-border-light bg-card hover:bg-card-hover px-6 py-3 rounded-xl font-semibold text-sm transition-all"
-                >
-                  Buy now for $2.99 &rarr;
-                </a>
+                <p className="text-center text-xs text-dim">
+                  Already decided?{" "}
+                  <a
+                    href={STRIPE_LINK}
+                    target={isExternalStripeLink ? "_blank" : undefined}
+                    rel={isExternalStripeLink ? "noopener noreferrer" : undefined}
+                    className="underline underline-offset-2 hover:text-foreground transition-colors"
+                  >
+                    Buy for $2.99 &rarr;
+                  </a>
+                </p>
               </>
             )}
           </div>

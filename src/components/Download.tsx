@@ -43,7 +43,7 @@ export default function Download() {
           </p>
 
           <div className="flex flex-col sm:flex-row justify-center gap-3 mt-8">
-            {isComingSoon && !isWaitlist ? (
+            {cta.mode === "placeholder" ? (
               <p className="text-sm text-muted py-3">Not available yet — check back soon.</p>
             ) : (
               <>
@@ -77,7 +77,7 @@ export default function Download() {
           </div>
 
           <p className="text-xs text-dim mt-4 leading-relaxed">
-            No credit card required · macOS 12 or later · Works on Apple Silicon &amp; Intel
+            {TRIAL_ENABLED && "No credit card required · "}macOS 12 or later · Works on Apple Silicon &amp; Intel
           </p>
 
           <div className="mt-8 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-[11px] text-dim">
