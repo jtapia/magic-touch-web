@@ -2,6 +2,7 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
+import { TRIAL_ENABLED } from "@/lib/site";
 
 const faqs = [
   {
@@ -11,6 +12,7 @@ const faqs = [
   {
     q: "What does the free trial include?",
     a: "The full app, every feature, for 14 days. No credit card, no account. When the trial ends, clicks stop being injected but your settings and the app itself stay, and you can unlock it anytime for $2.99.",
+    trialOnly: true,
   },
   {
     q: "Is this a subscription?",
@@ -115,12 +117,12 @@ export default function FAQ() {
             Everything you might ask.
           </h2>
           <p className="text-lg text-muted max-w-xl mx-auto">
-            The stuff people actually want to know: compatibility, permissions, privacy, and the free trial.
+            The stuff people actually want to know: compatibility, permissions, and privacy.
           </p>
         </motion.div>
 
         <div className="mt-8 text-left divide-y divide-border">
-          {faqs.map((faq, index) => (
+          {faqs.filter((f) => !("trialOnly" in f) || TRIAL_ENABLED).map((faq, index) => (
             <FAQItem key={faq.q} faq={faq} index={index} inView={inView} />
           ))}
         </div>

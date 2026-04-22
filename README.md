@@ -47,6 +47,33 @@ Or connect the repo in the Cloudflare Pages dashboard with:
    ```
 3. Rebuild and deploy
 
+## Launch Mode (CTA_MODE)
+
+The site has three display modes controlled by `CTA_MODE` in `wrangler.toml`. Switch between them and run `wrangler deploy` — no rebuild needed.
+
+| Mode | Description | Hero | Pricing section | Download section |
+|------|-------------|------|-----------------|------------------|
+| `waitlist` | Pre-launch with email capture | "Join the waitlist" button → `WAITLIST_URL` | "Coming soon" card, no buy buttons, waitlist CTA | "Be the first to try it" + waitlist button |
+| `on-sale` | App is live and purchasable | "Try free for 14 days" / "Start free trial" | Full price card with countdown + download & buy buttons | "Ready to stop pressing?" + download & buy buttons |
+| `placeholder` | Teaser with no action yet | "Coming soon" text, no button | "Coming soon" card, price shown, no buttons | "Coming soon" text, no button |
+
+To switch modes, edit `wrangler.toml`:
+
+```toml
+[vars]
+CTA_MODE = "on-sale"          # "waitlist" | "on-sale" | "placeholder"
+WAITLIST_URL = "https://..."  # used when CTA_MODE = "waitlist"
+PURCHASE_URL = "#pricing"     # used when CTA_MODE = "on-sale"
+```
+
+Then deploy:
+
+```bash
+wrangler deploy
+```
+
+The mode is served from `/api/cta` by the Cloudflare Worker and fetched client-side by `useCta()`. The static build falls back to `on-sale` if the Worker is unreachable.
+
 ## Project Structure
 
 ```
@@ -78,6 +105,17 @@ src/
 | Variable | Description | Required |
 |----------|-------------|----------|
 | `NEXT_PUBLIC_STRIPE_PAYMENT_LINK` | Stripe Payment Link URL for Pro purchase | No (falls back to `#`) |
+| `NEXT_PUBLIC_DOWNLOAD_URL` | Direct DMG download URL | No |
+| `NEXT_PUBLIC_WAITLIST_ENDPOINT` | POST endpoint for waitlist email capture | No |
+| `NEXT_PUBLIC_TRIAL_PERIOD_ENABLED` | Show trial references (`"false"` to hide) | No (defaults to shown) |
+
+Worker variables (set in `wrangler.toml [vars]`):
+
+| Variable | Description | Default |
+|----------|-------------|---------|
+| `CTA_MODE` | Site mode: `waitlist`, `on-sale`, or `placeholder` | `on-sale` |
+| `WAITLIST_URL` | URL for the waitlist CTA button | — |
+| `PURCHASE_URL` | URL for the buy/download CTA button | `#pricing` |
 
 ## License
 

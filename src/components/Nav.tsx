@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useTheme } from "@/context/ThemeContext";
-import { DOWNLOAD_URL } from "@/lib/site";
+import { DOWNLOAD_URL, TRIAL_ENABLED } from "@/lib/site";
 import { useCta } from "@/hooks/useCta";
 
 function SunIcon() {
@@ -167,7 +167,7 @@ export default function Nav() {
             {cta.mode === "waitlist"
               ? "Join the Tappit waitlist"
               : DOWNLOAD_URL
-                ? "Try Tappit free for 14 days"
+                ? TRIAL_ENABLED ? "Try Tappit free for 14 days" : "Download Tappit"
                 : "Get Tappit · $2.99"}
           </a>
         </motion.div>

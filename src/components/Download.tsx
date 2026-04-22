@@ -4,7 +4,7 @@ import { motion, useInView } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { useRef } from "react";
-import { DOWNLOAD_URL, STRIPE_LINK, isExternalStripeLink } from "@/lib/site";
+import { DOWNLOAD_URL, STRIPE_LINK, isExternalStripeLink, TRIAL_ENABLED } from "@/lib/site";
 import { useCta } from "@/hooks/useCta";
 
 export default function Download() {
@@ -12,12 +12,17 @@ export default function Download() {
   const inView = useInView(ref, { once: true, margin: "-100px" });
   const cta = useCta();
   const isWaitlist = cta.mode === "waitlist";
+  const isPlaceholder = cta.mode === "placeholder";
   const primaryHref = isWaitlist ? cta.href : DOWNLOAD_URL ?? "#pricing";
   const primaryLabel = isWaitlist
     ? "Join the waitlist"
-    : DOWNLOAD_URL
-      ? "Download free trial"
-      : "Start free trial";
+    : TRIAL_ENABLED
+      ? DOWNLOAD_URL
+        ? "Download free trial"
+        : "Start free trial"
+      : DOWNLOAD_URL
+        ? "Download Tappit"
+        : "Get Tappit";
 
   return (
     <section ref={ref} id="download" className="py-16 md:py-32 text-center">
@@ -29,39 +34,49 @@ export default function Download() {
         >
           <Image src="/app-icon-large.png" alt="Tappit" width={96} height={96} className="mx-auto mb-6 rounded-2xl shadow-lg shadow-accent/10" priority />
           <h2 className="text-4xl lg:text-5xl font-bold tracking-tight leading-tight mb-4">
-            {isWaitlist ? "Be the first to try it." : "Ready to stop pressing?"}
+            {isWaitlist || isPlaceholder ? "Be the first to try it." : "Ready to stop pressing?"}
           </h2>
           <p className="text-muted text-lg leading-relaxed mt-4">
             {isWaitlist
               ? "Tappit is almost here. Join the waitlist and we'll email you on launch day."
-              : "Try the full app free for 14 days. If you love it (and we think you will), keep it forever for $2.99."}
+              : isPlaceholder
+              ? "Tappit is coming soon. Check back here when it's ready."
+              : TRIAL_ENABLED
+              ? "Try the full app free for 14 days. If you love it (and we think you will), keep it forever for $2.99."
+              : "Download Tappit and keep it forever for $2.99. Not happy? 30-day refund, no questions asked."}
           </p>
 
           <div className="flex flex-col sm:flex-row justify-center gap-3 mt-8">
-            <a
-              href={primaryHref}
-              target={isWaitlist ? "_blank" : undefined}
-              rel={isWaitlist ? "noopener noreferrer" : undefined}
-              className="gradient-bg text-white px-6 py-3 rounded-xl font-semibold shadow-lg shadow-accent/25 hover:shadow-accent/40 hover:-translate-y-0.5 transition-all flex items-center justify-center gap-2"
-            >
-              {!isWaitlist && DOWNLOAD_URL && (
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                  <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4" />
-                  <polyline points="7 10 12 15 17 10" />
-                  <line x1="12" y1="15" x2="12" y2="3" />
-                </svg>
-              )}
-              {primaryLabel}
-            </a>
-            {!isWaitlist && (
-              <a
-                href={STRIPE_LINK}
-                target={isExternalStripeLink ? "_blank" : undefined}
-                rel={isExternalStripeLink ? "noopener noreferrer" : undefined}
-                className="px-6 py-3 rounded-xl font-semibold border border-border-light bg-card hover:bg-card-hover transition-colors"
-              >
-                Buy for $2.99
-              </a>
+            {isPlaceholder ? (
+              <p className="text-sm text-muted py-3">Not available yet — check back soon.</p>
+            ) : (
+              <>
+                <a
+                  href={primaryHref}
+                  target={isWaitlist ? "_blank" : undefined}
+                  rel={isWaitlist ? "noopener noreferrer" : undefined}
+                  className="gradient-bg text-white px-6 py-3 rounded-xl font-semibold shadow-lg shadow-accent/25 hover:shadow-accent/40 hover:-translate-y-0.5 transition-all flex items-center justify-center gap-2"
+                >
+                  {!isWaitlist && DOWNLOAD_URL && (
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                      <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4" />
+                      <polyline points="7 10 12 15 17 10" />
+                      <line x1="12" y1="15" x2="12" y2="3" />
+                    </svg>
+                  )}
+                  {primaryLabel}
+                </a>
+                {!isWaitlist && (
+                  <a
+                    href={STRIPE_LINK}
+                    target={isExternalStripeLink ? "_blank" : undefined}
+                    rel={isExternalStripeLink ? "noopener noreferrer" : undefined}
+                    className="px-6 py-3 rounded-xl font-semibold border border-border-light bg-card hover:bg-card-hover transition-colors"
+                  >
+                    Buy for $2.99
+                  </a>
+                )}
+              </>
             )}
           </div>
 

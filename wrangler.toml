@@ -7,11 +7,12 @@ directory = "./out"
 binding = "ASSETS"
 
 # Runtime variables read by the Worker entry (worker/index.ts).
-# Flip CTA_MODE between "purchase" and "waitlist" to toggle the site CTA
-# without rebuilding. Because this is a Worker with static assets, values
-# must be edited here (or via `wrangler secret` for sensitive values) and
-# redeployed with `wrangler deploy` — the dashboard doesn't allow editing
-# vars on a Worker that only has static assets.
+# CTA_MODE controls which state the site is in:
+#   "waitlist"    — show waitlist sign-up buttons; price section shown as "coming soon"
+#   "on-sale"     — show download + buy buttons; full price section with countdown
+#   "placeholder" — show price section (no buttons); used before waitlist or after sale ends
+# Because this is a Worker with static assets, values must be edited here (or via
+# `wrangler secret` for sensitive values) and redeployed with `wrangler deploy`.
 [vars]
 CTA_MODE = "waitlist"
 WAITLIST_URL = "https://www.producthunt.com/upcoming/tappit"

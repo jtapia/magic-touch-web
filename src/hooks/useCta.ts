@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { DOWNLOAD_URL, STRIPE_LINK } from "@/lib/site";
 
-export type CtaMode = "waitlist" | "purchase";
+export type CtaMode = "waitlist" | "on-sale" | "placeholder";
 
 export type CtaConfig = {
   mode: CtaMode;
@@ -11,7 +11,7 @@ export type CtaConfig = {
 };
 
 const fallback: CtaConfig = {
-  mode: "purchase",
+  mode: "on-sale",
   href: DOWNLOAD_URL ?? STRIPE_LINK,
 };
 
@@ -24,7 +24,12 @@ export function useCta(): CtaConfig {
       .then((res) => (res.ok ? res.json() : null))
       .then((data: { mode?: string; href?: string } | null) => {
         if (cancelled || !data?.href) return;
-        const mode: CtaMode = data.mode === "waitlist" ? "waitlist" : "purchase";
+        const mode: CtaMode =
+          data.mode === "waitlist"
+            ? "waitlist"
+            : data.mode === "placeholder"
+            ? "placeholder"
+            : "on-sale";
         setCta({ mode, href: data.href });
       })
       .catch(() => {});
