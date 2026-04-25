@@ -13,15 +13,15 @@ routes = [
 # Secrets (set via `wrangler secret put`, never commit here):
 #   LICENSE_SIGNING_PRIVATE_KEY
 [vars]
-PURCHASE_URL = "https://buy.stripe.com/test_7sYeVeeiu5ZU8Tpb8G1kA00"
-NEXT_PUBLIC_STRIPE_PAYMENT_LINK = "https://buy.stripe.com/test_7sYeVeeiu5ZU8Tpb8G1kA00"
+PURCHASE_URL = "https://buy.stripe.com/test_5kQ00jeW27CQ6yH7K24AU00"
+NEXT_PUBLIC_STRIPE_PAYMENT_LINK = "https://buy.stripe.com/test_5kQ00jeW27CQ6yH7K24AU00"
 
 [observability]
 enabled = true
 head_sampling_rate = 1
 
 [observability.logs]
-enabled = false
+enabled = true
 head_sampling_rate = 1
 persist = true
 invocation_logs = true
