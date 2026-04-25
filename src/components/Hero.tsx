@@ -1,8 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { STRIPE_LINK } from "@/lib/site";
-import { useCta } from "@/hooks/useCta";
+import { useCtaHref } from "@/hooks/useCta";
 
 const proofItems = [
   { label: "Risk-free", value: "30-day refund" },
@@ -11,9 +10,7 @@ const proofItems = [
 ] as const;
 
 export default function Hero() {
-  const cta = useCta();
-  const primaryHref = cta.mode === "waitlist" ? cta.href : STRIPE_LINK;
-  const primaryLabel = cta.mode === "waitlist" ? "Join the waitlist" : "Buy Tappit";
+  const primaryHref = useCtaHref();
   return (
     <section className="min-h-screen flex items-center pt-[60px]">
       <div className="max-w-[1120px] mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center py-20">
@@ -47,34 +44,26 @@ export default function Hero() {
           </p>
 
           <div className="flex flex-col sm:flex-row items-stretch lg:items-start gap-3 mb-6 w-full">
-            {cta.mode === "placeholder" ? (
-              <p className="text-sm text-muted py-3">
-                Not available yet — check back soon or{" "}
-                <a href="#pricing" className="text-accent-light underline underline-offset-2">
-                  see what&rsquo;s coming
-                </a>
-                .
-              </p>
-            ) : (
-              <>
-                <a
-                  href={primaryHref}
-                  className="gradient-bg text-white w-full sm:flex-1 px-4 sm:px-7 py-3 sm:py-3.5 rounded-xl font-semibold text-sm sm:text-base flex items-center justify-center gap-2 shadow-lg shadow-accent/25 hover:shadow-accent/40 hover:-translate-y-0.5 transition-all"
-                >
-                  {primaryLabel}
-                </a>
-                <a
-                  href="#how-it-works"
-                  className="w-full sm:flex-1 px-4 sm:px-7 py-3 sm:py-3.5 rounded-xl font-semibold text-sm sm:text-base border border-border-light bg-card hover:bg-card-hover transition-colors text-center flex items-center justify-center gap-2"
-                >
-                  See how it works
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                    <line x1="5" y1="12" x2="19" y2="12" />
-                    <polyline points="12 5 19 12 12 19" />
-                  </svg>
-                </a>
-              </>
-            )}
+            <>
+              <a
+                href={primaryHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="gradient-bg text-white w-full sm:flex-1 px-4 sm:px-7 py-3 sm:py-3.5 rounded-xl font-semibold text-sm sm:text-base flex items-center justify-center gap-2 shadow-lg shadow-accent/25 hover:shadow-accent/40 hover:-translate-y-0.5 transition-all"
+              >
+                Buy Tappit
+              </a>
+              <a
+                href="#how-it-works"
+                className="w-full sm:flex-1 px-4 sm:px-7 py-3 sm:py-3.5 rounded-xl font-semibold text-sm sm:text-base border border-border-light bg-card hover:bg-card-hover transition-colors text-center flex items-center justify-center gap-2"
+              >
+                See how it works
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <line x1="5" y1="12" x2="19" y2="12" />
+                  <polyline points="12 5 19 12 12 19" />
+                </svg>
+              </a>
+            </>
           </div>
 
           <div className="grid grid-cols-1 min-[420px]:grid-cols-3 gap-3 text-left">

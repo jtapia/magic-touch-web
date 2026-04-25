@@ -3,40 +3,20 @@
 import { useEffect, useState } from "react";
 import { STRIPE_LINK } from "@/lib/site";
 
-export type CtaMode = "waitlist" | "on-sale" | "placeholder";
-
-export type CtaConfig = {
-  mode: CtaMode;
-  href: string;
-};
-
-const fallback: CtaConfig = {
-  mode: "on-sale",
-  href: STRIPE_LINK,
-};
-
-export function useCta(): CtaConfig {
-  const [cta, setCta] = useState<CtaConfig>(fallback);
+export function useCtaHref(): string {
+  const [href, setHref] = useState(STRIPE_LINK);
 
   useEffect(() => {
     let cancelled = false;
     fetch("/api/cta", { cache: "no-store" })
       .then((res) => (res.ok ? res.json() : null))
-      .then((data: { mode?: string; href?: string } | null) => {
+      .then((data: { href?: string } | null) => {
         if (cancelled || !data?.href) return;
-        const mode: CtaMode =
-          data.mode === "waitlist"
-            ? "waitlist"
-            : data.mode === "placeholder"
-            ? "placeholder"
-            : "on-sale";
-        setCta({ mode, href: data.href });
+        setHref(data.href);
       })
       .catch(() => {});
-    return () => {
-      cancelled = true;
-    };
+    return () => { cancelled = true; };
   }, []);
 
-  return cta;
+  return href;
 }

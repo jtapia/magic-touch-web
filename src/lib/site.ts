@@ -14,8 +14,3 @@ export const PH_PRODUCT_URL: string | null =
 export const PH_UPCOMING_URL: string | null =
   process.env.NEXT_PUBLIC_PH_UPCOMING_URL || null;
 
-// Waitlist: submission endpoint. Leave unset to hide the form.
-// Supports any endpoint that accepts POST JSON {"email": "..."} (Formspree,
-// Buttondown, Resend Audiences, a custom Cloudflare Worker, etc).
-export const WAITLIST_ENDPOINT: string | null =
-  process.env.NEXT_PUBLIC_WAITLIST_ENDPOINT || null;

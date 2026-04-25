@@ -5,8 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useTheme } from "@/context/ThemeContext";
-import { STRIPE_LINK } from "@/lib/site";
-import { useCta } from "@/hooks/useCta";
+import { useCtaHref } from "@/hooks/useCta";
 
 function SunIcon() {
   return (
@@ -51,9 +50,7 @@ export default function Nav() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const cta = useCta();
-  const primaryHref = cta.mode === "waitlist" ? cta.href : STRIPE_LINK;
-  const primaryLabel = cta.mode === "waitlist" ? "Join waitlist" : "Buy Tappit";
+  const primaryHref = useCtaHref();
 
   return (
     <>
@@ -89,7 +86,7 @@ export default function Nav() {
               href={primaryHref}
               className="hidden sm:inline-block gradient-bg text-white px-4 py-2 rounded-full text-sm font-semibold hover:opacity-90 transition-opacity shadow-md shadow-accent/20"
             >
-              {primaryLabel}
+              Buy Tappit
             </a>
             <button
               onClick={() => setMenuOpen((v) => !v)}
@@ -142,7 +139,7 @@ export default function Nav() {
                   onClick={() => setMenuOpen(false)}
                   className="mt-2 text-center gradient-bg text-white px-4 py-2.5 rounded-full text-sm font-semibold hover:opacity-90 transition-opacity"
                 >
-                  {primaryLabel}
+                  Buy Tappit
                 </a>
               </div>
             </motion.div>
@@ -163,7 +160,7 @@ export default function Nav() {
             href={primaryHref}
             className="block text-center gradient-bg text-white px-6 py-3 rounded-xl text-sm font-semibold shadow-lg shadow-accent/30"
           >
-            {cta.mode === "waitlist" ? "Join the Tappit waitlist" : primaryLabel}
+            Buy Tappit
           </a>
         </motion.div>
       )}

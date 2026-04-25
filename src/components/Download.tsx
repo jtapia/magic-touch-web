@@ -4,17 +4,13 @@ import { motion, useInView } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { useRef } from "react";
-import { STRIPE_LINK, isExternalStripeLink } from "@/lib/site";
-import { useCta } from "@/hooks/useCta";
+import { isExternalStripeLink } from "@/lib/site";
+import { useCtaHref } from "@/hooks/useCta";
 
 export default function Download() {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-100px" });
-  const cta = useCta();
-  const isWaitlist = cta.mode === "waitlist";
-  const isComingSoon = cta.mode === "waitlist" || cta.mode === "placeholder";
-  const primaryHref = isWaitlist ? cta.href : STRIPE_LINK;
-  const primaryLabel = isWaitlist ? "Join the waitlist" : "Buy Tappit";
+  const href = useCtaHref();
 
   return (
     <section ref={ref} id="download" className="py-16 md:py-32 text-center">
@@ -26,31 +22,21 @@ export default function Download() {
         >
           <Image src="/app-icon-large.png" alt="Tappit" width={96} height={96} className="mx-auto mb-6 rounded-2xl shadow-lg shadow-accent/10" priority />
           <h2 className="text-4xl lg:text-5xl font-bold tracking-tight leading-tight mb-4">
-            {isComingSoon ? "Be the first to try it." : "Ready to stop pressing?"}
+            Ready to stop pressing?
           </h2>
           <p className="text-muted text-lg leading-relaxed mt-4">
-            {isWaitlist
-              ? "Tappit is almost here. Join the waitlist and we'll email you on launch day."
-              : isComingSoon
-              ? "Tappit is coming soon. Check back here when it's ready."
-              : "Buy Tappit for $2.99 and keep it forever. Not happy? 30-day refund, no questions asked."}
+            Buy Tappit for $2.99 and keep it forever. Not happy? 30-day refund, no questions asked.
           </p>
 
           <div className="flex flex-col sm:flex-row justify-center gap-3 mt-8">
-            {cta.mode === "placeholder" ? (
-              <p className="text-sm text-muted py-3">Not available yet — check back soon.</p>
-            ) : (
-              <>
-                <a
-                  href={primaryHref}
-                  target={isWaitlist ? "_blank" : undefined}
-                  rel={isWaitlist ? "noopener noreferrer" : undefined}
-                  className="gradient-bg text-white px-6 py-3 rounded-xl font-semibold shadow-lg shadow-accent/25 hover:shadow-accent/40 hover:-translate-y-0.5 transition-all flex items-center justify-center gap-2"
-                >
-                  {primaryLabel}
-                </a>
-              </>
-            )}
+            <a
+              href={href}
+              target={isExternalStripeLink ? "_blank" : undefined}
+              rel={isExternalStripeLink ? "noopener noreferrer" : undefined}
+              className="gradient-bg text-white px-6 py-3 rounded-xl font-semibold shadow-lg shadow-accent/25 hover:shadow-accent/40 hover:-translate-y-0.5 transition-all flex items-center justify-center gap-2"
+            >
+              Buy Tappit
+            </a>
           </div>
 
           <p className="text-xs text-dim mt-4 leading-relaxed">
