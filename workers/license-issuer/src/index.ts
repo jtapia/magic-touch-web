@@ -49,7 +49,7 @@ export default {
       // at risk if Resend is slow. `ctx.waitUntil` keeps the worker alive past
       // the response. If Resend fails, the customer emails support — we have
       // the session ID in logs and can reissue manually.
-      ctx.waitUntil(sendLicenseEmail(email, licenseKey, env));
+      ctx.waitUntil(Promise.resolve()); // email send replaced in Task 7
       return new Response("OK", { status: 200 });
     } catch (err) {
       // Don't return 500 to Stripe unless we actually want a retry. If signing
@@ -78,38 +78,6 @@ async function issueLicense(
   const signature = await ed.signAsync(payloadBytes, seed);
 
   return `${base64url(payloadBytes)}.${base64url(signature)}`;
-}
-
-// MARK: - Email
-
-async function sendLicenseEmail(to: string, licenseKey: string, env: Env): Promise<void> {
-  const res = await fetch("https://api.resend.com/emails", {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${env.RESEND_API_KEY}`,
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      from: env.FROM_EMAIL,
-      to,
-      subject: "Your Tappit license",
-      text:
-        `Thanks for buying Tappit!\n\n` +
-        `Email:       ${to}\n` +
-        `License key: ${licenseKey}\n\n` +
-        `To activate:\n` +
-        `  1. Open Tappit → Preferences → License\n` +
-        `  2. Enter your email and paste the key above\n` +
-        `  3. Click Activate\n\n` +
-        `Keep this email — it's your proof of purchase.\n` +
-        `Questions? Reply to this email or write to ${env.SUPPORT_EMAIL}.`,
-    }),
-  });
-
-  if (!res.ok) {
-    const body = await res.text().catch(() => "<unreadable>");
-    throw new Error(`Resend ${res.status}: ${body}`);
-  }
 }
 
 // MARK: - Encoding helpers
