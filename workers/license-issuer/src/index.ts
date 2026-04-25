@@ -12,6 +12,7 @@
 import * as ed from "@noble/ed25519";
 import { sha512 } from "@noble/hashes/sha512";
 import type { Env } from "./env";
+import { verifyStripeWebhook, type CheckoutSession } from "./stripe";
 
 // @noble/ed25519 v2 requires a synchronous SHA-512 implementation at startup.
 ed.etc.sha512Sync = (...msgs) => sha512(ed.etc.concatBytes(...msgs));
@@ -62,11 +63,6 @@ export default {
 
 // MARK: - License signing
 
-interface CheckoutSession {
-  id: string;
-  customer_details?: { email?: string | null };
-}
-
 async function issueLicense(
   email: string,
   licenseId: string,
@@ -82,66 +78,6 @@ async function issueLicense(
   const signature = await ed.signAsync(payloadBytes, seed);
 
   return `${base64url(payloadBytes)}.${base64url(signature)}`;
-}
-
-// MARK: - Stripe webhook verification
-// https://stripe.com/docs/webhooks/signatures — manual because the Stripe SDK
-// isn't Worker-friendly (Node-only crypto).
-
-interface StripeEvent {
-  type: string;
-  data: { object: unknown };
-}
-
-async function verifyStripeWebhook(
-  body: string,
-  header: string,
-  secret: string,
-): Promise<StripeEvent | null> {
-  const parts = Object.fromEntries(
-    header.split(",").map((p) => {
-      const [k, ...rest] = p.split("=");
-      return [k?.trim() ?? "", rest.join("=").trim()];
-    }),
-  );
-  const timestamp = parts["t"];
-  const signature = parts["v1"];
-  if (!timestamp || !signature) return null;
-
-  // Reject events older than 5 minutes to narrow the replay window.
-  const eventAgeSec = Math.floor(Date.now() / 1000) - Number(timestamp);
-  if (!Number.isFinite(eventAgeSec) || eventAgeSec > 300 || eventAgeSec < -60) {
-    return null;
-  }
-
-  const signedPayload = `${timestamp}.${body}`;
-  const expected = await hmacSha256Hex(secret, signedPayload);
-  if (!timingSafeEqualHex(expected, signature)) return null;
-
-  try {
-    return JSON.parse(body) as StripeEvent;
-  } catch {
-    return null;
-  }
-}
-
-async function hmacSha256Hex(secret: string, message: string): Promise<string> {
-  const key = await crypto.subtle.importKey(
-    "raw",
-    new TextEncoder().encode(secret),
-    { name: "HMAC", hash: "SHA-256" },
-    false,
-    ["sign"],
-  );
-  const sig = await crypto.subtle.sign("HMAC", key, new TextEncoder().encode(message));
-  return bytesToHex(new Uint8Array(sig));
-}
-
-function timingSafeEqualHex(a: string, b: string): boolean {
-  if (a.length !== b.length) return false;
-  let diff = 0;
-  for (let i = 0; i < a.length; i++) diff |= a.charCodeAt(i) ^ b.charCodeAt(i);
-  return diff === 0;
 }
 
 // MARK: - Email
@@ -189,10 +125,4 @@ function base64url(bytes: Uint8Array): string {
   let bin = "";
   for (const b of bytes) bin += String.fromCharCode(b);
   return btoa(bin).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
-}
-
-function bytesToHex(bytes: Uint8Array): string {
-  let out = "";
-  for (const b of bytes) out += b.toString(16).padStart(2, "0");
-  return out;
 }
