@@ -72,19 +72,27 @@ export default function SuccessClient() {
   }, []);
 
   return (
-    <section className="mx-auto max-w-2xl px-6 py-20 sm:py-28">
-      <div className="rounded-2xl border border-black/10 bg-white p-8 shadow-sm dark:border-white/10 dark:bg-neutral-900 sm:p-10">
-        <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl">
-          Payment confirmed
+    <section className="min-h-[calc(100vh-60px)] flex items-center pt-[60px]">
+      <div className="max-w-[640px] w-full mx-auto px-6 py-16 sm:py-24">
+        <Badge state={state} />
+
+        <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight leading-[1.05] mb-5">
+          {headline(state)}
         </h1>
-        <div className="mt-6 text-base leading-relaxed text-neutral-700 dark:text-neutral-300">
-          {renderBody(state)}
-        </div>
-        <p className="mt-10 text-sm text-neutral-500 dark:text-neutral-400">
+
+        <p className="text-lg text-muted leading-relaxed mb-8">
+          {subhead(state)}
+        </p>
+
+        {state.kind === "ready" && <LicenseCard info={state.info} />}
+
+        <Actions state={state} />
+
+        <p className="mt-10 text-sm text-dim">
           Need help? Email{" "}
           <Link
             href="mailto:support@gettappit.com"
-            className="underline underline-offset-4 hover:text-neutral-900 dark:hover:text-white"
+            className="text-foreground/80 underline underline-offset-4 hover:text-foreground"
           >
             support@gettappit.com
           </Link>
@@ -95,46 +103,141 @@ export default function SuccessClient() {
   );
 }
 
-function renderBody(state: State) {
+function Badge({ state }: { state: State }) {
+  const { label, dotClass } = badgeStyle(state);
+  return (
+    <div className="inline-flex items-center gap-2 text-xs font-semibold text-accent-light bg-accent/10 border border-accent/20 px-3.5 py-1.5 rounded-full mb-6">
+      <span className="relative flex h-2 w-2">
+        <span
+          className={`animate-[pulse-ring_2s_ease-in-out_infinite] absolute inline-flex h-full w-full rounded-full ${dotClass} opacity-60`}
+        />
+        <span className={`relative inline-flex rounded-full h-2 w-2 ${dotClass}`} />
+      </span>
+      {label}
+    </div>
+  );
+}
+
+function badgeStyle(state: State): { label: string; dotClass: string } {
   switch (state.kind) {
     case "loading":
-      return <p>Issuing your license… (attempt {state.attempt + 1})</p>;
+      return { label: "Issuing your license…", dotClass: "bg-accent" };
+    case "ready":
+      return { label: "Payment confirmed", dotClass: "bg-green-500" };
+    case "timeout":
+      return { label: "Email is on the way", dotClass: "bg-accent" };
     case "missingSessionId":
+      return { label: "Thanks for your purchase", dotClass: "bg-accent" };
+    case "error":
+      return { label: "Confirmation issue", dotClass: "bg-accent" };
+  }
+}
+
+function headline(state: State): React.ReactNode {
+  switch (state.kind) {
+    case "loading":
       return (
-        <p>
-          Thanks for your purchase. Your license has been emailed to you — check
-          your inbox (and spam folder).
-        </p>
+        <>
+          Setting up your{" "}
+          <span className="gradient-text">Tappit license</span>
+        </>
       );
     case "ready":
       return (
         <>
-          <dl className="mt-2 grid grid-cols-[max-content_1fr] gap-x-6 gap-y-2 text-sm">
-            <dt className="text-neutral-500 dark:text-neutral-400">Email</dt>
-            <dd className="font-medium">{state.info.email}</dd>
-            <dt className="text-neutral-500 dark:text-neutral-400">License</dt>
-            <dd className="font-mono tracking-wider">{state.info.maskedKey}</dd>
-          </dl>
-          <p className="mt-6">
-            Your full license key has been emailed to{" "}
-            <strong>{state.info.email}</strong>. Open the email on the Mac you
-            want to activate.
-          </p>
+          You&apos;re in.
+          <br />
+          <span className="gradient-text">Welcome to Tappit.</span>
         </>
       );
     case "timeout":
       return (
-        <p>
-          Your license is being issued. Check your email in a few minutes — if
-          it doesn&apos;t arrive, contact support.
-        </p>
+        <>
+          Check your{" "}
+          <span className="gradient-text">inbox</span>
+        </>
+      );
+    case "missingSessionId":
+      return (
+        <>
+          Thanks for your{" "}
+          <span className="gradient-text">purchase</span>
+        </>
       );
     case "error":
       return (
-        <p>
-          Something went wrong loading your confirmation ({state.message}). Your
-          license has still been emailed — check your inbox.
-        </p>
+        <>
+          We hit a{" "}
+          <span className="gradient-text">small snag</span>
+        </>
       );
   }
+}
+
+function subhead(state: State): string {
+  switch (state.kind) {
+    case "loading":
+      return `Issuing your activation key (attempt ${state.attempt + 1} of ${MAX_ATTEMPTS}). This usually takes a couple of seconds.`;
+    case "ready":
+      return `Your full license key has been emailed to ${state.info.email}. Open the email on the Mac you want to activate, then paste the key into Tappit → Preferences → License.`;
+    case "timeout":
+      return "Your license is on its way. The email should arrive in a few minutes — if it doesn't show up, check spam or contact support and we'll resend it.";
+    case "missingSessionId":
+      return "Your purchase went through. Your license has been emailed — check your inbox (and spam folder) for the activation key.";
+    case "error":
+      return `Something went wrong loading your confirmation (${state.message}). Your license has still been emailed, so check your inbox while we sort the page out.`;
+  }
+}
+
+function LicenseCard({ info }: { info: SessionInfo }) {
+  return (
+    <div className="rounded-2xl border border-border bg-card/80 backdrop-blur-sm p-5 sm:p-6 mb-6">
+      <dl className="grid grid-cols-[max-content_1fr] gap-x-6 gap-y-3 text-sm">
+        <dt className="text-dim font-medium">Email</dt>
+        <dd className="font-medium text-foreground break-all">{info.email}</dd>
+
+        <dt className="text-dim font-medium">License</dt>
+        <dd className="font-mono tracking-wider text-foreground">{info.maskedKey}</dd>
+
+        <dt className="text-dim font-medium">Status</dt>
+        <dd>
+          <span className="inline-flex items-center gap-1.5 text-xs font-semibold rounded-full px-2.5 py-1 bg-green-500/10 text-green-700 dark:text-green-400 border border-green-500/20">
+            <span className="inline-block w-1.5 h-1.5 rounded-full bg-green-500" />
+            {info.status === "active" ? "Active" : info.status}
+          </span>
+        </dd>
+      </dl>
+
+      <p className="mt-5 text-xs text-dim leading-relaxed">
+        Only the masked key is shown here. The full key is in your email — keep it
+        somewhere safe; it&apos;s your proof of purchase.
+      </p>
+    </div>
+  );
+}
+
+function Actions({ state }: { state: State }) {
+  const showOpenMail = state.kind === "ready" || state.kind === "timeout";
+  return (
+    <div className="flex flex-col sm:flex-row items-stretch gap-3">
+      {showOpenMail && (
+        <a
+          href="message://"
+          className="gradient-bg text-white w-full sm:flex-1 px-4 sm:px-7 py-3 sm:py-3.5 rounded-xl font-semibold text-sm sm:text-base flex items-center justify-center gap-2 shadow-lg shadow-accent/25 hover:shadow-accent/40 hover:-translate-y-0.5 transition-all"
+        >
+          Open Mail
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+            <polyline points="22,6 12,13 2,6" />
+          </svg>
+        </a>
+      )}
+      <Link
+        href="/"
+        className="w-full sm:flex-1 px-4 sm:px-7 py-3 sm:py-3.5 rounded-xl font-semibold text-sm sm:text-base border border-border-light bg-card hover:bg-card-hover transition-colors text-center flex items-center justify-center gap-2"
+      >
+        Back to home
+      </Link>
+    </div>
+  );
 }
