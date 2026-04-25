@@ -224,7 +224,7 @@ function Actions() {
         href="#"
         className="flex-1 px-6 sm:px-7 py-3 sm:py-3.5 rounded-xl font-semibold text-sm sm:text-base gradient-bg text-white hover:opacity-90 transition-opacity text-center flex items-center justify-center gap-2 shadow-md shadow-accent/20"
       >
-        Download Tappit
+        Download
       </Link>
       <Link
         href="/"
