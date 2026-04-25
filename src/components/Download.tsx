@@ -4,7 +4,7 @@ import { motion, useInView } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { useRef } from "react";
-import { DOWNLOAD_URL, STRIPE_LINK, isExternalStripeLink, TRIAL_ENABLED } from "@/lib/site";
+import { STRIPE_LINK, isExternalStripeLink } from "@/lib/site";
 import { useCta } from "@/hooks/useCta";
 
 export default function Download() {
@@ -13,12 +13,8 @@ export default function Download() {
   const cta = useCta();
   const isWaitlist = cta.mode === "waitlist";
   const isComingSoon = cta.mode === "waitlist" || cta.mode === "placeholder";
-  const primaryHref = isWaitlist ? cta.href : TRIAL_ENABLED ? DOWNLOAD_URL ?? "#pricing" : STRIPE_LINK;
-  const primaryLabel = isWaitlist
-    ? "Join the waitlist"
-    : TRIAL_ENABLED
-      ? DOWNLOAD_URL ? "Download free trial" : "Start free trial"
-      : "Buy Tappit";
+  const primaryHref = isWaitlist ? cta.href : STRIPE_LINK;
+  const primaryLabel = isWaitlist ? "Join the waitlist" : "Buy Tappit";
 
   return (
     <section ref={ref} id="download" className="py-16 md:py-32 text-center">
@@ -37,8 +33,6 @@ export default function Download() {
               ? "Tappit is almost here. Join the waitlist and we'll email you on launch day."
               : isComingSoon
               ? "Tappit is coming soon. Check back here when it's ready."
-              : TRIAL_ENABLED
-              ? "Try the full app free for 14 days. If you love it (and we think you will), keep it forever for $2.99."
               : "Buy Tappit for $2.99 and keep it forever. Not happy? 30-day refund, no questions asked."}
           </p>
 
@@ -53,31 +47,14 @@ export default function Download() {
                   rel={isWaitlist ? "noopener noreferrer" : undefined}
                   className="gradient-bg text-white px-6 py-3 rounded-xl font-semibold shadow-lg shadow-accent/25 hover:shadow-accent/40 hover:-translate-y-0.5 transition-all flex items-center justify-center gap-2"
                 >
-                  {!isWaitlist && DOWNLOAD_URL && (
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                      <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4" />
-                      <polyline points="7 10 12 15 17 10" />
-                      <line x1="12" y1="15" x2="12" y2="3" />
-                    </svg>
-                  )}
                   {primaryLabel}
                 </a>
-                {!isWaitlist && TRIAL_ENABLED && (
-                  <a
-                    href={STRIPE_LINK}
-                    target={isExternalStripeLink ? "_blank" : undefined}
-                    rel={isExternalStripeLink ? "noopener noreferrer" : undefined}
-                    className="px-6 py-3 rounded-xl font-semibold border border-border-light bg-card hover:bg-card-hover transition-colors"
-                  >
-                    Buy for $2.99
-                  </a>
-                )}
               </>
             )}
           </div>
 
           <p className="text-xs text-dim mt-4 leading-relaxed">
-            {TRIAL_ENABLED && "No credit card required · "}macOS 12 or later · Works on Apple Silicon &amp; Intel
+            macOS 12 or later · Works on Apple Silicon &amp; Intel
           </p>
 
           <div className="mt-8 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-[11px] text-dim">

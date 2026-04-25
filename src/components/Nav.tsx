@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useTheme } from "@/context/ThemeContext";
-import { DOWNLOAD_URL, STRIPE_LINK, TRIAL_ENABLED } from "@/lib/site";
+import { STRIPE_LINK } from "@/lib/site";
 import { useCta } from "@/hooks/useCta";
 
 function SunIcon() {
@@ -52,14 +52,8 @@ export default function Nav() {
   }, []);
 
   const cta = useCta();
-  const primaryHref =
-    cta.mode === "waitlist" ? cta.href : TRIAL_ENABLED ? DOWNLOAD_URL ?? "/#pricing" : STRIPE_LINK;
-  const primaryLabel =
-    cta.mode === "waitlist"
-      ? "Join waitlist"
-      : TRIAL_ENABLED
-        ? DOWNLOAD_URL ? "Try free" : "Get Tappit"
-        : "Buy Tappit";
+  const primaryHref = cta.mode === "waitlist" ? cta.href : STRIPE_LINK;
+  const primaryLabel = cta.mode === "waitlist" ? "Join waitlist" : "Buy Tappit";
 
   return (
     <>

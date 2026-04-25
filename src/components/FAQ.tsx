@@ -2,17 +2,10 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
-import { TRIAL_ENABLED } from "@/lib/site";
-
 const faqs = [
   {
     q: "Does it work with my Magic Mouse?",
     a: "Yes, both Magic Mouse 1 and Magic Mouse 2 work for tap detection. Battery status in the menu bar requires Magic Mouse 2, since the original model doesn't report battery level.",
-  },
-  {
-    q: "What does the free trial include?",
-    a: "The full app, every feature, for 14 days. No credit card, no account. When the trial ends, clicks stop being injected but your settings and the app itself stay, and you can unlock it anytime for $2.99.",
-    trialOnly: true,
   },
   {
     q: "Is this a subscription?",
@@ -122,7 +115,7 @@ export default function FAQ() {
         </motion.div>
 
         <div className="mt-8 text-left divide-y divide-border">
-          {faqs.filter((f) => !f.trialOnly || TRIAL_ENABLED).map((faq, index) => (
+          {faqs.map((faq, index) => (
             <FAQItem key={faq.q} faq={faq} index={index} inView={inView} />
           ))}
         </div>
