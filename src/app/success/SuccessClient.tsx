@@ -119,17 +119,18 @@ function Badge({ state }: { state: State }) {
 }
 
 function badgeStyle(state: State): { label: string; dotClass: string } {
+  const dotClass = state.kind === "ready" ? "bg-green-500" : "bg-accent";
   switch (state.kind) {
     case "loading":
-      return { label: "Issuing your license…", dotClass: "bg-accent" };
+      return { label: "Issuing your license…", dotClass };
     case "ready":
-      return { label: "Payment confirmed", dotClass: "bg-green-500" };
+      return { label: "Payment confirmed", dotClass };
     case "timeout":
-      return { label: "Email is on the way", dotClass: "bg-accent" };
+      return { label: "Email is on the way", dotClass };
     case "missingSessionId":
-      return { label: "Thanks for your purchase", dotClass: "bg-accent" };
+      return { label: "Thanks for your purchase", dotClass };
     case "error":
-      return { label: "Confirmation issue", dotClass: "bg-accent" };
+      return { label: "Confirmation issue", dotClass };
   }
 }
 
