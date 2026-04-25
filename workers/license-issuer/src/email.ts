@@ -1,3 +1,5 @@
+import { render } from "@react-email/render";
+import LicenseEmail from "./emails/LicenseEmail";
 import type { Env } from "./env";
 
 export interface LicenseEmailPayload {
@@ -11,6 +13,25 @@ export async function sendLicenseEmail(
   env: Env,
 ): Promise<void> {
   const { to, rawLicenseKey, signedLicenseToken } = payload;
+
+  const html = await render(
+    LicenseEmail({
+      rawLicenseKey,
+      signedLicenseToken,
+      supportEmail: env.SUPPORT_EMAIL,
+      recipientEmail: to,
+    }),
+  );
+  const text = await render(
+    LicenseEmail({
+      rawLicenseKey,
+      signedLicenseToken,
+      supportEmail: env.SUPPORT_EMAIL,
+      recipientEmail: to,
+    }),
+    { plainText: true },
+  );
+
   const res = await fetch("https://api.resend.com/emails", {
     method: "POST",
     headers: {
@@ -21,18 +42,8 @@ export async function sendLicenseEmail(
       from: env.FROM_EMAIL,
       to,
       subject: "Your Tappit license",
-      text:
-        `Thanks for buying Tappit!\n\n` +
-        `Email:        ${to}\n` +
-        `License key:  ${rawLicenseKey}\n` +
-        `Activation:   ${signedLicenseToken}\n\n` +
-        `To activate:\n` +
-        `  1. Open Tappit → Preferences → License\n` +
-        `  2. Enter your email and license key above\n` +
-        `  3. Click Activate (the app uses the activation token automatically)\n\n` +
-        `You can activate Tappit on up to 3 devices with this license.\n` +
-        `Keep this email — it's your proof of purchase.\n` +
-        `Questions? Reply to this email or write to ${env.SUPPORT_EMAIL}.`,
+      html,
+      text,
     }),
   });
 
