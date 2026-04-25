@@ -46,9 +46,7 @@ export default function Hero() {
           <div className="flex flex-col sm:flex-row items-stretch lg:items-start gap-3 mb-6 w-full">
             <>
               <a
-                href={primaryHref}
-                target="_blank"
-                rel="noopener noreferrer"
+                href="#pricing"
                 className="gradient-bg text-white w-full sm:flex-1 px-4 sm:px-7 py-3 sm:py-3.5 rounded-xl font-semibold text-sm sm:text-base flex items-center justify-center gap-2 shadow-lg shadow-accent/25 hover:shadow-accent/40 hover:-translate-y-0.5 transition-all"
               >
                 Buy Tappit

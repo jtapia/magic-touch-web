@@ -83,7 +83,7 @@ export default function Nav() {
               {theme === "dark" ? <SunIcon /> : <MoonIcon />}
             </button>
             <a
-              href={primaryHref}
+              href="/#pricing"
               className="hidden sm:inline-block gradient-bg text-white px-4 py-2 rounded-full text-sm font-semibold hover:opacity-90 transition-opacity shadow-md shadow-accent/20"
             >
               Buy Tappit

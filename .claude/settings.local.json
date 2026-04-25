@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(grep -rnE \"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\\\.[A-Za-z]{2,}\" --exclude-dir=node_modules --exclude-dir=.next --exclude-dir=.git --exclude-dir=log --exclude-dir=dist .)"
+    ]
+  }
+}

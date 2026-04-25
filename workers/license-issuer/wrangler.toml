@@ -2,6 +2,10 @@ name = "license-issuer"
 main = "src/index.ts"
 compatibility_date = "2025-01-01"
 
+routes = [
+  { pattern = "license.gettappit.com", custom_domain = true, zone_name = "gettappit.com" }
+]
+
 # Secrets (set via `wrangler secret put NAME`):
 #   LICENSE_SIGNING_PRIVATE_KEY — base64 of 32-byte Ed25519 seed
 #   STRIPE_WEBHOOK_SECRET        — from Stripe dashboard (whsec_...)
@@ -11,3 +15,18 @@ compatibility_date = "2025-01-01"
 [vars]
 FROM_EMAIL = "Tappit <support@gettappit.com>"
 SUPPORT_EMAIL = "support@gettappit.com"
+
+[[kv_namespaces]]
+binding = "LICENSES"
+id = "31d2ab71d0364197913585e3990e0d42"
+preview_id = "7f2a1cabda88427d9a23750fac5eedb2"
+
+[observability]
+enabled = true
+head_sampling_rate = 1
+
+[observability.logs]
+enabled = true
+head_sampling_rate = 1
+persist = true
+invocation_logs = true
