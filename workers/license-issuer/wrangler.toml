@@ -11,3 +11,8 @@ compatibility_date = "2025-01-01"
 [vars]
 FROM_EMAIL = "Tappit <support@gettappit.com>"
 SUPPORT_EMAIL = "support@gettappit.com"
+
+[[kv_namespaces]]
+binding = "LICENSES"
+id = "31d2ab71d0364197913585e3990e0d42"
+preview_id = "7f2a1cabda88427d9a23750fac5eedb2"
