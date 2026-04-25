@@ -57,7 +57,7 @@ export default function LicenseEmail({
                 You&apos;re in.
               </Heading>
               <Text className="text-white/85 text-base mt-3 mb-0 leading-relaxed">
-                Welcome to Tappit. Your license is below — keep this email safe.
+                Welcome to Tappit. Your license is below.
               </Text>
             </Section>
 
@@ -152,7 +152,7 @@ export default function LicenseEmail({
 
             <Section className="px-8 py-5 bg-[#f5f5f7] border-t border-black/[0.06]">
               <Text className="text-[#757578] text-xs leading-relaxed m-0 text-center">
-                This email is your proof of purchase. Save it somewhere safe.
+                This email is your proof of purchase.
               </Text>
               <Text className="text-[#757578] text-xs mt-1 mb-0 text-center">
                 <Link href="https://gettappit.com" className="text-[#757578] underline">
