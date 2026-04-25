@@ -56,8 +56,8 @@ export default function LicenseEmail({
               <Heading className="text-white text-3xl font-extrabold tracking-tight mt-5 mb-0 leading-tight">
                 You&apos;re in.
               </Heading>
-              <Text className="text-white/85 text-base mt-3 mb-0 leading-relaxed">
-                Welcome to Tappit. Your license is below.
+              <Text className="text-white/85 text-base mt-1 mb-0 leading-relaxed">
+                Welcome to Tappit.
               </Text>
             </Section>
 
@@ -91,7 +91,7 @@ export default function LicenseEmail({
                   {signedLicenseToken}
                 </Text>
                 <Text className="text-[#757578] text-xs mt-2 mb-0 leading-relaxed">
-                  The activation token is used by Tappit automatically — you only
+                  The activation token is used by Tappit automatically, you only
                   need to enter the license key.
                 </Text>
               </Section>
@@ -128,8 +128,7 @@ export default function LicenseEmail({
                   num="3"
                   text={
                     <>
-                      Click <strong>Activate</strong>. You can use this license on
-                      up to 3 devices.
+                      Click <strong>Activate</strong>.
                     </>
                   }
                 />
@@ -151,14 +150,13 @@ export default function LicenseEmail({
             </Section>
 
             <Section className="px-8 py-5 bg-[#f5f5f7] border-t border-black/[0.06]">
-              <Text className="text-[#757578] text-xs leading-relaxed m-0 text-center">
-                This email is your proof of purchase.
-              </Text>
               <Text className="text-[#757578] text-xs mt-1 mb-0 text-center">
                 <Link href="https://gettappit.com" className="text-[#757578] underline">
                   gettappit.com
                 </Link>{" "}
-                · 30-day refund · Zero data collected
+              </Text>
+              <Text className="text-[#757578] text-xs leading-relaxed m-0 text-center">
+                This email is your proof of purchase.
               </Text>
             </Section>
           </Container>
