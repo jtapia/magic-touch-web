@@ -19,7 +19,7 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   title: "Tappit: Tap-to-click for your Magic Mouse",
   description:
-    "Add trackpad-style tap-to-click to your Apple Magic Mouse. Light, kinder-on-your-hands clicks, smart right-click, and subtle haptics. One-time $2.99 · 14-day free trial · Zero data collected.",
+    "Add trackpad-style tap-to-click to your Apple Magic Mouse. Light, kinder-on-your-hands clicks, smart right-click, and subtle haptics. One-time $2.99 · Zero data collected.",
   metadataBase: new URL(siteUrl),
   alternates: {
     canonical: "/",
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     siteName: "Tappit",
     title: "Tappit: Tap-to-click for your Magic Mouse",
     description:
-      "Tap instead of press on your Magic Mouse. Smart right-click, subtle haptics, and every thoughtful detail. $2.99 · 14-day free trial.",
+      "Tap instead of press on your Magic Mouse. Smart right-click, subtle haptics, and every thoughtful detail. One-time $2.99.",
     images: [
       // Primary social card: 1.91:1 for Facebook, LinkedIn, Product Hunt, Slack.
       // TODO: create public/og-image.png at 1200x630 before the PH launch.
@@ -61,7 +61,7 @@ export const metadata: Metadata = {
     card: "summary",
     title: "Tappit: Tap-to-click for your Magic Mouse",
     description:
-      "Tap instead of press on your Magic Mouse. Smart right-click, subtle haptics, and every thoughtful detail. $2.99 · 14-day free trial.",
+      "Tap instead of press on your Magic Mouse. Smart right-click, subtle haptics, and every thoughtful detail. One-time $2.99.",
     images: ["/og-image.png"],
   },
 };

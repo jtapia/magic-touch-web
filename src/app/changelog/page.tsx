@@ -43,7 +43,6 @@ const releases: Release[] = [
           "Battery monitoring: color-coded menu bar badge for Magic Mouse 2",
           "Start on login: SMAppService (macOS 13+)",
           "Touch calibration window: real-time finger position visualization",
-          "14-day free trial: full feature set, then click injection pauses",
           "Offline license activation: Ed25519-signed keys, zero network requests",
           "Onboarding flow: first-launch setup guide",
         ],
