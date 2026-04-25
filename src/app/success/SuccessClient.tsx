@@ -219,10 +219,16 @@ function LicenseCard({ info }: { info: SessionInfo }) {
 
 function Actions() {
   return (
-    <div className="flex">
+    <div className="flex flex-col sm:flex-row gap-3">
+      <Link
+        href="#"
+        className="flex-1 px-6 sm:px-7 py-3 sm:py-3.5 rounded-xl font-semibold text-sm sm:text-base gradient-bg text-white hover:opacity-90 transition-opacity text-center flex items-center justify-center gap-2 shadow-md shadow-accent/20"
+      >
+        Download Tappit
+      </Link>
       <Link
         href="/"
-        className="w-full sm:w-auto px-6 sm:px-7 py-3 sm:py-3.5 rounded-xl font-semibold text-sm sm:text-base border border-border-light bg-card hover:bg-card-hover transition-colors text-center flex items-center justify-center gap-2"
+        className="flex-1 px-6 sm:px-7 py-3 sm:py-3.5 rounded-xl font-semibold text-sm sm:text-base border border-border-light bg-card hover:bg-card-hover transition-colors text-center flex items-center justify-center gap-2"
       >
         Back to home
       </Link>
