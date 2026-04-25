@@ -1256,7 +1256,7 @@ import { useEffect, useRef, useState } from "react";
 import styles from "./success.module.css";
 
 const LICENSE_ISSUER_URL =
-  process.env.NEXT_PUBLIC_LICENSE_ISSUER_URL ?? "https://license-issuer.gettappit.com";
+  process.env.NEXT_PUBLIC_LICENSE_ISSUER_URL ?? "https://license.gettappit.com";
 const POLL_INTERVAL_MS = 1500;
 const MAX_ATTEMPTS = 8;
 
@@ -1484,7 +1484,7 @@ git commit -m "feat(success): add /success page that polls /session/:id for mask
 The marketing site is built statically; the URL has to be baked in at build time via `NEXT_PUBLIC_LICENSE_ISSUER_URL`. There are two reasonable hosting choices for the license issuer:
 
 1. **Workers default subdomain** — `https://license-issuer.<account>.workers.dev`. Zero config, but the URL is your account-specific subdomain.
-2. **Custom subdomain** — `https://license-issuer.gettappit.com` via a Cloudflare custom domain on the worker. Cleaner.
+2. **Custom subdomain** — `https://license.gettappit.com` via a Cloudflare custom domain on the worker. Chosen.
 
 This task assumes the custom subdomain. Adjust if you go the other way.
 
@@ -1494,7 +1494,7 @@ Wrangler does not inject `[vars]` into the Next.js static build — that's a Nex
 
 Create or update `.env.production` (NOT committed if it contains secrets — `NEXT_PUBLIC_*` is public by definition, so committing is fine):
 ```
-NEXT_PUBLIC_LICENSE_ISSUER_URL=https://license-issuer.gettappit.com
+NEXT_PUBLIC_LICENSE_ISSUER_URL=https://license.gettappit.com
 ```
 
 - [ ] **Step 2: Add `.env.production` to git if appropriate**
@@ -1513,7 +1513,7 @@ git add -f .env.production
 In `workers/license-issuer/wrangler.toml`, add at the bottom:
 ```toml
 routes = [
-  { pattern = "license-issuer.gettappit.com", custom_domain = true, zone_name = "gettappit.com" }
+  { pattern = "license.gettappit.com", custom_domain = true, zone_name = "gettappit.com" }
 ]
 ```
 
@@ -1529,7 +1529,7 @@ Expected: at least one match showing the URL embedded in the static JS.
 
 ```bash
 git add .env.production workers/license-issuer/wrangler.toml
-git commit -m "chore: route license-issuer at license-issuer.gettappit.com and bake URL into site"
+git commit -m "chore: route license-issuer at license.gettappit.com and bake URL into site"
 ```
 
 ---
@@ -1553,7 +1553,7 @@ npx wrangler secret put <NAME>
 ```bash
 cd workers/license-issuer && npx wrangler deploy
 ```
-Expected: deploy succeeds, prints the routes including `license-issuer.gettappit.com`.
+Expected: deploy succeeds, prints the routes including `license.gettappit.com`.
 
 - [ ] **Step 3: Deploy the marketing site**
 
@@ -1572,7 +1572,7 @@ Expected: `200 OK`, HTML body with the page shell.
 - [ ] **Step 5: Update the Stripe dashboard**
 
 In the Stripe dashboard:
-- Webhooks → edit the existing endpoint → URL: `https://license-issuer.gettappit.com/webhook` (was `…/stripe-webhook`).
+- Webhooks → edit the existing endpoint → URL: `https://license.gettappit.com/webhook` (was `…/stripe-webhook`).
 - Payment Links → edit your live (or test) link → "After payment" → "Don't show confirmation page" → "Redirect customers to your website" → URL:
   `https://gettappit.com/success?session_id={CHECKOUT_SESSION_ID}`.
 
@@ -1584,7 +1584,7 @@ Expected:
 1. After paying, Stripe redirects to `gettappit.com/success?session_id=cs_test_...`.
 2. Within ~3 seconds, the page shows the masked license + email.
 3. Within ~30 seconds, an email arrives at the address used during checkout containing both the raw license key and the activation token.
-4. `curl -X POST https://license-issuer.gettappit.com/activate -H 'content-type: application/json' -d '{"rawLicenseKey":"<raw>","email":"<email>","deviceId":"smoke-1"}'` returns `200` with `"reactivated":false`.
+4. `curl -X POST https://license.gettappit.com/activate -H 'content-type: application/json' -d '{"rawLicenseKey":"<raw>","email":"<email>","deviceId":"smoke-1"}'` returns `200` with `"reactivated":false`.
 5. Re-running the same `/activate` call returns `200` with `"reactivated":true`.
 6. `/validate` with the same payload returns `"status":"active"` and `"deviceActivated":true`.
 

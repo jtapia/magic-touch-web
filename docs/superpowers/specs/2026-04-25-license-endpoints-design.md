@@ -183,7 +183,7 @@ Flow:
 
 1. Read `session_id` from `window.location.search`. If missing → show generic
    "Thanks for your purchase, check your email" fallback.
-2. `fetch("https://license-issuer.<account>.workers.dev/session/" + sessionId)`.
+2. `fetch("https://license.gettappit.com/session/" + sessionId)`.
 3. If `404`, poll every 1.5s up to 8 attempts (~12s ceiling for webhook race).
 4. On success, render:
    - "✓ Payment confirmed"
