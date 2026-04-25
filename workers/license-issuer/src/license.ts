@@ -46,7 +46,6 @@ export async function sha256Hex(input: string): Promise<string> {
 }
 
 export function maskRawKey(rawKey: string): string {
-  // tap_••••••••<last 4 chars of body>
   const body = rawKey.slice(KEY_PREFIX.length);
   const tail = body.slice(-4);
   return `${KEY_PREFIX}••••••••${tail}`;
@@ -65,7 +64,7 @@ function base64url(bytes: Uint8Array): string {
   return btoa(bin).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
 }
 
-function bytesToHex(bytes: Uint8Array): string {
+export function bytesToHex(bytes: Uint8Array): string {
   let out = "";
   for (const b of bytes) out += b.toString(16).padStart(2, "0");
   return out;

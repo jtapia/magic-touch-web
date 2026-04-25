@@ -28,6 +28,9 @@ export interface SignedPointer {
 }
 
 export const MAX_DEVICES = 3;
+export const MAX_DEVICE_ID_LEN = 128;
+export const MAX_EMAIL_LEN = 254;
+export const MAX_KEY_LEN = 1024;
 
 const licKey = (rawKeyHash: string) => `lic:${rawKeyHash}`;
 const sessionKey = (sessionId: string) => `session:${sessionId}`;

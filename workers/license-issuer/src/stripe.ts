@@ -1,3 +1,5 @@
+import { bytesToHex } from "./license";
+
 export interface StripeEvent {
   type: string;
   data: { object: unknown };
@@ -59,10 +61,4 @@ function timingSafeEqualHex(a: string, b: string): boolean {
   let diff = 0;
   for (let i = 0; i < a.length; i++) diff |= a.charCodeAt(i) ^ b.charCodeAt(i);
   return diff === 0;
-}
-
-function bytesToHex(bytes: Uint8Array): string {
-  let out = "";
-  for (const b of bytes) out += b.toString(16).padStart(2, "0");
-  return out;
 }

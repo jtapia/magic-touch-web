@@ -77,8 +77,10 @@ export async function handleWebhook(
     // support can recover via direct rawKeyHash if needed. We accept this
     // over a partial state where a pointer exists without a primary.
     await putLicense(env.LICENSES, record);
-    await putSessionPointer(env.LICENSES, sessionId, { rawKeyHash, signedKeyHash });
-    await putSignedPointer(env.LICENSES, signedKeyHash, { rawKeyHash });
+    await Promise.all([
+      putSessionPointer(env.LICENSES, sessionId, { rawKeyHash, signedKeyHash }),
+      putSignedPointer(env.LICENSES, signedKeyHash, { rawKeyHash }),
+    ]);
 
     // ctx.waitUntil silently swallows rejections; .catch surfaces the failure.
     ctx.waitUntil(
