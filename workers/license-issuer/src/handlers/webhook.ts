@@ -32,20 +32,26 @@ export async function handleWebhook(
   if (!event) return new Response("Bad signature", { status: 400 });
 
   if (event.type !== "checkout.session.completed") {
+    console.log("webhook: ignored event type", { type: event.type });
     return new Response("Ignored", { status: 200 });
   }
 
   const session = event.data.object as CheckoutSession;
   const email = session.customer_details?.email?.toLowerCase().trim();
   const sessionId = session.id;
-  if (!email) return new Response("No customer email", { status: 400 });
+  if (!email) {
+    console.warn("webhook: missing customer email", { sessionId });
+    return new Response("No customer email", { status: 400 });
+  }
 
   // Idempotency: Stripe retries on non-2xx and occasionally on success.
   // If we've already issued for this session, return 200 without re-issuing.
   const existing = await getSessionPointer(env.LICENSES, sessionId);
   if (existing) {
+    console.log("webhook: idempotent skip", { sessionId, email });
     return new Response("Already issued", { status: 200 });
   }
+  console.log("webhook: issuing license", { sessionId, email });
 
   try {
     const rawLicenseKey = generateRawLicenseKey();
@@ -74,11 +80,21 @@ export async function handleWebhook(
     await putSessionPointer(env.LICENSES, sessionId, { rawKeyHash, signedKeyHash });
     await putSignedPointer(env.LICENSES, signedKeyHash, { rawKeyHash });
 
+    // Email send is fire-and-forget so Stripe's 5s SLA isn't at risk if Resend
+    // is slow. ctx.waitUntil silently swallows rejections, so wrap with an
+    // explicit logger — without this, a misconfigured Resend domain just
+    // disappears into the void and the user gets no email.
     ctx.waitUntil(
       sendLicenseEmail(
         { to: email, rawLicenseKey, signedLicenseToken: signed.signedToken },
         env,
-      ),
+      ).catch((err) => {
+        console.error("sendLicenseEmail failed", {
+          sessionId,
+          to: email,
+          error: err instanceof Error ? err.message : String(err),
+        });
+      }),
     );
     return new Response("OK", { status: 200 });
   } catch (err) {
