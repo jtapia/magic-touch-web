@@ -86,7 +86,7 @@ export default function SuccessClient() {
 
         {state.kind === "ready" && <LicenseCard info={state.info} />}
 
-        <Actions state={state} />
+        <Actions />
 
         <p className="mt-10 text-sm text-dim">
           Need help? Email{" "}
@@ -216,25 +216,12 @@ function LicenseCard({ info }: { info: SessionInfo }) {
   );
 }
 
-function Actions({ state }: { state: State }) {
-  const showOpenMail = state.kind === "ready" || state.kind === "timeout";
+function Actions() {
   return (
-    <div className="flex flex-col sm:flex-row items-stretch gap-3">
-      {showOpenMail && (
-        <a
-          href="message://"
-          className="gradient-bg text-white w-full sm:flex-1 px-4 sm:px-7 py-3 sm:py-3.5 rounded-xl font-semibold text-sm sm:text-base flex items-center justify-center gap-2 shadow-lg shadow-accent/25 hover:shadow-accent/40 hover:-translate-y-0.5 transition-all"
-        >
-          Open Mail
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
-            <polyline points="22,6 12,13 2,6" />
-          </svg>
-        </a>
-      )}
+    <div className="flex">
       <Link
         href="/"
-        className="w-full sm:flex-1 px-4 sm:px-7 py-3 sm:py-3.5 rounded-xl font-semibold text-sm sm:text-base border border-border-light bg-card hover:bg-card-hover transition-colors text-center flex items-center justify-center gap-2"
+        className="w-full sm:w-auto px-6 sm:px-7 py-3 sm:py-3.5 rounded-xl font-semibold text-sm sm:text-base border border-border-light bg-card hover:bg-card-hover transition-colors text-center flex items-center justify-center gap-2"
       >
         Back to home
       </Link>
