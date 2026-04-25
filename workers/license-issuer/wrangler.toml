@@ -16,3 +16,7 @@ SUPPORT_EMAIL = "support@gettappit.com"
 binding = "LICENSES"
 id = "31d2ab71d0364197913585e3990e0d42"
 preview_id = "7f2a1cabda88427d9a23750fac5eedb2"
+
+routes = [
+  { pattern = "license.gettappit.com", custom_domain = true, zone_name = "gettappit.com" }
+]
