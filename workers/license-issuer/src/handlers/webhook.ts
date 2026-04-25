@@ -80,10 +80,7 @@ export async function handleWebhook(
     await putSessionPointer(env.LICENSES, sessionId, { rawKeyHash, signedKeyHash });
     await putSignedPointer(env.LICENSES, signedKeyHash, { rawKeyHash });
 
-    // Email send is fire-and-forget so Stripe's 5s SLA isn't at risk if Resend
-    // is slow. ctx.waitUntil silently swallows rejections, so wrap with an
-    // explicit logger — without this, a misconfigured Resend domain just
-    // disappears into the void and the user gets no email.
+    // ctx.waitUntil silently swallows rejections; .catch surfaces the failure.
     ctx.waitUntil(
       sendLicenseEmail(
         { to: email, rawLicenseKey, signedLicenseToken: signed.signedToken },
@@ -98,7 +95,7 @@ export async function handleWebhook(
     );
     return new Response("OK", { status: 200 });
   } catch (err) {
-    console.error("issueLicense failed", err);
+    console.error("license issuance failed", { sessionId, err });
     return new Response("Internal error", { status: 500 });
   }
 }
