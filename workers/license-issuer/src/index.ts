@@ -11,17 +11,10 @@
 
 import * as ed from "@noble/ed25519";
 import { sha512 } from "@noble/hashes/sha512";
+import type { Env } from "./env";
 
 // @noble/ed25519 v2 requires a synchronous SHA-512 implementation at startup.
 ed.etc.sha512Sync = (...msgs) => sha512(ed.etc.concatBytes(...msgs));
-
-export interface Env {
-  LICENSE_SIGNING_PRIVATE_KEY: string; // base64, 32-byte Ed25519 seed
-  STRIPE_WEBHOOK_SECRET: string;       // whsec_...
-  RESEND_API_KEY: string;              // re_...
-  FROM_EMAIL: string;
-  SUPPORT_EMAIL: string;
-}
 
 export default {
   async fetch(req: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
