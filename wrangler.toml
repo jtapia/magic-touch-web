@@ -13,10 +13,19 @@ binding = "ASSETS"
 #   "placeholder" — show price section (no buttons); used before waitlist or after sale ends
 # Because this is a Worker with static assets, values must be edited here (or via
 # `wrangler secret` for sensitive values) and redeployed with `wrangler deploy`.
+routes = [
+  { pattern = "gettappit.com", custom_domain = true, zone_name = "gettappit.com" }
+]
+
+# Runtime variables read by the Worker entry (worker/index.ts).
+# CTA_MODE: "waitlist" | "on-sale"
+# Secrets (set via `wrangler secret put`, never commit here):
+#   LICENSE_SIGNING_PRIVATE_KEY
 [vars]
 CTA_MODE = "on-sale"
-PURCHASE_URL = "https://buy.stripe.com/your_link_here"  # your Stripe Payment Link
-WAITLIST_URL = "" # https://www.producthunt.com/upcoming/tappit
+WAITLIST_URL = ""
+PURCHASE_URL = "https://buy.stripe.com/test_7sYeVeeiu5ZU8Tpb8G1kA00"
+NEXT_PUBLIC_STRIPE_PAYMENT_LINK = "https://buy.stripe.com/test_7sYeVeeiu5ZU8Tpb8G1kA00"
 
 [observability]
 enabled = true
