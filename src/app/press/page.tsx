@@ -90,8 +90,8 @@ export default function PressKit() {
           <p className="text-lg text-muted leading-relaxed max-w-2xl">
             Everything you need in one place: boilerplate copy at three lengths, the fact sheet, downloadable logo
             assets, brand colors, and screenshots as they become available. Reach us at{" "}
-            <a className="text-accent-light hover:underline" href="mailto:press@gettappit.com">
-              press@gettappit.com
+            <a className="text-accent-light hover:underline" href="mailto:support@gettappit.com">
+              support@gettappit.com
             </a>{" "}
             for interview requests, review copies, or anything else.
           </p>
@@ -207,8 +207,8 @@ export default function PressKit() {
           <h2 className="text-2xl font-bold tracking-tight mb-2">Screenshots</h2>
           <p className="text-sm text-muted mb-6">
             Currently preparing launch screenshots. Email{" "}
-            <a className="text-accent-light hover:underline" href="mailto:press@gettappit.com">
-              press@gettappit.com
+            <a className="text-accent-light hover:underline" href="mailto:support@gettappit.com">
+              support@gettappit.com
             </a>{" "}
             for early access or custom captures.
           </p>
@@ -232,10 +232,10 @@ export default function PressKit() {
           </p>
           <div className="flex flex-col sm:flex-row gap-3">
             <a
-              href="mailto:press@gettappit.com"
+              href="mailto:support@gettappit.com"
               className="inline-flex items-center justify-center gap-2 gradient-bg text-white px-5 py-2.5 rounded-xl text-sm font-semibold shadow-lg shadow-accent/25 hover:shadow-accent/40 hover:-translate-y-0.5 transition-all"
             >
-              press@gettappit.com
+              support@gettappit.com
             </a>
             <Link
               href="/changelog"

@@ -67,7 +67,7 @@ export default function Waitlist({ compact = false }: { compact?: boolean }) {
           id="waitlist-email"
           type="email"
           required
-          placeholder="you@example.com"
+          placeholder="support@gettappit.com"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           disabled={status === "submitting"}

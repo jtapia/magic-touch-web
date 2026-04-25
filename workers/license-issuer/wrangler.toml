@@ -9,5 +9,5 @@ compatibility_date = "2025-01-01"
 #
 # Non-secret vars below can be overridden per-environment if needed.
 [vars]
-FROM_EMAIL = "Tappit <licenses@gettappit.com>"
+FROM_EMAIL = "Tappit <support@gettappit.com>"
 SUPPORT_EMAIL = "support@gettappit.com"

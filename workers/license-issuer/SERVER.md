@@ -95,7 +95,7 @@ Create `.dev.vars` (gitignored) with dummy values:
 LICENSE_SIGNING_PRIVATE_KEY=<base64 private key>
 STRIPE_WEBHOOK_SECRET=<whsec_... from stripe listen>
 RESEND_API_KEY=<re_...>
-FROM_EMAIL=Tappit <licenses@gettappit.com>
+FROM_EMAIL=Tappit <support@gettappit.com>
 SUPPORT_EMAIL=support@gettappit.com
 ```
 
@@ -152,13 +152,13 @@ import nodemailer from "nodemailer";
 const transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
-    user: "you@gmail.com",
+    user: "support@gettappit.com",
     pass: "<app password>",   // not your real password
   },
 });
 
 await transporter.sendMail({
-  from: '"Tappit" <you@gmail.com>',
+  from: '"Tappit" <support@gettappit.com>',
   to: customerEmail,
   subject: "Your Tappit license",
   text: `License key: ${licenseKey}`,
