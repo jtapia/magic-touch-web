@@ -36,7 +36,7 @@ export default function TermsOfUse() {
         <article className="prose-section">
           <h2>License</h2>
           <p>
-            Tappit grants you a personal, non-exclusive, non-transferable license to use the software on any Mac you own. A single purchase covers all your personal devices.
+            Tappit grants you a personal, non-exclusive, non-transferable license to use the software on any Mac you own.
           </p>
 
           <h2>Purchase and pricing</h2>

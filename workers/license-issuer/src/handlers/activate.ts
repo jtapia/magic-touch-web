@@ -77,7 +77,7 @@ export async function handleActivate(req: Request, env: Env): Promise<Response> 
     return jsonResponse(
       {
         error: "device_limit_reached",
-        message: `License is already activated on ${record.maxDevices} devices`,
+        message: `License is already activated on your device`,
         activeDevices: record.activations.length,
         maxDevices: record.maxDevices,
       },

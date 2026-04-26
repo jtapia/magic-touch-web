@@ -172,7 +172,6 @@ export default function Pricing() {
             >
               Buy Tappit
             </a>
-            <p className="text-center text-xs text-dim">30-day refund · No questions asked</p>
           </div>
         </motion.div>
 
