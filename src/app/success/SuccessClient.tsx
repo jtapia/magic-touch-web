@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
+import { DOWNLOAD_URL } from "@/lib/site";
 
 const LICENSE_ISSUER_URL =
   process.env.NEXT_PUBLIC_LICENSE_ISSUER_URL ?? "https://license.gettappit.com";
@@ -221,7 +222,7 @@ function Actions() {
   return (
     <div className="flex flex-col sm:flex-row gap-3">
       <Link
-        href="#"
+        href={DOWNLOAD_URL ?? "/"}
         className="flex-1 px-6 sm:px-7 py-3 sm:py-3.5 rounded-xl font-semibold text-sm sm:text-base gradient-bg text-white hover:opacity-90 transition-opacity text-center flex items-center justify-center gap-2 shadow-md shadow-accent/20"
       >
         Download

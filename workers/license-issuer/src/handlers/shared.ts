@@ -1,12 +1,44 @@
 import type { Env } from "../env";
 import { sha256Hex } from "../license";
-import { getSignedPointer } from "../kv";
+import { getSignedPointer, MAX_DEVICE_ID_LEN, MAX_EMAIL_LEN, MAX_KEY_LEN } from "../kv";
+import { errorResponse } from "./cors";
 
 export interface LicenseRequestBody {
   rawLicenseKey?: string;
   signedLicenseToken?: string;
   deviceId?: string;
   email?: string;
+}
+
+export interface ParsedLicenseBody {
+  rawLicenseKey?: string;
+  signedLicenseToken?: string;
+  deviceId: string;
+  email: string;
+}
+
+export async function parseLicenseBody(
+  req: Request,
+): Promise<ParsedLicenseBody | Response> {
+  let body: LicenseRequestBody;
+  try {
+    body = (await req.json()) as LicenseRequestBody;
+  } catch {
+    return errorResponse("bad_request", "Invalid JSON body", 400, "site");
+  }
+  const { rawLicenseKey, signedLicenseToken, deviceId, email } = body;
+  if (!deviceId || !email)
+    return errorResponse("bad_request", "deviceId and email are required", 400, "site");
+  if (deviceId.length > MAX_DEVICE_ID_LEN || email.length > MAX_EMAIL_LEN)
+    return errorResponse("bad_request", "Field exceeds maximum length", 400, "site");
+  if (
+    (rawLicenseKey && rawLicenseKey.length > MAX_KEY_LEN) ||
+    (signedLicenseToken && signedLicenseToken.length > MAX_KEY_LEN)
+  )
+    return errorResponse("bad_request", "Field exceeds maximum length", 400, "site");
+  if (!rawLicenseKey && !signedLicenseToken)
+    return errorResponse("bad_request", "rawLicenseKey or signedLicenseToken required", 400, "site");
+  return { rawLicenseKey, signedLicenseToken, deviceId, email };
 }
 
 export async function resolveRawKeyHash(

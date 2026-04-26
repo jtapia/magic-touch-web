@@ -1,7 +1,7 @@
 import type { Env } from "../env";
-import { getLicense, putLicense, MAX_DEVICE_ID_LEN, MAX_EMAIL_LEN, MAX_KEY_LEN } from "../kv";
+import { getLicense, putLicense } from "../kv";
 import { jsonResponse, errorResponse, preflight } from "./cors";
-import { LicenseRequestBody, resolveRawKeyHash } from "./shared";
+import { parseLicenseBody, resolveRawKeyHash } from "./shared";
 
 export async function handleValidate(req: Request, env: Env): Promise<Response> {
   if (req.method === "OPTIONS") return preflight("site");
@@ -9,34 +9,9 @@ export async function handleValidate(req: Request, env: Env): Promise<Response> 
     return errorResponse("method_not_allowed", "Use POST", 405, "site");
   }
 
-  let body: LicenseRequestBody;
-  try {
-    body = (await req.json()) as LicenseRequestBody;
-  } catch {
-    return errorResponse("bad_request", "Invalid JSON body", 400, "site");
-  }
-
-  const { rawLicenseKey, signedLicenseToken, deviceId, email } = body;
-  if (!deviceId || !email) {
-    return errorResponse("bad_request", "deviceId and email are required", 400, "site");
-  }
-  if (deviceId.length > MAX_DEVICE_ID_LEN || email.length > MAX_EMAIL_LEN) {
-    return errorResponse("bad_request", "Field exceeds maximum length", 400, "site");
-  }
-  if (
-    (rawLicenseKey && rawLicenseKey.length > MAX_KEY_LEN) ||
-    (signedLicenseToken && signedLicenseToken.length > MAX_KEY_LEN)
-  ) {
-    return errorResponse("bad_request", "Field exceeds maximum length", 400, "site");
-  }
-  if (!rawLicenseKey && !signedLicenseToken) {
-    return errorResponse(
-      "bad_request",
-      "rawLicenseKey or signedLicenseToken required",
-      400,
-      "site",
-    );
-  }
+  const parsed = await parseLicenseBody(req);
+  if (parsed instanceof Response) return parsed;
+  const { rawLicenseKey, signedLicenseToken, deviceId, email } = parsed;
 
   // Single generic error for not-found / email-mismatch to prevent
   // enumerating which license keys exist without knowing the buyer's email.
