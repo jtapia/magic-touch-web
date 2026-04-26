@@ -41,38 +41,42 @@ Or connect the repo in the Cloudflare Pages dashboard with:
 ## Stripe Setup
 
 1. Create a Payment Link at [dashboard.stripe.com/payment-links](https://dashboard.stripe.com/payment-links)
-2. Set the environment variable:
+2. Set `PURCHASE_URL` in `wrangler.toml`:
+   ```toml
+   [vars]
+   PURCHASE_URL = "https://buy.stripe.com/your_link_here"
    ```
-   NEXT_PUBLIC_STRIPE_PAYMENT_LINK=https://buy.stripe.com/your_link_here
-   ```
-3. Rebuild and deploy
+3. Deploy: `wrangler deploy`
 
-## Launch Mode (CTA_MODE)
+The `useCtaHref()` hook reads `PURCHASE_URL` from the Worker at runtime — no rebuild needed to update the link.
 
-The site has three display modes controlled by `CTA_MODE` in `wrangler.toml`. Switch between them and run `wrangler deploy` — no rebuild needed.
+## License Issuer Worker
 
-| Mode | Description | Hero | Pricing section | Download section |
-|------|-------------|------|-----------------|------------------|
-| `waitlist` | Pre-launch with email capture | "Join the waitlist" button → `WAITLIST_URL` | "Coming soon" card, no buy buttons, waitlist CTA | "Be the first to try it" + waitlist button |
-| `on-sale` | App is live and purchasable | "Try free for 14 days" / "Start free trial" | Full price card with countdown + download & buy buttons | "Ready to stop pressing?" + download & buy buttons |
-| `placeholder` | Teaser with no action yet | "Coming soon" text, no button | "Coming soon" card, price shown, no buttons | "Coming soon" text, no button |
+A separate Cloudflare Worker at `license.gettappit.com` handles post-purchase license delivery and activation. Source lives in `workers/license-issuer/`.
 
-To switch modes, edit `wrangler.toml`:
+**Endpoints:**
 
-```toml
-[vars]
-CTA_MODE = "on-sale"          # "waitlist" | "on-sale" | "placeholder"
-WAITLIST_URL = "https://..."  # used when CTA_MODE = "waitlist"
-PURCHASE_URL = "#pricing"     # used when CTA_MODE = "on-sale"
-```
+| Route | Description |
+|-------|-------------|
+| `POST /webhook` | Stripe webhook — creates and emails a license on successful payment |
+| `GET /session/:id` | Returns masked purchase confirmation for the `/success` page |
+| `POST /validate` | Validates a license key |
+| `POST /activate` | Activates a license key against a device fingerprint |
 
-Then deploy:
+**Required secrets** (set via `wrangler secret put` inside `workers/license-issuer/`):
+
+| Secret | Description |
+|--------|-------------|
+| `LICENSE_SIGNING_PRIVATE_KEY` | Base64-encoded 32-byte Ed25519 seed |
+| `STRIPE_WEBHOOK_SECRET` | Stripe webhook signing secret (`whsec_...`) |
+| `RESEND_API_KEY` | Resend API key for transactional email |
+
+Deploy the worker separately:
 
 ```bash
+cd workers/license-issuer
 wrangler deploy
 ```
-
-The mode is served from `/api/cta` by the Cloudflare Worker and fetched client-side by `useCta()`. The static build falls back to `on-sale` if the Worker is unreachable.
 
 ## Project Structure
 
@@ -81,6 +85,7 @@ src/
 ├── app/
 │   ├── layout.tsx          # Root layout, metadata, theme anti-flash
 │   ├── page.tsx            # Section composition with dynamic imports
+│   ├── success/            # Post-purchase confirmation page (polls /session/:id)
 │   └── globals.css         # Tailwind theme, animations, dark mode
 ├── components/
 │   ├── Nav.tsx             # Fixed nav with mobile menu, theme toggle
@@ -98,24 +103,37 @@ src/
 │   └── Footer.tsx          # Navigation + copyright
 └── context/
     └── ThemeContext.tsx     # Light/dark toggle with localStorage
+
+workers/
+├── license-issuer/         # License delivery & activation Worker (license.gettappit.com)
+│   └── src/
+│       ├── index.ts        # Request router
+│       └── handlers/
+│           ├── webhook.ts  # Stripe webhook → license creation + email
+│           ├── session.ts  # Masked session data for /success page
+│           ├── validate.ts # License key validation
+│           ├── activate.ts # Device activation
+│           ├── shared.ts   # Shared request utilities
+│           └── cors.ts     # CORS helper
+└── tappit/                 # Main site Worker (gettappit.com)
 ```
 
 ## Environment Variables
 
-| Variable | Description | Required |
-|----------|-------------|----------|
-| `NEXT_PUBLIC_STRIPE_PAYMENT_LINK` | Stripe Payment Link URL for Pro purchase | No (falls back to `#`) |
-| `NEXT_PUBLIC_DOWNLOAD_URL` | Direct DMG download URL | No |
-| `NEXT_PUBLIC_WAITLIST_ENDPOINT` | POST endpoint for waitlist email capture | No |
-| `NEXT_PUBLIC_TRIAL_PERIOD_ENABLED` | Show trial references (`"false"` to hide) | No (defaults to shown) |
-
-Worker variables (set in `wrangler.toml [vars]`):
+**Main site Worker** (`wrangler.toml [vars]`):
 
 | Variable | Description | Default |
 |----------|-------------|---------|
-| `CTA_MODE` | Site mode: `waitlist`, `on-sale`, or `placeholder` | `on-sale` |
-| `WAITLIST_URL` | URL for the waitlist CTA button | — |
-| `PURCHASE_URL` | URL for the buy/download CTA button | `#pricing` |
+| `PURCHASE_URL` | Stripe Payment Link URL; drives all buy/CTA buttons | `#pricing` |
+
+**License-issuer Worker** (`workers/license-issuer/wrangler.toml [vars]`):
+
+| Variable | Description |
+|----------|-------------|
+| `FROM_EMAIL` | Sender address for license emails |
+| `SUPPORT_EMAIL` | Support address shown in license emails |
+
+Secrets are never stored in `wrangler.toml` — set them with `wrangler secret put <NAME>`.
 
 ## License
 
