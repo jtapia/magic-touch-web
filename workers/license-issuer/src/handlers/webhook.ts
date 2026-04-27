@@ -67,7 +67,6 @@ export async function handleWebhook(
       signedKeyHash,
       maskedKey,
       issuedAt: signed.issuedAt,
-      createdAt: Date.now(),
       status: "active",
       activations: [],
       maxDevices: MAX_DEVICES,
