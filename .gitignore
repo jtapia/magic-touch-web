@@ -37,3 +37,6 @@ next-env.d.ts
 
 # Env vars
 .env
+
+# Local scratch / tooling
+excalidraw.log

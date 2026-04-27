@@ -3,7 +3,6 @@
  *
  * Routes:
  *   POST /webhook           Stripe checkout.session.completed → issue license
- *   POST /stripe-webhook    legacy alias for /webhook (one deploy cycle)
  *   GET  /session/:id       masked confirmation for the /success page
  *   POST /validate          periodic license check from the macOS app
  *   POST /activate          bind license to a device (max 3)
@@ -22,7 +21,7 @@ export default {
     const url = new URL(req.url);
     const path = url.pathname;
 
-    if (path === "/webhook" || path === "/stripe-webhook") {
+    if (path === "/webhook") {
       return handleWebhook(req, env, ctx);
     }
 

@@ -29,7 +29,10 @@ export async function handleWebhook(
   const sig = req.headers.get("stripe-signature") ?? "";
 
   const event = await verifyStripeWebhook(body, sig, env.STRIPE_WEBHOOK_SECRET);
-  if (!event) return new Response("Bad signature", { status: 400 });
+  if (!event) {
+    console.warn("webhook: bad signature");
+    return new Response("Bad signature", { status: 400 });
+  }
 
   if (event.type !== "checkout.session.completed") {
     console.log("webhook: ignored event type", { type: event.type });
