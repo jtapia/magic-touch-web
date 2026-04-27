@@ -38,7 +38,12 @@ export async function parseLicenseBody(
     return errorResponse("bad_request", "Field exceeds maximum length", 400, "site");
   if (!rawLicenseKey && !signedLicenseToken)
     return errorResponse("bad_request", "rawLicenseKey or signedLicenseToken required", 400, "site");
-  return { rawLicenseKey, signedLicenseToken, deviceId, email };
+  return {
+    rawLicenseKey,
+    signedLicenseToken,
+    deviceId,
+    email: email.toLowerCase().trim(),
+  };
 }
 
 export async function resolveRawKeyHash(

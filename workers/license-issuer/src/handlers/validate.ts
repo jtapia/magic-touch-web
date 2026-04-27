@@ -23,7 +23,7 @@ export async function handleValidate(req: Request, env: Env): Promise<Response> 
 
   const record = await getLicense(env.LICENSES, rawKeyHash);
   if (!record) return invalid();
-  if (record.email !== email.toLowerCase().trim()) return invalid();
+  if (record.email !== email) return invalid();
 
   if (record.status === "revoked") {
     return jsonResponse(

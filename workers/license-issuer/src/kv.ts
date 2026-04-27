@@ -13,6 +13,7 @@ export interface LicenseRecord {
   signedKeyHash: string;
   maskedKey: string;
   issuedAt: number;
+  createdAt?: number;
   status: LicenseStatus;
   activations: Activation[];
   maxDevices: number;

@@ -31,7 +31,7 @@ function useCountdown(targetDate: Date): Countdown {
   });
 
   useEffect(() => {
-    function calc() {
+    function calc(): boolean {
       const diff = Math.max(0, targetDate.getTime() - Date.now());
       setTimeLeft({
         days: Math.floor(diff / 86400000),
@@ -41,9 +41,12 @@ function useCountdown(targetDate: Date): Countdown {
         expired: diff === 0,
         ready: true,
       });
+      return diff === 0;
     }
-    calc();
-    const id = setInterval(calc, 1000);
+    if (calc()) return;
+    const id = setInterval(() => {
+      if (calc()) clearInterval(id);
+    }, 1000);
     return () => clearInterval(id);
   }, [targetDate]);
 
