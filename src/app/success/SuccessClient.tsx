@@ -7,7 +7,7 @@ import { DOWNLOAD_URL } from "@/lib/site";
 const LICENSE_ISSUER_URL =
   process.env.NEXT_PUBLIC_LICENSE_ISSUER_URL ?? "https://license.gettappit.com";
 const POLL_INTERVAL_MS = 1500;
-const MAX_ATTEMPTS = 8;
+const MAX_ATTEMPTS = 20;
 
 interface SessionInfo {
   email: string;

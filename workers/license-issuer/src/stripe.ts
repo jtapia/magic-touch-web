@@ -25,21 +25,29 @@ export async function verifyStripeWebhook(
   );
   const timestamp = parts["t"];
   const signature = parts["v1"];
-  if (!timestamp || !signature) return null;
+  if (!timestamp || !signature) {
+    console.warn("stripe verify: missing t or v1 in header", { hasT: !!timestamp, hasV1: !!signature });
+    return null;
+  }
 
   // Reject events older than REPLAY_WINDOW_SEC to narrow the replay window.
   const eventAgeSec = Math.floor(Date.now() / 1000) - Number(timestamp);
   if (!Number.isFinite(eventAgeSec) || eventAgeSec > REPLAY_WINDOW_SEC || eventAgeSec < -60) {
+    console.warn("stripe verify: timestamp out of window", { eventAgeSec, timestamp });
     return null;
   }
 
   const signedPayload = `${timestamp}.${body}`;
   const expected = await hmacSha256Hex(secret, signedPayload);
-  if (!timingSafeEqualHex(expected, signature)) return null;
+  if (!timingSafeEqualHex(expected, signature)) {
+    console.warn("stripe verify: hmac mismatch", { secretLen: secret.length, bodyLen: body.length });
+    return null;
+  }
 
   try {
     return JSON.parse(body) as StripeEvent;
   } catch {
+    console.warn("stripe verify: invalid json body");
     return null;
   }
 }
