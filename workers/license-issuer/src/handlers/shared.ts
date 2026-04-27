@@ -3,7 +3,7 @@ import { sha256Hex } from "../license";
 import { getSignedPointer, MAX_DEVICE_ID_LEN, MAX_EMAIL_LEN, MAX_KEY_LEN } from "../kv";
 import { errorResponse } from "./cors";
 
-export interface LicenseRequestBody {
+interface LicenseRequestBody {
   rawLicenseKey?: string;
   signedLicenseToken?: string;
   deviceId?: string;
