@@ -32,6 +32,10 @@ const faqs = [
     a: "Absolutely. In Preferences, set your dominant hand to Left. Right-click moves to the left side, left-click to the right. One setting, done.",
   },
   {
+    q: "Is Tappit good for RSI or one-handed use?",
+    a: "Many people use it for exactly that. Tap-to-click removes the press, pressure right-click avoids modifier-key chords, and dead zones stop accidental taps where your hand rests. Tappit isn't certified assistive tech, but the lighter touch helps if hard clicking is uncomfortable.",
+  },
+  {
     q: "Will it conflict with Bartender, Ice, or Hidden Bar?",
     a: "No. Tappit is a well-behaved menu bar app and works alongside every popular menu bar manager.",
   },
