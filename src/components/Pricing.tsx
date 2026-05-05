@@ -1,57 +1,9 @@
 "use client";
 
 import { motion, useInView } from "framer-motion";
-import { useRef, useState, useEffect } from "react";
+import { useRef } from "react";
 import { isExternalStripeLink } from "@/lib/site";
 import { useCtaHref } from "@/hooks/useCta";
-
-/*
- * Sale end date. When this date is in the past the countdown and
- * "introductory price" badge automatically hide themselves.
- */
-const SALE_END_DATE = new Date("2026-05-31T23:59:59Z");
-
-type Countdown = {
-  days: number;
-  hours: number;
-  minutes: number;
-  seconds: number;
-  expired: boolean;
-  ready: boolean;
-};
-
-function useCountdown(targetDate: Date): Countdown {
-  const [timeLeft, setTimeLeft] = useState<Countdown>({
-    days: 0,
-    hours: 0,
-    minutes: 0,
-    seconds: 0,
-    expired: false,
-    ready: false,
-  });
-
-  useEffect(() => {
-    function calc() {
-      const diff = Math.max(0, targetDate.getTime() - Date.now());
-      setTimeLeft({
-        days: Math.floor(diff / 86400000),
-        hours: Math.floor((diff % 86400000) / 3600000),
-        minutes: Math.floor((diff % 3600000) / 60000),
-        seconds: Math.floor((diff % 60000) / 1000),
-        expired: diff === 0,
-        ready: true,
-      });
-      return diff === 0;
-    }
-    if (calc()) return;
-    const id = setInterval(() => {
-      if (calc()) clearInterval(id);
-    }, 1000);
-    return () => clearInterval(id);
-  }, [targetDate]);
-
-  return timeLeft;
-}
 
 const featureGroups = [
   {
@@ -92,9 +44,7 @@ const checkIcon = (
 export default function Pricing() {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-100px" });
-  const countdown = useCountdown(SALE_END_DATE);
   const href = useCtaHref();
-  const onSale = !countdown.expired;
 
   return (
     <section ref={ref} id="pricing" className="py-16 md:py-32 text-center">
@@ -119,35 +69,11 @@ export default function Pricing() {
           transition={{ duration: 0.45, delay: 0.2 }}
           className="relative rounded-3xl border-2 border-accent/30 bg-card p-6 sm:p-9 text-left mt-12 shadow-xl shadow-accent/5"
         >
-          {onSale && (
-            <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 gradient-bg text-white text-[0.7rem] font-bold px-3 py-1 rounded-full tracking-wide shadow-lg shadow-accent/20 whitespace-nowrap">
-              ✨ LAUNCH PRICE
-            </span>
-          )}
-
           <div className="text-center mt-2">
             <div className="flex items-baseline justify-center gap-2">
               <span className="text-5xl sm:text-6xl font-extrabold gradient-text">$2.99</span>
-              {onSale && <span className="text-lg text-dim line-through">$3.99</span>}
             </div>
             <p className="text-sm text-muted mt-2">One-time payment. Yours forever.</p>
-
-            {onSale && countdown.ready && (
-              <div className="mt-5 flex flex-wrap items-center justify-center gap-2">
-                <span className="text-xs text-dim">Launch price ends in:</span>
-                <div className="flex items-center gap-1">
-                  {(["days", "hours", "minutes", "seconds"] as const).map((unit, i, arr) => (
-                    <span key={unit} className="flex items-center gap-1">
-                      <span className="inline-flex flex-col items-center bg-surface border border-border rounded-lg px-2 py-1 min-w-[2.5rem]">
-                        <span className="text-sm font-bold tabular-nums">{String(countdown[unit]).padStart(2, "0")}</span>
-                        <span className="text-[9px] uppercase tracking-widest text-dim">{unit.slice(0, 3)}</span>
-                      </span>
-                      {i < arr.length - 1 && <span className="text-dim font-bold text-sm">:</span>}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            )}
           </div>
 
           <div className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-5 sm:gap-6 text-left">
@@ -184,9 +110,7 @@ export default function Pricing() {
           transition={{ delay: 0.6 }}
           className="text-sm text-dim mt-6"
         >
-          {onSale
-            ? "Launch price for a limited time. Regular price $3.99."
-            : "One-time purchase · Instant download · Free updates"}
+          One-time purchase · Instant download · Free updates
         </motion.p>
       </div>
     </section>

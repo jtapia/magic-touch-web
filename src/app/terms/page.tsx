@@ -41,7 +41,7 @@ export default function TermsOfUse() {
 
           <h2>Purchase and pricing</h2>
           <p>
-            Tappit is sold as a one-time purchase. The introductory price of $2.99 is available for a limited time; the regular price is $3.99. All purchases are processed by <a href="https://stripe.com" target="_blank" rel="noopener noreferrer">Stripe</a>. Prices may change without prior notice, but any purchase you complete is final at the price displayed at checkout.
+            Tappit is sold as a one-time purchase for $2.99. All purchases are processed by <a href="https://stripe.com" target="_blank" rel="noopener noreferrer">Stripe</a>. Prices may change without prior notice, but any purchase you complete is final at the price displayed at checkout.
           </p>
 
           <h2>Refunds</h2>

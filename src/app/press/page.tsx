@@ -17,7 +17,7 @@ const facts: { label: string; value: string }[] = [
   { label: "Category", value: "macOS utility · input / accessibility" },
   { label: "Platform", value: "macOS 12.0 or later (Apple Silicon + Intel)" },
   { label: "Hardware", value: "Apple Magic Mouse (1st and 2nd generation)" },
-  { label: "Price", value: "US $2.99 introductory · $3.99 regular · one-time" },
+  { label: "Price", value: "US $2.99 · one-time" },
   { label: "Refund", value: "30 days, no questions asked" },
   { label: "Privacy", value: "Zero network requests; no analytics; no telemetry" },
   { label: "Footprint", value: "~5 MB RAM, menu bar only (no Dock icon)" },
@@ -41,7 +41,7 @@ const boilerplates: { length: "One-liner" | "Short" | "Long"; body: string }[] =
   {
     length: "Long",
     body:
-      "Every MacBook trackpad has tap-to-click. The Apple Magic Mouse doesn't, and pressing the mouse body hundreds of times a day is tiring and loud. Tappit fixes that by reading raw multitouch data from the Magic Mouse at 60–120 Hz and injecting synthetic clicks at the HID level, indistinguishable from a real press. Beyond tap-to-click, Tappit delivers zone-based and pressure-based right-click, a configurable middle-click zone, multi-finger tap actions, tap-to-drag, per-edge dead zones, palm rejection, haptic and sound feedback, per-app right-click rules, custom scroll sensitivity, battery monitoring for Magic Mouse 2, and start-on-login via the native SMAppService API. Built in native Swift, sandbox-free (required for the private multitouch framework) but hardened, ~5 MB in memory, and makes zero network requests: all touch data stays on the device. Distributed direct at one-time US $2.99 introductory price, offline Ed25519-signed license activation, and Sparkle-based auto-updates.",
+      "Every MacBook trackpad has tap-to-click. The Apple Magic Mouse doesn't, and pressing the mouse body hundreds of times a day is tiring and loud. Tappit fixes that by reading raw multitouch data from the Magic Mouse at 60–120 Hz and injecting synthetic clicks at the HID level, indistinguishable from a real press. Beyond tap-to-click, Tappit delivers zone-based and pressure-based right-click, a configurable middle-click zone, multi-finger tap actions, tap-to-drag, per-edge dead zones, palm rejection, haptic and sound feedback, per-app right-click rules, custom scroll sensitivity, battery monitoring for Magic Mouse 2, and start-on-login via the native SMAppService API. Built in native Swift, sandbox-free (required for the private multitouch framework) but hardened, ~5 MB in memory, and makes zero network requests: all touch data stays on the device. Distributed direct at one-time US $2.99, offline Ed25519-signed license activation, and Sparkle-based auto-updates.",
   },
 ];
 
