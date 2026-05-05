@@ -8,7 +8,7 @@ export default {
     const url = new URL(request.url);
 
     if (url.pathname === "/api/cta") {
-      const href = env.PURCHASE_URL ?? "#pricing";
+      const href = env.PURCHASE_URL ?? "/#pricing";
       return Response.json(
         { href },
         {
