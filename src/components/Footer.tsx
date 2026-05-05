@@ -23,6 +23,7 @@ export default function Footer() {
             </div>
             <div className="flex flex-col gap-2">
               <h4 className="text-sm font-semibold mb-1">Support</h4>
+              <Link href="/support" className="text-sm text-dim hover:text-foreground transition-colors">Help</Link>
               <a href="/#faq" className="text-sm text-dim hover:text-foreground transition-colors">FAQ</a>
               <Link href="/changelog" className="text-sm text-dim hover:text-foreground transition-colors">Changelog</Link>
               <Link href="/press" className="text-sm text-dim hover:text-foreground transition-colors">Press Kit</Link>
