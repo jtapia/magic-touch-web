@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { DOWNLOAD_URL } from "@/lib/site";
 
 const LICENSE_ISSUER_URL =
@@ -26,10 +26,9 @@ type State =
 
 export default function SuccessClient() {
   const [state, setState] = useState<State>({ kind: "loading", attempt: 0 });
-  const cancelled = useRef(false);
 
   useEffect(() => {
-    cancelled.current = false;
+    let cancelled = false;
 
     const params = new URLSearchParams(window.location.search);
     const sessionId = params.get("session_id");
@@ -42,11 +41,11 @@ export default function SuccessClient() {
     void poll(sessionId, 0);
 
     return () => {
-      cancelled.current = true;
+      cancelled = true;
     };
 
     async function poll(id: string, attempt: number): Promise<void> {
-      if (cancelled.current) return;
+      if (cancelled) return;
       try {
         const res = await fetch(`${LICENSE_ISSUER_URL}/session/${encodeURIComponent(id)}`);
         if (res.status === 404) {

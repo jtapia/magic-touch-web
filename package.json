@@ -25,6 +25,6 @@
     "tailwindcss": "^4",
     "typescript": "^5",
     "typescript-eslint": "^8.58.2",
-    "wrangler": "4.85"
+    "wrangler": "^4.87.0"
   }
 }
