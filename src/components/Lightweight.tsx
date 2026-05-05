@@ -22,7 +22,7 @@ const stats = [
     ),
     value: "Offline",
     label: "No internet needed",
-    desc: "Zero analytics, zero telemetry, zero &ldquo;phone home&rdquo;. Everything happens on your Mac.",
+    desc: "Zero analytics, zero telemetry, zero “phone home”. Everything happens on your Mac.",
   },
   {
     icon: (

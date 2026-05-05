@@ -10,7 +10,6 @@ export default function Error({
   reset: () => void;
 }) {
   useEffect(() => {
-    // Log error to console in development
     if (process.env.NODE_ENV === "development") {
       console.error("Error boundary caught:", error);
     }
