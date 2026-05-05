@@ -10,12 +10,8 @@ interface LicenseRequestBody {
   email?: string;
 }
 
-export interface ParsedLicenseBody {
-  rawLicenseKey?: string;
-  signedLicenseToken?: string;
-  deviceId: string;
-  email: string;
-}
+export type ParsedLicenseBody = Required<Pick<LicenseRequestBody, "deviceId" | "email">> &
+  Pick<LicenseRequestBody, "rawLicenseKey" | "signedLicenseToken">;
 
 export async function parseLicenseBody(
   req: Request,

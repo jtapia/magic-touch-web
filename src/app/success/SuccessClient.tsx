@@ -7,6 +7,7 @@ import { DOWNLOAD_URL } from "@/lib/site";
 const LICENSE_ISSUER_URL =
   process.env.NEXT_PUBLIC_LICENSE_ISSUER_URL ?? "https://license.gettappit.com";
 const POLL_INTERVAL_MS = 1500;
+// 20 × 1500ms ≈ 30s, tuned to typical Stripe webhook delivery latency.
 const MAX_ATTEMPTS = 20;
 
 interface SessionInfo {

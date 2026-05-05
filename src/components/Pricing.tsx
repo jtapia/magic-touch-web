@@ -31,7 +31,7 @@ function useCountdown(targetDate: Date): Countdown {
   });
 
   useEffect(() => {
-    function calc(): boolean {
+    function calc() {
       const diff = Math.max(0, targetDate.getTime() - Date.now());
       setTimeLeft({
         days: Math.floor(diff / 86400000),
